@@ -119,7 +119,7 @@ word ModbusSerial::task() {
         delayMicroseconds(_t15);
     }
 
-    if (_len == 0) return 0x0000;
+    if (_len == 0) return false;
 
     byte i;
     _frame = (byte*) malloc(_len);
@@ -133,11 +133,9 @@ word ModbusSerial::task() {
             this->send(_frame);
     }
     
-    // Calculate the address of the register being read/written
-    word addr = (word)_frame[2] << 8 | (word)_frame[3];
     free(_frame);
     _len = 0;
-    return addr;
+    return true;
 }
 
 word ModbusSerial::calcCrc(byte address, byte* pduFrame, byte pduLen) {
