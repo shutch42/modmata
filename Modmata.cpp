@@ -4,48 +4,50 @@ using namespace modmata;
 
 ModmataClass Modmata;
 
+int ModmataClass::getCommand()
+{
+  return mb.Hreg(0);
+}
+
+void ModmataClass::complete()
+{
+  //reset command register to 0
+  mb.Hreg(0, 0);
+}
+
+int ModmataClass::getPin()
+{
+  return mb.Hreg(1);
+}
+
+int ModmataClass::getValue()
+{
+  return mb.Hreg(2);
+}
+
+void ModmataClass::setValue(uint16_t value)
+{
+  mb.Hreg(2, value);
+}
+
 void ModmataClass::begin(void)
 {
   mb.config(&Serial, 9600, SERIAL_8N1);
   mb.setSlaveId(1);
-  
-  for(word addr = 0; addr < TOTAL_PINS; addr++) {
-    pinConfig[addr] = 0;
-    pinState[addr] = false;
-    mb.addHreg(addr);
-    mb.addCoil(TOTAL_PINS+addr);
-  }
+ 
+  // Command register
+  mb.addHreg(0);
+
+  // Pin register
+  mb.addHreg(1);
+
+  // Value register
+  mb.addHreg(2);
 }
 
-// Returns register of address being written
-word ModmataClass::update()
+bool ModmataClass::commandRecieved()
 {
-  word addr = mb.task();
-  if(addr < TOTAL_PINS) {
-    checkPinMode(addr);
-  }
-  else if(addr < 2*TOTAL_PINS) {
-    checkDigitalWrite(addr);
-  }
-  return addr;
-}
-
-void ModmataClass::checkPinMode(word addr)
-{
-  word mode = mb.Hreg(addr);
-  if(pinConfig[addr] != mode) {
-    pinConfig[addr] = mode;
-    pinMode(addr, mode);
-  }
-}
-
-void ModmataClass::checkDigitalWrite(word addr)
-{
-  bool state = mb.Coil(addr);
-  int pin = addr - TOTAL_PINS;
-  if(pinState[pin] != state) {
-    pinState[pin] = state;
-    digitalWrite(pin, state);
-  } 
+  // Update modbus registers and poll for command
+  return mb.task() && getCommand();
 }
 
