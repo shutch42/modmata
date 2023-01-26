@@ -5,21 +5,40 @@
 \item 
 void \mbox{\hyperlink{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}{begin}} ()
 \item 
-bool \mbox{\hyperlink{classmodmata_1_1ModmataClass_a4a59d8368a134c660556ba7d5b0388fe}{command\+Recieved}} ()
+void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}{attach}} (uint16\+\_\+t command, int($\ast$fn)(uint8\+\_\+t $\ast$arg1, uint8\+\_\+t $\ast$arg2))
 \item 
-int \mbox{\hyperlink{classmodmata_1_1ModmataClass_ae89741c07583b0cdfb3ef57aff7568a0}{get\+Command}} ()
+void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{process\+Input}} ()
 \item 
-int \mbox{\hyperlink{classmodmata_1_1ModmataClass_a833498be00971783f257b041ec0d256c}{get\+Pin}} ()
-\item 
-int \mbox{\hyperlink{classmodmata_1_1ModmataClass_af064b21e39a02b4f413bc5ad232a2c34}{get\+Value}} ()
-\item 
-void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a866b9382dc97d45a40ec974ded03d676}{set\+Value}} (uint16\+\_\+t value)
-\item 
-void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a7c912681af837f340a9fb2ebaeef3d62}{complete}} ()
+bool \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{available}} ()
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}\label{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}} 
+\index{modmata::ModmataClass@{modmata::ModmataClass}!attach@{attach}}
+\index{attach@{attach}!modmata::ModmataClass@{modmata::ModmataClass}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}}
+{\footnotesize\ttfamily void Modmata\+Class\+::attach (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{command,  }\item[{int($\ast$)(uint8\+\_\+t $\ast$arg1, uint8\+\_\+t $\ast$arg2)}]{fn }\end{DoxyParamCaption})}
+
+Assign a function to a command number. Standard commands have default functions, but those can be overwritten here, or more commands can be added. 
+\begin{DoxyParams}{Parameters}
+{\em command} & The modbus command being assigned a function \\
+\hline
+{\em fn} & A pointer to the function to be called when the command is recieved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}\label{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}} 
+\index{modmata::ModmataClass@{modmata::ModmataClass}!available@{available}}
+\index{available@{available}!modmata::ModmataClass@{modmata::ModmataClass}}
+\doxysubsubsection{\texorpdfstring{available()}{available()}}
+{\footnotesize\ttfamily bool Modmata\+Class\+::available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Update modbus registers and check if a command has been recieved \begin{DoxyReturn}{Returns}
+True or false 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}\label{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!begin@{begin}}
 \index{begin@{begin}!modmata::ModmataClass@{modmata::ModmataClass}}
@@ -29,63 +48,13 @@ void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a7c912681af837f340a9fb2ebaeef
 Start the \mbox{\hyperlink{classModbus}{Modbus}} serial connection with a baud rate of 9600 and slave id of 1. \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a4a59d8368a134c660556ba7d5b0388fe}\label{classmodmata_1_1ModmataClass_a4a59d8368a134c660556ba7d5b0388fe}} 
-\index{modmata::ModmataClass@{modmata::ModmataClass}!commandRecieved@{commandRecieved}}
-\index{commandRecieved@{commandRecieved}!modmata::ModmataClass@{modmata::ModmataClass}}
-\doxysubsubsection{\texorpdfstring{commandRecieved()}{commandRecieved()}}
-{\footnotesize\ttfamily bool Modmata\+Class\+::command\+Recieved (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}\label{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}} 
+\index{modmata::ModmataClass@{modmata::ModmataClass}!processInput@{processInput}}
+\index{processInput@{processInput}!modmata::ModmataClass@{modmata::ModmataClass}}
+\doxysubsubsection{\texorpdfstring{processInput()}{processInput()}}
+{\footnotesize\ttfamily void Modmata\+Class\+::process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Check if a command has been sent from the client. \begin{DoxyReturn}{Returns}
-True or False 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a7c912681af837f340a9fb2ebaeef3d62}\label{classmodmata_1_1ModmataClass_a7c912681af837f340a9fb2ebaeef3d62}} 
-\index{modmata::ModmataClass@{modmata::ModmataClass}!complete@{complete}}
-\index{complete@{complete}!modmata::ModmataClass@{modmata::ModmataClass}}
-\doxysubsubsection{\texorpdfstring{complete()}{complete()}}
-{\footnotesize\ttfamily void Modmata\+Class\+::complete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Reset the command register to 0, completing the transaction. \begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_ae89741c07583b0cdfb3ef57aff7568a0}\label{classmodmata_1_1ModmataClass_ae89741c07583b0cdfb3ef57aff7568a0}} 
-\index{modmata::ModmataClass@{modmata::ModmataClass}!getCommand@{getCommand}}
-\index{getCommand@{getCommand}!modmata::ModmataClass@{modmata::ModmataClass}}
-\doxysubsubsection{\texorpdfstring{getCommand()}{getCommand()}}
-{\footnotesize\ttfamily int Modmata\+Class\+::get\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Access the first holding register from \mbox{\hyperlink{classModbus}{Modbus}} containing the command value. \begin{DoxyReturn}{Returns}
-The command register value 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a833498be00971783f257b041ec0d256c}\label{classmodmata_1_1ModmataClass_a833498be00971783f257b041ec0d256c}} 
-\index{modmata::ModmataClass@{modmata::ModmataClass}!getPin@{getPin}}
-\index{getPin@{getPin}!modmata::ModmataClass@{modmata::ModmataClass}}
-\doxysubsubsection{\texorpdfstring{getPin()}{getPin()}}
-{\footnotesize\ttfamily int Modmata\+Class\+::get\+Pin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Access the holding register containing the pin value of the current command. \begin{DoxyReturn}{Returns}
-The pin number 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_af064b21e39a02b4f413bc5ad232a2c34}\label{classmodmata_1_1ModmataClass_af064b21e39a02b4f413bc5ad232a2c34}} 
-\index{modmata::ModmataClass@{modmata::ModmataClass}!getValue@{getValue}}
-\index{getValue@{getValue}!modmata::ModmataClass@{modmata::ModmataClass}}
-\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
-{\footnotesize\ttfamily int Modmata\+Class\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-Access the holding register containing the read or write value of the command. \begin{DoxyReturn}{Returns}
-The command\textquotesingle{}s read or write value 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a866b9382dc97d45a40ec974ded03d676}\label{classmodmata_1_1ModmataClass_a866b9382dc97d45a40ec974ded03d676}} 
-\index{modmata::ModmataClass@{modmata::ModmataClass}!setValue@{setValue}}
-\index{setValue@{setValue}!modmata::ModmataClass@{modmata::ModmataClass}}
-\doxysubsubsection{\texorpdfstring{setValue()}{setValue()}}
-{\footnotesize\ttfamily void Modmata\+Class\+::set\+Value (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})}
-
-Set the holding register in case the command will be returning a value. (ex\+: digital\+Read(), analog\+Read()) 
-\begin{DoxyParams}{Parameters}
-{\em value} & A 16 bit value to return to the client, typically an arduino function\textquotesingle{}s return value \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+Execute a command when the input is recieved. \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
 

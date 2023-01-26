@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['commandrecieved_1',['commandRecieved',['../classmodmata_1_1ModmataClass.html#a4a59d8368a134c660556ba7d5b0388fe',1,'modmata::ModmataClass']]],
-  ['complete_2',['complete',['../classmodmata_1_1ModmataClass.html#a7c912681af837f340a9fb2ebaeef3d62',1,'modmata::ModmataClass']]]
+  ['begin_2',['begin',['../classmodmata_1_1ModmataClass.html#ace3cc2920e32131eb50c9f6e80f5e686',1,'modmata::ModmataClass']]]
 ];
