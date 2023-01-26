@@ -19,6 +19,9 @@ void ModmataClass::begin()
   callbackFunctions[PINMODE] = &pinMode;
   callbackFunctions[DIGITALWRITE] = &digitalWrite;
   callbackFunctions[DIGITALREAD] = &digitalRead;
+  callbackFunctions[ANALOGREFERENCE] = &analogReference;
+  callbackFunctions[ANALOGWRITE] = &analogWrite;
+  callbackFunctions[ANALOGREAD] = &analogRead;
 
   mb.config(&Serial, 9600, SERIAL_8N1);
   mb.setSlaveId(1);
