@@ -7,14 +7,12 @@ class ModmataClass
 {
   public:
     void begin();
-    bool commandRecieved();
-    int getCommand();
-    int getPin();
-    int getValue();
-    void setValue(uint16_t value);
-    void complete();
-
+    void attach(uint16_t command, int (*fn)(uint8_t *arg1, uint8_t *arg2));
+    void processInput();
+    bool available();
+  
   private:
+    int (*callbackFunctions[20])(uint8_t *arg1, uint8_t *arg2);
     ModbusSerial mb;
 };
 }
