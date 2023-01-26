@@ -79,20 +79,68 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ace3cc2920e32131eb50c9f6e80f5e686"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#ace3cc2920e32131eb50c9f6e80f5e686">begin</a> ()</td></tr>
 <tr class="separator:ace3cc2920e32131eb50c9f6e80f5e686"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a59d8368a134c660556ba7d5b0388fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#a4a59d8368a134c660556ba7d5b0388fe">commandRecieved</a> ()</td></tr>
-<tr class="separator:a4a59d8368a134c660556ba7d5b0388fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae89741c07583b0cdfb3ef57aff7568a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#ae89741c07583b0cdfb3ef57aff7568a0">getCommand</a> ()</td></tr>
-<tr class="separator:ae89741c07583b0cdfb3ef57aff7568a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a833498be00971783f257b041ec0d256c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#a833498be00971783f257b041ec0d256c">getPin</a> ()</td></tr>
-<tr class="separator:a833498be00971783f257b041ec0d256c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af064b21e39a02b4f413bc5ad232a2c34"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#af064b21e39a02b4f413bc5ad232a2c34">getValue</a> ()</td></tr>
-<tr class="separator:af064b21e39a02b4f413bc5ad232a2c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a866b9382dc97d45a40ec974ded03d676"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#a866b9382dc97d45a40ec974ded03d676">setValue</a> (uint16_t value)</td></tr>
-<tr class="separator:a866b9382dc97d45a40ec974ded03d676"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c912681af837f340a9fb2ebaeef3d62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#a7c912681af837f340a9fb2ebaeef3d62">complete</a> ()</td></tr>
-<tr class="separator:a7c912681af837f340a9fb2ebaeef3d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24dab3a4e2acf20a17e75454ca6d2a39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#a24dab3a4e2acf20a17e75454ca6d2a39">attach</a> (uint16_t command, int(*fn)(uint8_t *arg1, uint8_t *arg2))</td></tr>
+<tr class="separator:a24dab3a4e2acf20a17e75454ca6d2a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a0a6b61b07be95ece2bc1f83cd7607d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#a9a0a6b61b07be95ece2bc1f83cd7607d">processInput</a> ()</td></tr>
+<tr class="separator:a9a0a6b61b07be95ece2bc1f83cd7607d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab61913c30c725f6eec033db2e53a577c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#ab61913c30c725f6eec033db2e53a577c">available</a> ()</td></tr>
+<tr class="separator:ab61913c30c725f6eec033db2e53a577c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a24dab3a4e2acf20a17e75454ca6d2a39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24dab3a4e2acf20a17e75454ca6d2a39">&#9670;&nbsp;</a></span>attach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModmataClass::attach </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>command</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)(uint8_t *arg1, uint8_t *arg2)&#160;</td>
+          <td class="paramname"><em>fn</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Assign a function to a command number. Standard commands have default functions, but those can be overwritten here, or more commands can be added. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td>The modbus command being assigned a function </td></tr>
+    <tr><td class="paramname">fn</td><td>A pointer to the function to be called when the command is recieved </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
+</div>
+</div>
+<a id="ab61913c30c725f6eec033db2e53a577c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61913c30c725f6eec033db2e53a577c">&#9670;&nbsp;</a></span>available()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ModmataClass::available </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Update modbus registers and check if a command has been recieved </p><dl class="section return"><dt>Returns</dt><dd>True or false </dd></dl>
+
+</div>
+</div>
 <a id="ace3cc2920e32131eb50c9f6e80f5e686"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace3cc2920e32131eb50c9f6e80f5e686">&#9670;&nbsp;</a></span>begin()</h2>
 
@@ -111,118 +159,21 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4a59d8368a134c660556ba7d5b0388fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a59d8368a134c660556ba7d5b0388fe">&#9670;&nbsp;</a></span>commandRecieved()</h2>
+<a id="a9a0a6b61b07be95ece2bc1f83cd7607d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a0a6b61b07be95ece2bc1f83cd7607d">&#9670;&nbsp;</a></span>processInput()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool ModmataClass::commandRecieved </td>
+          <td class="memname">void ModmataClass::processInput </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check if a command has been sent from the client. </p><dl class="section return"><dt>Returns</dt><dd>True or False </dd></dl>
-
-</div>
-</div>
-<a id="a7c912681af837f340a9fb2ebaeef3d62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c912681af837f340a9fb2ebaeef3d62">&#9670;&nbsp;</a></span>complete()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ModmataClass::complete </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Reset the command register to 0, completing the transaction. </p><dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
-
-</div>
-</div>
-<a id="ae89741c07583b0cdfb3ef57aff7568a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae89741c07583b0cdfb3ef57aff7568a0">&#9670;&nbsp;</a></span>getCommand()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ModmataClass::getCommand </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Access the first holding register from <a class="el" href="classModbus.html">Modbus</a> containing the command value. </p><dl class="section return"><dt>Returns</dt><dd>The command register value </dd></dl>
-
-</div>
-</div>
-<a id="a833498be00971783f257b041ec0d256c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a833498be00971783f257b041ec0d256c">&#9670;&nbsp;</a></span>getPin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ModmataClass::getPin </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Access the holding register containing the pin value of the current command. </p><dl class="section return"><dt>Returns</dt><dd>The pin number </dd></dl>
-
-</div>
-</div>
-<a id="af064b21e39a02b4f413bc5ad232a2c34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af064b21e39a02b4f413bc5ad232a2c34">&#9670;&nbsp;</a></span>getValue()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ModmataClass::getValue </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Access the holding register containing the read or write value of the command. </p><dl class="section return"><dt>Returns</dt><dd>The command's read or write value </dd></dl>
-
-</div>
-</div>
-<a id="a866b9382dc97d45a40ec974ded03d676"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a866b9382dc97d45a40ec974ded03d676">&#9670;&nbsp;</a></span>setValue()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ModmataClass::setValue </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Set the holding register in case the command will be returning a value. (ex: digitalRead(), analogRead()) </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>A 16 bit value to return to the client, typically an arduino function's return value </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+<p>Execute a command when the input is recieved. </p><dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>
