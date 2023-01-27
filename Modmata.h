@@ -1,5 +1,6 @@
-#include "ModbusSerial.h"
 #include "Constants.h"
+#include "ModmataServo.h"
+#include "ModbusSerial.h"
 
 namespace modmata {
 

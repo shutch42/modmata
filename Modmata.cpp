@@ -22,7 +22,8 @@ void ModmataClass::begin()
   callbackFunctions[ANALOGREFERENCE] = &analogReference;
   callbackFunctions[ANALOGWRITE] = &analogWrite;
   callbackFunctions[ANALOGREAD] = &analogRead;
-
+  callbackFunctions[SERVOATTACH] = &servoAttach;
+  
   mb.config(&Serial, 9600, SERIAL_8N1);
   mb.setSlaveId(1);
  
@@ -65,4 +66,3 @@ bool ModmataClass::available()
 {
   return mb.task() && mb.Hreg(0);
 }
-
