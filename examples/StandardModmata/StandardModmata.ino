@@ -7,5 +7,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Modmata.update();
+  if(Modmata.available()) {
+    Modmata.processInput();
+  }
 }

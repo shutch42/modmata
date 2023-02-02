@@ -1,4 +1,5 @@
-#include "Boards.h"
+#include "Constants.h"
+#include "ModmataServo.h"
 #include "ModbusSerial.h"
 
 namespace modmata {
@@ -7,17 +8,14 @@ class ModmataClass
 {
   public:
     void begin();
-    word update();
-
+    void attach(uint16_t command, int (*fn)(uint8_t *arg1, uint8_t *arg2));
+    void processInput();
+    bool available();
+  
   private:
+    int (*callbackFunctions[20])(uint8_t *arg1, uint8_t *arg2);
     ModbusSerial mb;
-    word pinConfig[TOTAL_PINS];
-    bool pinState[TOTAL_PINS];
-    void checkPinMode(word addr);
-    void checkDigitalWrite(word addr);
-
 };
-
 }
 
 extern modmata::ModmataClass Modmata;

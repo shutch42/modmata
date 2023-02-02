@@ -1,51 +1,68 @@
+/** 
+@file Modmata.cpp
+@author Sam Hutcherson
+@date 01/25/23
+@brief Functions to access Modmata commands from arduino .ino files.
+*/
 #include "Modmata.h"
 #include "HardwareSerial.h"
 using namespace modmata;
 
 ModmataClass Modmata;
 
-void ModmataClass::begin(void)
+/**
+Start the Modbus serial connection with a baud rate of 9600 and slave id of 1.
+@return void
+*/
+void ModmataClass::begin()
 {
+  callbackFunctions[PINMODE] = &pinMode;
+  callbackFunctions[DIGITALWRITE] = &digitalWrite;
+  callbackFunctions[DIGITALREAD] = &digitalRead;
+  callbackFunctions[ANALOGREFERENCE] = &analogReference;
+  callbackFunctions[ANALOGWRITE] = &analogWrite;
+  callbackFunctions[ANALOGREAD] = &analogRead;
+  callbackFunctions[SERVOATTACH] = &servoAttach;
+  
   mb.config(&Serial, 9600, SERIAL_8N1);
   mb.setSlaveId(1);
-  
-  for(word addr = 0; addr < TOTAL_PINS; addr++) {
-    pinConfig[addr] = 0;
-    pinState[addr] = false;
-    mb.addHreg(addr);
-    mb.addCoil(TOTAL_PINS+addr);
-  }
+ 
+  // Command register
+  mb.addHreg(0);
+
+  // Pin register
+  mb.addHreg(1);
+
+  // Value register
+  mb.addHreg(2);
 }
 
-// Returns register of address being written
-word ModmataClass::update()
+/**
+Assign a function to a command number. Standard commands have default functions, but those can be overwritten here, or more commands can be added.
+@param command The modbus command being assigned a function
+@param fn A pointer to the function to be called when the command is recieved
+@return void
+*/
+void ModmataClass::attach(uint16_t command, int (*fn)(uint8_t *arg1, uint8_t *arg2))
 {
-  word addr = mb.task();
-  if(addr < TOTAL_PINS) {
-    checkPinMode(addr);
-  }
-  else if(addr < 2*TOTAL_PINS) {
-    checkDigitalWrite(addr);
-  }
-  return addr;
+  callbackFunctions[command] = *fn;
 }
 
-void ModmataClass::checkPinMode(word addr)
+/** 
+Execute a command when the input is recieved.
+@return void
+*/
+void ModmataClass::processInput()
 {
-  word mode = mb.Hreg(addr);
-  if(pinConfig[addr] != mode) {
-    pinConfig[addr] = mode;
-    pinMode(addr, mode);
-  }
+  mb.Hreg(2, (callbackFunctions[mb.Hreg(0)])(mb.Hreg(1), mb.Hreg(2)));
+  mb.Hreg(0, 0);
 }
 
-void ModmataClass::checkDigitalWrite(word addr)
+/**
+Update modbus registers and check if a command has been recieved
+@return True or false
+*/
+bool ModmataClass::available()
 {
-  bool state = mb.Coil(addr);
-  int pin = addr - TOTAL_PINS;
-  if(pinState[pin] != state) {
-    pinState[pin] = state;
-    digitalWrite(pin, state);
-  } 
+  return mb.task() && mb.Hreg(0);
 }
-
