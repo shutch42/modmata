@@ -1,5 +1,6 @@
 #include <Servo.h>
-
-int servoAttach(uint8_t pin);
-int servoDetach(uint8_t pin);
-
+int servo_count;
+int servoAttach(int pin);
+int servoDetach(int pin);
+int servoWrite(int pin, int angle);
+int servoRead(int pin);
