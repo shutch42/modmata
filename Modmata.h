@@ -22,13 +22,9 @@ class ModmataClass
   private:
     int (*callbackFunctions[20])(uint8_t *arg1, uint8_t *arg2);
     ModbusSerial mb;
-    int servo_count;
-    Servo* servos[14] = {nullptr};
-    int servoAttach(int pin);
-    int servoDetach(int pin);
-    int servoWrite(int pin, int angle);
-    int servoRead(int pin);
+    
 };
 }
 
 extern modmata::ModmataClass Modmata;
+
