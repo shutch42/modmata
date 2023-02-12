@@ -6,6 +6,7 @@
 */
 #include "Modmata.h"
 #include "HardwareSerial.h"
+#include "ModmataServo.h"
 using namespace modmata;
 
 ModmataClass Modmata;
@@ -22,7 +23,11 @@ void ModmataClass::begin()
   callbackFunctions[ANALOGREFERENCE] = &analogReference;
   callbackFunctions[ANALOGWRITE] = &analogWrite;
   callbackFunctions[ANALOGREAD] = &analogRead;
-  
+  callbackFunctions[SERVOATTACH] = &servoAttach;
+  callbackFunctions[SERVODETACH] = &servoDetach;
+  callbackFunctions[SERVOWRITE] = &servoWrite;
+  callbackFunctions[SERVOREAD] = &servoRead;
+
   mb.config(&Serial, 9600, SERIAL_8N1);
   mb.setSlaveId(1);
  
