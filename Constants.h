@@ -5,3 +5,7 @@
 #define ANALOGREFERENCE 4
 #define ANALOGWRITE 5
 #define ANALOGREAD 6
+#define SERVOATTACH 7
+#define SERVODETACH 8
+#define SERVOWRITE 9
+#define SERVOREAD 10
