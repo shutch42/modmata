@@ -1,13 +1,11 @@
 /** 
 @file Modmata.cpp
-@author Sam Hutcherson
+@author Sam Hutcherson, Chase Wallendorff, Iris Astrid
 @date 02/16/23
 @brief Functions to access Modmata commands from arduino .ino files.
 */
+
 #include "Modmata.h"
-#include "HardwareSerial.h"
-#include "ModmataServo.h"
-#include "Wire.h"		// These functions (mostly) seem to translate directly into Modmata
 using namespace modmata;
 
 ModmataClass Modmata;
@@ -20,7 +18,24 @@ void ModmataClass::begin()
 {
   mb.config(&Serial, 9600, SERIAL_8N1);
   mb.setSlaveId(1);
- 
+  
+  callbackFunctions[PINMODE] = &pinMode;
+  callbackFunctions[DIGITALWRITE] = &digitalWrite;
+  callbackFunctions[DIGITALREAD] = &digitalRead;
+  callbackFunctions[ANALOGWRITE] = &analogWrite;
+  callbackFunctions[ANALOGREAD] = &analogRead;
+  
+  callbackFunctions[SERVOATTACH] = &servoAttach;
+  callbackFunctions[SERVODETACH] = &servoDetach;
+  callbackFunctions[SERVOWRITE] = &servoWrite;
+  callbackFunctions[SERVOREAD] = &servoRead;
+
+  callbackFunctions[WIREBEGIN] = &wireBegin;
+  callbackFunctions[WIREEND] = &wireEnd;
+  callbackFunctions[WIRECLOCK] = &wireSetClock;
+  callbackFunctions[WIREWRITE] = &wireWrite;
+  callbackFunctions[WIREREAD] = &wireRead;
+
   // Command register
   for(int i = 0; i < MAX_REG_COUNT; i++) {
     mb.addHreg(i);
@@ -45,7 +60,7 @@ Execute a command when the input is recieved.
 void ModmataClass::processInput()
 {
   int cmd = mb.Hreg(0);
-  uint16_t rgc = mb.Hreg(1);
+  uint16_t argc = mb.Hreg(1);
   uint16_t *argv = malloc(sizeof(uint16_t) * argc);
   for(int i = 0; i < argc; i++) {
 	argv[i] = mb.Hreg(2+i);

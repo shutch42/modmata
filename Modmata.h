@@ -1,16 +1,9 @@
-#include <Servo.h>
-#include "Constants.h"
+#include "Functions.h"
 #include "ModbusSerial.h"
 
 #define MAX_REG_COUNT 100
 
-struct registers {
-	uint16_t count;
-	uint16_t* value;
-};
-
 namespace modmata {
-
 class ModmataClass
 {
   public:
