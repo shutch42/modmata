@@ -3,6 +3,8 @@
 int servo_count = 0;
 Servo servos[14];	// FIXME: Change to pointers so that pins 9/10 can be used as analog when Servos aren't used
 
+struct spi_settings settings;
+
 struct registers pinMode(uint16_t argc, uint16_t *argv) {
 	if (argc == 2) {
 		pinMode(argv[0], argv[1]);
@@ -219,5 +221,67 @@ struct registers wireRead(uint16_t argc, uint16_t *argv) {
 	}
 
 	return result;	
+}
+
+struct registers spiBegin(uint16_t argc, uint16_t *argv) {
+	struct registers result;
+	result.count = 0;
+
+	if (argc == 0) {
+		SPI.begin();
+		settings.speed = 4000000;
+		settings.order = MSBFIRST;
+		settings.mode = SPI_MODE0;
+	}
+
+	return result;
+}
+
+struct registers spiSettings(uint16_t argc, uint16_t *argv) {
+	struct registers result;
+	result.count = 0;
+
+	if (argc == 3) {
+		settings.speed = argv[0];
+		settings.order = argv[1];
+		settings.mode = argv[2];
+	}
+
+	return result;
+}
+
+struct registers spiTransferBuf(uint16_t argc, uint16_t *argv) {
+	struct registers result;
+	
+	if (argc > 1) {
+		uint8_t CS_pin = argv[0];
+
+		result.count = argc - 1;
+		result.value = malloc(sizeof(uint16_t) * (argc - 1));
+		
+		SPI.beginTransaction(SPISettings(settings.speed, settings.order, settings.mode));
+		digitalWrite(CS_pin, LOW);
+		for(int i = 1; i < argc; i++) {
+			result.value[i-1] = SPI.transfer(argv[i]);
+		}
+		digitalWrite(CS_pin, HIGH);
+		SPI.endTransaction();
+	}
+	else {
+		result.count = 0;
+	}
+
+	return result;
+}
+
+struct registers spiEnd(uint16_t argc, uint16_t *argv) {
+	struct registers result;
+	result.count = 0;
+
+	if (argc == 0) {
+		SPI.end();
+	}
+
+	return result;
 }
 

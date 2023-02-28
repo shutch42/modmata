@@ -36,6 +36,11 @@ void ModmataClass::begin()
   callbackFunctions[WIREWRITE] = &wireWrite;
   callbackFunctions[WIREREAD] = &wireRead;
 
+  callbackFunctions[SPIBEGIN] = &spiBegin;
+  callbackFunctions[SPISETTINGS] = &spiSettings;
+  callbackFunctions[SPITRANSFER] = &spiTransferBuf;
+  callbackFunctions[SPIEND] = &spiEnd;
+
   // Command register
   for(int i = 0; i < MAX_REG_COUNT; i++) {
     mb.addHreg(i);
