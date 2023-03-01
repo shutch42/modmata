@@ -32,8 +32,8 @@
 #define SPIEND 19
 
 struct registers {
-	uint16_t count;
-	uint16_t* value;
+	uint8_t count;
+	uint8_t* value;
 };
 
 struct spi_settings {
@@ -43,28 +43,28 @@ struct spi_settings {
 };
 
 // General Arduino functions
-struct registers pinMode(uint16_t argc, uint16_t *argv);
-struct registers digitalWrite(uint16_t argc, uint16_t *argv);
-struct registers digitalRead(uint16_t argc, uint16_t *argv);
-struct registers analogWrite(uint16_t argc, uint16_t *argv);
-struct registers analogRead(uint16_t argc, uint16_t *argv);
+struct registers pinMode(uint8_t argc, uint8_t *argv);
+struct registers digitalWrite(uint8_t argc, uint8_t *argv);
+struct registers digitalRead(uint8_t argc, uint8_t *argv);
+struct registers analogWrite(uint8_t argc, uint8_t *argv);
+struct registers analogRead(uint8_t argc, uint8_t *argv);
 
 // Servo functions
-struct registers servoAttach(uint16_t argc, uint16_t *argv);
-struct registers servoDetach(uint16_t argc, uint16_t *argv);
-struct registers servoWrite(uint16_t argc, uint16_t *argv);
-struct registers servoRead(uint16_t argc, uint16_t *argv);
+struct registers servoAttach(uint8_t argc, uint8_t *argv);
+struct registers servoDetach(uint8_t argc, uint8_t *argv);
+struct registers servoWrite(uint8_t argc, uint8_t *argv);
+struct registers servoRead(uint8_t argc, uint8_t *argv);
 
 // I2C functions
-struct registers wireBegin(uint16_t argc, uint16_t *argv);
-struct registers wireEnd(uint16_t argc, uint16_t *argv);
-struct registers wireSetClock(uint16_t argc, uint16_t *argv);
-struct registers wireWrite(uint16_t argc, uint16_t *argv);
-struct registers wireRead(uint16_t argc, uint16_t *argv);
+struct registers wireBegin(uint8_t argc, uint8_t *argv);
+struct registers wireEnd(uint8_t argc, uint8_t *argv);
+struct registers wireSetClock(uint8_t argc, uint8_t *argv);
+struct registers wireWrite(uint8_t argc, uint8_t *argv);
+struct registers wireRead(uint8_t argc, uint8_t *argv);
 
 // SPI functions
-struct registers spiBegin(uint16_t argc, uint16_t *argv);
-struct registers spiSettings(uint16_t argc, uint16_t *argv);
-struct registers spiTransferBuf(uint16_t argc, uint16_t *argv);
-struct registers spiEnd(uint16_t argc, uint16_t *argv);
+struct registers spiBegin(uint8_t argc, uint8_t *argv);
+struct registers spiSettings(uint8_t argc, uint8_t *argv);
+struct registers spiTransferBuf(uint8_t argc, uint8_t *argv);
+struct registers spiEnd(uint8_t argc, uint8_t *argv);
 

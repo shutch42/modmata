@@ -53,7 +53,7 @@ Assign a function to a command number. Standard commands have default functions,
 @param fn A pointer to the function to be called when the command is recieved
 @return void
 */
-void ModmataClass::attach(uint16_t command, struct registers (*fn)(uint16_t argc, uint16_t *argv))
+void ModmataClass::attach(uint8_t command, struct registers (*fn)(uint8_t argc, uint8_t *argv))
 {
   callbackFunctions[command] = fn;
 }
@@ -64,20 +64,39 @@ Execute a command when the input is recieved.
 */
 void ModmataClass::processInput()
 {
-  int cmd = mb.Hreg(0);
-  uint16_t argc = mb.Hreg(1);
-  uint16_t *argv = malloc(sizeof(uint16_t) * argc);
+  // Unpack all of the modbus registers as 8-bit values
+  int cmd = mb.Hreg(0) >> 8;
+  int argc = mb.Hreg(0) & 0x00ff;
+
+  uint8_t *argv = malloc(sizeof(uint8_t) * argc);
+
   for(int i = 0; i < argc; i++) {
-	argv[i] = mb.Hreg(2+i);
+  	if (i % 2 == 0) {
+		argv[i] = mb.Hreg(i/2 + 1) >> 8;
+	}
+	else {
+		argv[i] = mb.Hreg(i/2 + 1) & 0x00ff;
+	}
   }
-  struct registers result = (callbackFunctions[mb.Hreg(0)])(argc, argv);
-  mb.Hreg(1, result.count);
+
+  struct registers result = (callbackFunctions[cmd])(argc, argv);
+  
+  // Set all of the result values
   for(int i = 0; i < result.count; i++) {
-    mb.Hreg(2+i, result.value[i]);
+	if (i % 2 == 0) {
+		mb.Hreg(i/2 + 1, result.value[i] << 8); 
+	}
+	else {
+		uint8_t curr_reg = mb.Hreg(i/2 + 1);
+		mb.Hreg(i/2 + 1, curr_reg | result.value[i]); 
+	}
   }
+  
   free(argv);
   free(result.value);
-  mb.Hreg(0, 0);
+
+  // Save the number of result values, return to idle command
+  mb.Hreg(0, result.count);
 }
 
 /**
@@ -86,6 +105,6 @@ Update modbus registers and check if a command has been recieved
 */
 bool ModmataClass::available()
 {
-  return mb.task() && mb.Hreg(0);
+  return mb.task() && (mb.Hreg(0) >> 8);
 }
 
