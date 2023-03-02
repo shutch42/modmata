@@ -42,8 +42,8 @@ struct registers digitalRead(uint8_t argc, uint8_t *argv) {
 }
 
 struct registers analogWrite(uint8_t argc, uint8_t *argv) {
-	if (argc == 2) {
-		analogWrite(argv[0], argv[1]);
+	if (argc == 3) {
+		analogWrite(argv[0], argv[1] << 8 | argv[2]);
 	}
 
 	struct registers result;
@@ -55,10 +55,11 @@ struct registers analogRead(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 
 	if (argc == 1) {
-		int read_val = analogRead(argv[0]);
-		result.count = 1;
-		result.value = malloc(sizeof(uint8_t));
-		result.value[0] = read_val;
+		uint16_t read_val = analogRead(argv[0]);
+		result.count = 2;
+		result.value = malloc(sizeof(uint8_t) * 2);
+		result.value[0] = read_val >> 8;
+		result.value[1] = read_val & 0x00ff;
 	}
 	else {
 		result.count = 0;
