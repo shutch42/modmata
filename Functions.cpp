@@ -5,7 +5,7 @@ Servo servos[14];	// FIXME: Change to pointers so that pins 9/10 can be used as 
 
 struct spi_settings settings;
 
-struct registers pinMode(uint16_t argc, uint16_t *argv) {
+struct registers pinMode(uint8_t argc, uint8_t *argv) {
 	if (argc == 2) {
 		pinMode(argv[0], argv[1]);
 	}
@@ -15,7 +15,7 @@ struct registers pinMode(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers digitalWrite(uint16_t argc, uint16_t *argv) {
+struct registers digitalWrite(uint8_t argc, uint8_t *argv) {
 	if (argc == 2) {
 		digitalWrite(argv[0], argv[1]);
 	}
@@ -25,13 +25,13 @@ struct registers digitalWrite(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers digitalRead(uint16_t argc, uint16_t *argv) {
+struct registers digitalRead(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 
 	if (argc == 1) {
-		int read_val = digitalRead(argv[0]);
+		uint8_t read_val = digitalRead(argv[0]);
 		result.count = 1;
-		result.value = malloc(sizeof(uint16_t));
+		result.value = malloc(sizeof(uint8_t));
 		result.value[0] = read_val;
 	}
 	else {
@@ -41,9 +41,9 @@ struct registers digitalRead(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers analogWrite(uint16_t argc, uint16_t *argv) {
-	if (argc == 2) {
-		analogWrite(argv[0], argv[1]);
+struct registers analogWrite(uint8_t argc, uint8_t *argv) {
+	if (argc == 3) {
+		analogWrite(argv[0], argv[1] << 8 | argv[2]);
 	}
 
 	struct registers result;
@@ -51,14 +51,15 @@ struct registers analogWrite(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers analogRead(uint16_t argc, uint16_t *argv) {
+struct registers analogRead(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 
 	if (argc == 1) {
-		int read_val = analogRead(argv[0]);
-		result.count = 1;
-		result.value = malloc(sizeof(uint16_t));
-		result.value[0] = read_val;
+		uint16_t read_val = analogRead(argv[0]);
+		result.count = 2;
+		result.value = malloc(sizeof(uint8_t) * 2);
+		result.value[0] = read_val >> 8;
+		result.value[1] = read_val & 0x00ff;
 	}
 	else {
 		result.count = 0;
@@ -67,12 +68,12 @@ struct registers analogRead(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers servoAttach(uint16_t argc, uint16_t *argv) {
+struct registers servoAttach(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	if (argc == 1) {
 		int pin = argv[0];
 		result.count = 1;
-		result.value = malloc(sizeof(uint16_t));
+		result.value = malloc(sizeof(uint8_t));
 		if (pin >= 0 && pin <= 13 && servo_count < MAX_SERVOS) {
 			result.value[0] = servos[pin].attach(pin);
 		}
@@ -87,12 +88,12 @@ struct registers servoAttach(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers servoDetach(uint16_t argc, uint16_t *argv) {
+struct registers servoDetach(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	if (argc == 1) {
 		int pin = argv[0];
 		result.count = 1;
-		result.value = malloc(sizeof(uint16_t));
+		result.value = malloc(sizeof(uint8_t));
 		if (pin >= 0 && pin <= 13) {
 			servos[pin].detach();
 			result.value[0] = 1;
@@ -108,13 +109,13 @@ struct registers servoDetach(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers servoWrite(uint16_t argc, uint16_t *argv) {
+struct registers servoWrite(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	if(argc == 2) {
 		int pin = argv[0];
 		int angle = argv[1];
 		result.count = 1;
-		result.value = malloc(sizeof(uint16_t));
+		result.value = malloc(sizeof(uint8_t));
 		if (pin >= 0 && pin <= 13) {
 			servos[pin].write(angle);
 			result.value[0] = 1;
@@ -130,13 +131,13 @@ struct registers servoWrite(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers servoRead(uint16_t argc, uint16_t *argv) {
+struct registers servoRead(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	if (argc == 1) {
 		int pin = argv[0];
 		if (pin >= 0 && pin <= 13) {
 			result.count = 1;
-			result.value = malloc(sizeof(uint16_t));
+			result.value = malloc(sizeof(uint8_t));
 			result.value[0] = servos[pin].read();
 		}
 		else {
@@ -150,21 +151,21 @@ struct registers servoRead(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers wireBegin(uint16_t argc, uint16_t *argv) {
+struct registers wireBegin(uint8_t argc, uint8_t *argv) {
 	Wire.begin();
 	struct registers result;
 	result.count = 0;
 	return result;
 }
 
-struct registers wireEnd(uint16_t argc, uint16_t *argv) {
+struct registers wireEnd(uint8_t argc, uint8_t *argv) {
 	Wire.end();
 	struct registers result;
 	result.count = 0;
 	return result;
 }
 
-struct registers wireSetClock(uint16_t argc, uint16_t *argv) {
+struct registers wireSetClock(uint8_t argc, uint8_t *argv) {
 	if (argc == 1) {
 		Wire.setClock(argv[0]);
 	}
@@ -173,7 +174,7 @@ struct registers wireSetClock(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers wireWrite(uint16_t argc, uint16_t *argv) {
+struct registers wireWrite(uint8_t argc, uint8_t *argv) {
 	if (argc >= 2) {
 		// Argument format: addr | reg | bytes
 		uint8_t addr = argv[0];
@@ -192,14 +193,14 @@ struct registers wireWrite(uint16_t argc, uint16_t *argv) {
 	return result;	
 }
 
-struct registers wireRead(uint16_t argc, uint16_t *argv) {
+struct registers wireRead(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	if(argc == 3) {
 		// Argument format: addr | reg | num_bytes
 		uint8_t addr = argv[0];
 		uint8_t reg = argv[1];
 		uint8_t num_bytes = argv[2];
-		result.value = malloc(sizeof(uint16_t) * num_bytes);
+		result.value = malloc(sizeof(uint8_t) * num_bytes);
 		
 		Wire.beginTransmission(addr);
 		Wire.write(reg);
@@ -223,7 +224,7 @@ struct registers wireRead(uint16_t argc, uint16_t *argv) {
 	return result;	
 }
 
-struct registers spiBegin(uint16_t argc, uint16_t *argv) {
+struct registers spiBegin(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	result.count = 0;
 
@@ -237,7 +238,7 @@ struct registers spiBegin(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers spiSettings(uint16_t argc, uint16_t *argv) {
+struct registers spiSettings(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	result.count = 0;
 
@@ -250,21 +251,28 @@ struct registers spiSettings(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers spiTransferBuf(uint16_t argc, uint16_t *argv) {
+struct registers spiTransferBuf(uint8_t argc, uint8_t *argv) {
+	// | CMD | ARGC | CS_pin |   Transfer bytes   |
+	// |<----- 3 words ----->|<-- 29 words max -->|
+
+	// Alternate strategy:
+	// | CMD/ARGC | Bytes                 |
+	// |<-1 word->|<-31 words / 62 bytes->|
+
 	struct registers result;
 	
 	if (argc > 1) {
 		uint8_t CS_pin = argv[0];
 
 		result.count = argc - 1;
-		result.value = malloc(sizeof(uint16_t) * (argc - 1));
+		result.value = malloc(sizeof(uint8_t) * (argc - 1));
 		
 		SPI.beginTransaction(SPISettings(settings.speed, settings.order, settings.mode));
-		digitalWrite(CS_pin, LOW);
+		digitalWrite((uint8_t)CS_pin, (uint8_t)LOW);
 		for(int i = 1; i < argc; i++) {
 			result.value[i-1] = SPI.transfer(argv[i]);
 		}
-		digitalWrite(CS_pin, HIGH);
+		digitalWrite((uint8_t)CS_pin, (uint8_t)HIGH);
 		SPI.endTransaction();
 	}
 	else {
@@ -274,7 +282,7 @@ struct registers spiTransferBuf(uint16_t argc, uint16_t *argv) {
 	return result;
 }
 
-struct registers spiEnd(uint16_t argc, uint16_t *argv) {
+struct registers spiEnd(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	result.count = 0;
 
