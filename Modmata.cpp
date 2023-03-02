@@ -84,11 +84,11 @@ void ModmataClass::processInput()
   // Set all of the result values
   for(int i = 0; i < result.count; i++) {
 	if (i % 2 == 0) {
-		mb.Hreg(i/2 + 1, result.value[i] << 8); 
+		mb.Hreg(i/2 + 1, (uint16_t)result.value[i] << 8); 
 	}
 	else {
-		uint8_t curr_reg = mb.Hreg(i/2 + 1);
-		mb.Hreg(i/2 + 1, curr_reg | result.value[i]); 
+		// uint16_t curr_reg = mb.Hreg(i/2 + 1);
+		mb.Hreg(i/2 + 1, mb.Hreg(i/2 + 1) | result.value[i]); 
 	}
   }
   
