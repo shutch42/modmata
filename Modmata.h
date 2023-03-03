@@ -1,23 +1,23 @@
-#include "Boards.h"
+#include "Functions.h"
 #include "ModbusSerial.h"
 
-namespace modmata {
+#define MAX_REG_COUNT 100
 
+namespace modmata {
 class ModmataClass
 {
   public:
     void begin();
-    word update();
-
+    void attach(uint8_t command, struct registers (*fn)(uint8_t argc, uint8_t *argv));
+    void processInput();
+    bool available();
+  
   private:
+    struct registers (*callbackFunctions[20])(uint8_t argc, uint8_t *argv);
     ModbusSerial mb;
-    word pinConfig[TOTAL_PINS];
-    bool pinState[TOTAL_PINS];
-    void checkPinMode(word addr);
-    void checkDigitalWrite(word addr);
-
+    
 };
-
 }
 
 extern modmata::ModmataClass Modmata;
+
