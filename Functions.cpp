@@ -166,8 +166,9 @@ struct registers wireEnd(uint8_t argc, uint8_t *argv) {
 }
 
 struct registers wireSetClock(uint8_t argc, uint8_t *argv) {
-	if (argc == 1) {
-		Wire.setClock(argv[0]);
+	if (argc == 4) {
+		// 4 8-bit values combine to make a 32-bit int
+		Wire.setClock((uint32_t)argv[0] << 24 | (uint32_t)argv[1] << 16 | (uint32_t)argv[2] << 8 | (uint32_t)argv[3]);
 	}
 	struct registers result;
 	result.count = 0;
@@ -242,20 +243,17 @@ struct registers spiSettings(uint8_t argc, uint8_t *argv) {
 	struct registers result;
 	result.count = 0;
 
-	if (argc == 3) {
-		settings.speed = argv[0];
-		settings.order = argv[1];
-		settings.mode = argv[2];
+	if (argc == 6) {
+		settings.speed = (uint32_t)argv[0] << 24 | (uint32_t)argv[1] << 16 | (uint32_t)argv[2] << 8 | (uint32_t)argv[3];
+		settings.order = argv[4];
+		settings.mode = argv[5];
 	}
 
 	return result;
 }
 
 struct registers spiTransferBuf(uint8_t argc, uint8_t *argv) {
-	// | CMD | ARGC | CS_pin |   Transfer bytes   |
-	// |<----- 3 words ----->|<-- 29 words max -->|
-
-	// Alternate strategy:
+	// Register format:
 	// | CMD/ARGC | Bytes                 |
 	// |<-1 word->|<-31 words / 62 bytes->|
 
