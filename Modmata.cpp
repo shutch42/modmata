@@ -14,9 +14,9 @@ ModmataClass Modmata;
 Start the Modbus serial connection with a baud rate of 9600 and slave id of 1.
 @return void
 */
-void ModmataClass::begin()
+void ModmataClass::begin(int baud)
 {
-  mb.config(&Serial, 9600, SERIAL_8N1);
+  mb.config(&Serial, baud, SERIAL_8N1);
   mb.setSlaveId(1);
   
   callbackFunctions[PINMODE] = &pinMode;
