@@ -1,7 +1,0 @@
-#define IDLE 0
-#define PINMODE 1
-#define DIGITALWRITE 2
-#define DIGITALREAD 3
-#define ANALOGREFERENCE 4
-#define ANALOGWRITE 5
-#define ANALOGREAD 6
