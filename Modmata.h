@@ -13,7 +13,7 @@ class ModmataClass
     bool available();
   
   private:
-    struct registers (*callbackFunctions[20])(uint8_t argc, uint8_t *argv);
+    struct registers (*callbackFunctions[100])(uint8_t argc, uint8_t *argv);
     ModbusSerial mb;
     
 };

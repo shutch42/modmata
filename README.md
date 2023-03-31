@@ -11,8 +11,11 @@ The library is specificially designed for use on an [Arduino Leonardo](https://d
 ### Functionality  
 By default, the library has functions to work with digital and analog I/O, servos, I2C, and SPI. These functions are listed in [Functions.h](https://github.com/shutch42/modmata/blob/main/Functions.h).  
   
-If you wish to add a function that is not supported by default, you can do so using the attach() function. *FIXME: Add an example*  
+If you wish to add a function that is not supported by default, you can do so using the attach() function. Take a look at the [ModmataLCD](https://github.com/shutch42/modmata/blob/main/examples/ModmataLCD/ModmataLCD.ino) program to see how to do this. Keep in mind that in order to use functions that are not supported by default in Modmata, you will need to write client-side functions as well. Take a look at the corresponding [ModmataC LCD example program](https://github.com/shutch42/ModmataC/tree/sam/Examples/lcd) for an example of this.
 
 ### Usage  
 To use the library, clone this repo to your Arduino IDE libraries folder. Once it is saved there, open up the Example program, [StandardModmata.ino](https://github.com/shutch42/modmata/blob/main/examples/StandardModmata/StandardModmata.ino). 
 This simple sketch is all that is needed to use Modmata on your Arduino Leonardo. Upload the sketch, and from there, you can program your arduino to do whatever you wish from our [ModmataC library](https://github.com/shutch42/ModmataC).
+
+### Documentation
+Take a look at our Doxygen pages [here](https://shutch42.github.io/modmata/html/index.html).
