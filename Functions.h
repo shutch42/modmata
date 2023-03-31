@@ -37,7 +37,7 @@ struct registers {
 };
 
 struct spi_settings {
-	int speed;
+	uint32_t speed;
 	bool order;
 	uint8_t mode;
 };

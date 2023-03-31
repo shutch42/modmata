@@ -7,13 +7,13 @@ namespace modmata {
 class ModmataClass
 {
   public:
-    void begin();
+    void begin(int baud);
     void attach(uint8_t command, struct registers (*fn)(uint8_t argc, uint8_t *argv));
     void processInput();
     bool available();
   
   private:
-    struct registers (*callbackFunctions[20])(uint8_t argc, uint8_t *argv);
+    struct registers (*callbackFunctions[100])(uint8_t argc, uint8_t *argv);
     ModbusSerial mb;
     
 };
