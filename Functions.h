@@ -62,7 +62,10 @@ struct spi_settings {
 
 // General Arduino functions
 
-// Distinguish Modmata functions from builtin Arduino functions
+/**
+ * @brief Distinguish Modmata functions from standard Arduino functions with a namespace
+ * 
+ */
 namespace functions {
 
 	// Pin I/O functions

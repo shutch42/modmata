@@ -1,0 +1,149 @@
+\hypertarget{Functions_8cpp}{}\doxysection{Functions.\+cpp File Reference}
+\label{Functions_8cpp}\index{Functions.cpp@{Functions.cpp}}
+
+
+Define common Arduino functions for use with \mbox{\hyperlink{classModbus}{Modbus}}.  
+
+
+{\ttfamily \#include \char`\"{}Functions.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Servo.\+h$>$}\newline
+Include dependency graph for Functions.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Functions_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{Functions_8cpp_ad9870a433cbb1c4b20694b4c3f29f69b}{servo\+\_\+count}} = 0
+\item 
+Servo \mbox{\hyperlink{Functions_8cpp_aff09337585aa6e2bea50fcaddc065c50}{servos}} \mbox{[}14\mbox{]}
+\item 
+\mbox{\hyperlink{structspi__settings}{spi\+\_\+settings}} \mbox{\hyperlink{Functions_8cpp_ad76790ed28438babea2fdce0abba7cac}{settings}}
+\item 
+void(\&) \mbox{\hyperlink{Functions_8cpp_a01bc47db85dc29dad3a3af66d21716b6}{apin\+Mode}} (uint8\+\_\+t, uint8\+\_\+t) = pin\+Mode
+\item 
+void(\&) \mbox{\hyperlink{Functions_8cpp_a70e6d3fd292a815ef602d54bed359c6e}{adigital\+Write}} (uint8\+\_\+t, uint8\+\_\+t) = digital\+Write
+\item 
+int(\&) \mbox{\hyperlink{Functions_8cpp_a424ba3154567e16b33ddf5fb99a01ed6}{adigital\+Read}} (uint8\+\_\+t) = digital\+Read
+\item 
+void(\&) \mbox{\hyperlink{Functions_8cpp_ace806b12537e82c3b37120713f1b7a23}{aanalog\+Write}} (uint8\+\_\+t, int) = analog\+Write
+\item 
+int(\&) \mbox{\hyperlink{Functions_8cpp_a63c7b928c3916fea2e5ff0a36b421355}{aanalog\+Read}} (uint8\+\_\+t) = analog\+Read
+\item 
+void(\&) \mbox{\hyperlink{Functions_8cpp_adeae1d8cf067d1134e006880c435287f}{aanalog\+Reference}} (uint8\+\_\+t) = analog\+Reference
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define common Arduino functions for use with \mbox{\hyperlink{classModbus}{Modbus}}. 
+
+\begin{DoxyAuthor}{Author}
+Sam Hutcherson, Chase Wallendorf, Iris Astrid 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+04/02/23 
+\end{DoxyDate}
+
+
+Definition in file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{Functions_8cpp_a63c7b928c3916fea2e5ff0a36b421355}\label{Functions_8cpp_a63c7b928c3916fea2e5ff0a36b421355}} 
+\index{Functions.cpp@{Functions.cpp}!aanalogRead@{aanalogRead}}
+\index{aanalogRead@{aanalogRead}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{aanalogRead}{aanalogRead}}
+{\footnotesize\ttfamily int(\&) aanalog\+Read(uint8\+\_\+t) (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ }\end{DoxyParamCaption}) = analog\+Read}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+\mbox{\Hypertarget{Functions_8cpp_adeae1d8cf067d1134e006880c435287f}\label{Functions_8cpp_adeae1d8cf067d1134e006880c435287f}} 
+\index{Functions.cpp@{Functions.cpp}!aanalogReference@{aanalogReference}}
+\index{aanalogReference@{aanalogReference}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{aanalogReference}{aanalogReference}}
+{\footnotesize\ttfamily void(\&) aanalog\+Reference(uint8\+\_\+t) (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ }\end{DoxyParamCaption}) = analog\+Reference}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+\mbox{\Hypertarget{Functions_8cpp_ace806b12537e82c3b37120713f1b7a23}\label{Functions_8cpp_ace806b12537e82c3b37120713f1b7a23}} 
+\index{Functions.cpp@{Functions.cpp}!aanalogWrite@{aanalogWrite}}
+\index{aanalogWrite@{aanalogWrite}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{aanalogWrite}{aanalogWrite}}
+{\footnotesize\ttfamily void(\&) aanalog\+Write(uint8\+\_\+t, int) (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{,  }\item[{int}]{ }\end{DoxyParamCaption}) = analog\+Write}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a424ba3154567e16b33ddf5fb99a01ed6}\label{Functions_8cpp_a424ba3154567e16b33ddf5fb99a01ed6}} 
+\index{Functions.cpp@{Functions.cpp}!adigitalRead@{adigitalRead}}
+\index{adigitalRead@{adigitalRead}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{adigitalRead}{adigitalRead}}
+{\footnotesize\ttfamily int(\&) adigital\+Read(uint8\+\_\+t) (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ }\end{DoxyParamCaption}) = digital\+Read}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a70e6d3fd292a815ef602d54bed359c6e}\label{Functions_8cpp_a70e6d3fd292a815ef602d54bed359c6e}} 
+\index{Functions.cpp@{Functions.cpp}!adigitalWrite@{adigitalWrite}}
+\index{adigitalWrite@{adigitalWrite}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{adigitalWrite}{adigitalWrite}}
+{\footnotesize\ttfamily void(\&) adigital\+Write(uint8\+\_\+t, uint8\+\_\+t) (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{,  }\item[{uint8\+\_\+t}]{ }\end{DoxyParamCaption}) = digital\+Write}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a01bc47db85dc29dad3a3af66d21716b6}\label{Functions_8cpp_a01bc47db85dc29dad3a3af66d21716b6}} 
+\index{Functions.cpp@{Functions.cpp}!apinMode@{apinMode}}
+\index{apinMode@{apinMode}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{apinMode}{apinMode}}
+{\footnotesize\ttfamily void(\&) apin\+Mode(uint8\+\_\+t, uint8\+\_\+t) (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{,  }\item[{uint8\+\_\+t}]{ }\end{DoxyParamCaption}) = pin\+Mode}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+\mbox{\Hypertarget{Functions_8cpp_ad9870a433cbb1c4b20694b4c3f29f69b}\label{Functions_8cpp_ad9870a433cbb1c4b20694b4c3f29f69b}} 
+\index{Functions.cpp@{Functions.cpp}!servo\_count@{servo\_count}}
+\index{servo\_count@{servo\_count}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{servo\_count}{servo\_count}}
+{\footnotesize\ttfamily int servo\+\_\+count = 0}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+\mbox{\Hypertarget{Functions_8cpp_aff09337585aa6e2bea50fcaddc065c50}\label{Functions_8cpp_aff09337585aa6e2bea50fcaddc065c50}} 
+\index{Functions.cpp@{Functions.cpp}!servos@{servos}}
+\index{servos@{servos}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{servos}{servos}}
+{\footnotesize\ttfamily Servo servos\mbox{[}14\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+\mbox{\Hypertarget{Functions_8cpp_ad76790ed28438babea2fdce0abba7cac}\label{Functions_8cpp_ad76790ed28438babea2fdce0abba7cac}} 
+\index{Functions.cpp@{Functions.cpp}!settings@{settings}}
+\index{settings@{settings}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{settings}{settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structspi__settings}{spi\+\_\+settings}} settings}
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+

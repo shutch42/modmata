@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['processinput_0',['processInput',['../classmodmata_1_1ModmataClass.html#a9a0a6b61b07be95ece2bc1f83cd7607d',1,'modmata::ModmataClass']]]
+  ['digitalread_0',['digitalRead',['../namespacefunctions.html#aa5dc4800828e3cd1ec7aec29ec9cc5ee',1,'functions']]],
+  ['digitalwrite_1',['digitalWrite',['../namespacefunctions.html#a00d016507e245e01812bb5de46dd2cdd',1,'functions']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['setvalue_24',['setValue',['../classmodmata_1_1ModmataClass.html#a866b9382dc97d45a40ec974ded03d676',1,'modmata::ModmataClass']]]
+  ['pinmode_0',['pinMode',['../namespacefunctions.html#a1a25eeddfdaad77dcd8e8e4fcfa7be51',1,'functions']]],
+  ['processinput_1',['processInput',['../classmodmata_1_1ModmataClass.html#a9a0a6b61b07be95ece2bc1f83cd7607d',1,'modmata::ModmataClass']]]
 ];

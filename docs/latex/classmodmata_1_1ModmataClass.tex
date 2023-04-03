@@ -16,8 +16,7 @@ void \mbox{\hyperlink{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c96090830972
 \begin{DoxyCompactList}\small\item\em Begin listening for a Modmata connection over serial. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{attach}} (uint8\+\_\+t command, struct \mbox{\hyperlink{structregisters}{registers}}($\ast$fn)(uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv))
 \item 
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}\label{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}} 
-void {\bfseries process\+Input} ()
+void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{process\+Input}} ()
 \begin{DoxyCompactList}\small\item\em Read the command and args sent and execute the corresponding callback function, store the results of which in holding functions to be communicated with the host. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{available}} ()
 \end{DoxyCompactItemize}
@@ -25,6 +24,10 @@ bool \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a
 
 \doxysubsection{Detailed Description}
 Base class for a host computer to control this (Latte\+Panda\textquotesingle{}s Arduino Leonardo) device. 
+
+Definition at line \mbox{\hyperlink{Modmata_8h_source_l00011}{11}} of file \mbox{\hyperlink{Modmata_8h_source}{Modmata.\+h}}.
+
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}\label{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}} 
@@ -40,6 +43,10 @@ Assign a function to a command number. Standard commands have default functions,
 {\em fn} & A pointer to the function to be called when the command is recieved \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Modmata_8cpp_source_l00074}{74}} of file \mbox{\hyperlink{Modmata_8cpp_source}{Modmata.\+cpp}}.
+
 \mbox{\Hypertarget{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}\label{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!available@{available}}
 \index{available@{available}!modmata::ModmataClass@{modmata::ModmataClass}}
@@ -52,6 +59,10 @@ Will return false unless there is a Command function code besides IDLE in Hreg 0
 \begin{DoxyReturn}{Returns}
 True or false 
 \end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Modmata_8cpp_source_l00122}{122}} of file \mbox{\hyperlink{Modmata_8cpp_source}{Modmata.\+cpp}}.
+
 \mbox{\Hypertarget{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}\label{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!begin@{begin}}
 \index{begin@{begin}!modmata::ModmataClass@{modmata::ModmataClass}}
@@ -70,6 +81,28 @@ Begin listening for a Modmata connection over serial.
 \begin{DoxyRemark}{Remarks}
 This is configured to be used between a host computer and Arduino Leonardo using a USB connector (hardwired in the case of the Latte\+Panda Delta 3) The Leonardo is different from most other Arduinos in the usage of the serial connection, so if you modify this code, please keep that in mind. 
 \end{DoxyRemark}
+
+
+Definition at line \mbox{\hyperlink{Modmata_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{Modmata_8cpp_source}{Modmata.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00116}{functions\+::analog\+Read()}}, \mbox{\hyperlink{Functions_8cpp_source_l00098}{functions\+::analog\+Write()}}, \mbox{\hyperlink{Functions_8cpp_source_l00074}{functions\+::digital\+Read()}}, \mbox{\hyperlink{Functions_8cpp_source_l00056}{functions\+::digital\+Write()}}, \mbox{\hyperlink{Functions_8cpp_source_l00038}{functions\+::pin\+Mode()}}, \mbox{\hyperlink{Functions_8cpp_source_l00141}{functions\+::servo\+Attach()}}, \mbox{\hyperlink{Functions_8cpp_source_l00169}{functions\+::servo\+Detach()}}, \mbox{\hyperlink{Functions_8cpp_source_l00228}{functions\+::servo\+Read()}}, \mbox{\hyperlink{Functions_8cpp_source_l00198}{functions\+::servo\+Write()}}, \mbox{\hyperlink{Functions_8cpp_source_l00371}{functions\+::spi\+Begin()}}, \mbox{\hyperlink{Functions_8cpp_source_l00450}{functions\+::spi\+End()}}, \mbox{\hyperlink{Functions_8cpp_source_l00393}{functions\+::spi\+Settings()}}, \mbox{\hyperlink{Functions_8cpp_source_l00414}{functions\+::spi\+Transfer\+Buf()}}, \mbox{\hyperlink{Functions_8cpp_source_l00256}{functions\+::wire\+Begin()}}, \mbox{\hyperlink{Functions_8cpp_source_l00271}{functions\+::wire\+End()}}, \mbox{\hyperlink{Functions_8cpp_source_l00332}{functions\+::wire\+Read()}}, \mbox{\hyperlink{Functions_8cpp_source_l00286}{functions\+::wire\+Set\+Clock()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00304}{functions\+::wire\+Write()}}.
+
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}\label{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}} 
+\index{modmata::ModmataClass@{modmata::ModmataClass}!processInput@{processInput}}
+\index{processInput@{processInput}!modmata::ModmataClass@{modmata::ModmataClass}}
+\doxysubsubsection{\texorpdfstring{processInput()}{processInput()}}
+{\footnotesize\ttfamily void Modmata\+Class\+::process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read the command and args sent and execute the corresponding callback function, store the results of which in holding functions to be communicated with the host. 
+
+
+
+Definition at line \mbox{\hyperlink{Modmata_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{Modmata_8cpp_source}{Modmata.\+cpp}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

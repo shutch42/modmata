@@ -86,15 +86,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acb1b2dc4d7c67d60c9609083097274f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b393d664df8ca30b75e08cbbb58e88"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#a08b393d664df8ca30b75e08cbbb58e88">attach</a> (uint8_t command, struct <a class="el" href="structregisters.html">registers</a>(*fn)(uint8_t argc, uint8_t *argv))</td></tr>
 <tr class="separator:a08b393d664df8ca30b75e08cbbb58e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a0a6b61b07be95ece2bc1f83cd7607d"><td class="memItemLeft" align="right" valign="top"><a id="a9a0a6b61b07be95ece2bc1f83cd7607d" name="a9a0a6b61b07be95ece2bc1f83cd7607d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>processInput</b> ()</td></tr>
-<tr class="memdesc:a9a0a6b61b07be95ece2bc1f83cd7607d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the command and args sent and execute the corresponding callback function, store the results of which in holding functions to be communicated with the host. <br /></td></tr>
+<tr class="memitem:a9a0a6b61b07be95ece2bc1f83cd7607d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#a9a0a6b61b07be95ece2bc1f83cd7607d">processInput</a> ()</td></tr>
+<tr class="memdesc:a9a0a6b61b07be95ece2bc1f83cd7607d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read the command and args sent and execute the corresponding callback function, store the results of which in holding functions to be communicated with the host.  <a href="classmodmata_1_1ModmataClass.html#a9a0a6b61b07be95ece2bc1f83cd7607d">More...</a><br /></td></tr>
 <tr class="separator:a9a0a6b61b07be95ece2bc1f83cd7607d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab61913c30c725f6eec033db2e53a577c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmodmata_1_1ModmataClass.html#ab61913c30c725f6eec033db2e53a577c">available</a> ()</td></tr>
 <tr class="separator:ab61913c30c725f6eec033db2e53a577c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Base class for a host computer to control this (LattePanda's Arduino Leonardo) device. </p>
+
+<p class="definition">Definition at line <a class="el" href="Modmata_8h_source.html#l00011">11</a> of file <a class="el" href="Modmata_8h_source.html">Modmata.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a08b393d664df8ca30b75e08cbbb58e88" name="a08b393d664df8ca30b75e08cbbb58e88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a08b393d664df8ca30b75e08cbbb58e88">&#9670;&nbsp;</a></span>attach()</h2>
@@ -129,6 +130,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>processInput</b> ()</
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="Modmata_8cpp_source.html#l00074">74</a> of file <a class="el" href="Modmata_8cpp_source.html">Modmata.cpp</a>.</p>
+
 </div>
 </div>
 <a id="ab61913c30c725f6eec033db2e53a577c" name="ab61913c30c725f6eec033db2e53a577c"></a>
@@ -147,6 +150,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>processInput</b> ()</
 </div><div class="memdoc">
 <p >Update modbus registers and check if a command has been received </p><dl class="section remark"><dt>Remarks</dt><dd>Will return false unless there is a Command function code besides IDLE in Hreg 0 <em>and</em> there was data received since the last time mb.task() was called </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>True or false </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Modmata_8cpp_source.html#l00122">122</a> of file <a class="el" href="Modmata_8cpp_source.html">Modmata.cpp</a>.</p>
 
 </div>
 </div>
@@ -175,11 +180,36 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>processInput</b> ()</
 </dl>
 <dl class="section remark"><dt>Remarks</dt><dd>This is configured to be used between a host computer and Arduino Leonardo using a USB connector (hardwired in the case of the LattePanda Delta 3) The Leonardo is different from most other Arduinos in the usage of the serial connection, so if you modify this code, please keep that in mind. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="Modmata_8cpp_source.html#l00034">34</a> of file <a class="el" href="Modmata_8cpp_source.html">Modmata.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Functions_8cpp_source.html#l00116">functions::analogRead()</a>, <a class="el" href="Functions_8cpp_source.html#l00098">functions::analogWrite()</a>, <a class="el" href="Functions_8cpp_source.html#l00074">functions::digitalRead()</a>, <a class="el" href="Functions_8cpp_source.html#l00056">functions::digitalWrite()</a>, <a class="el" href="Functions_8cpp_source.html#l00038">functions::pinMode()</a>, <a class="el" href="Functions_8cpp_source.html#l00141">functions::servoAttach()</a>, <a class="el" href="Functions_8cpp_source.html#l00169">functions::servoDetach()</a>, <a class="el" href="Functions_8cpp_source.html#l00228">functions::servoRead()</a>, <a class="el" href="Functions_8cpp_source.html#l00198">functions::servoWrite()</a>, <a class="el" href="Functions_8cpp_source.html#l00371">functions::spiBegin()</a>, <a class="el" href="Functions_8cpp_source.html#l00450">functions::spiEnd()</a>, <a class="el" href="Functions_8cpp_source.html#l00393">functions::spiSettings()</a>, <a class="el" href="Functions_8cpp_source.html#l00414">functions::spiTransferBuf()</a>, <a class="el" href="Functions_8cpp_source.html#l00256">functions::wireBegin()</a>, <a class="el" href="Functions_8cpp_source.html#l00271">functions::wireEnd()</a>, <a class="el" href="Functions_8cpp_source.html#l00332">functions::wireRead()</a>, <a class="el" href="Functions_8cpp_source.html#l00286">functions::wireSetClock()</a>, and <a class="el" href="Functions_8cpp_source.html#l00304">functions::wireWrite()</a>.</p>
+
+</div>
+</div>
+<a id="a9a0a6b61b07be95ece2bc1f83cd7607d" name="a9a0a6b61b07be95ece2bc1f83cd7607d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a0a6b61b07be95ece2bc1f83cd7607d">&#9670;&nbsp;</a></span>processInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ModmataClass::processInput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read the command and args sent and execute the corresponding callback function, store the results of which in holding functions to be communicated with the host. </p>
+
+<p class="definition">Definition at line <a class="el" href="Modmata_8cpp_source.html#l00083">83</a> of file <a class="el" href="Modmata_8cpp_source.html">Modmata.cpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="Modmata_8h_source.html">Modmata.h</a></li>
-<li><a class="el" href="Modmata_8cpp.html">Modmata.cpp</a></li>
+<li><a class="el" href="Modmata_8cpp_source.html">Modmata.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

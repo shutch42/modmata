@@ -1,3 +1,11 @@
+/**
+ * @file Functions.cpp
+ * @author Sam Hutcherson, Chase Wallendorf, Iris Astrid
+ * @brief Define common Arduino functions for use with Modbus
+ * @version 0.1
+ * @date 04/02/23
+ */
+
 #include "Functions.h"
 #include <Arduino.h>
 #include <Servo.h>
@@ -87,7 +95,7 @@ registers functions::digitalRead(uint8_t argc, uint8_t *argv) {
  * @param argv The arguments to use within the function (pin #, 16-bit value split into 2 8-bit values)
  * @return result: a 'registers' struct holding the return values of the called function (empty, in this case)
  */
-registers functions::functions::analogWrite(uint8_t argc, uint8_t *argv) {
+registers functions::analogWrite(uint8_t argc, uint8_t *argv) {
 	if (argc == 3) {
 		aanalogWrite(argv[0], argv[1] << 8 | argv[2]);
 	}
@@ -105,7 +113,7 @@ registers functions::functions::analogWrite(uint8_t argc, uint8_t *argv) {
  * @param argv The arguments to use within the function (pin #)
  * @return result: a 'registers' struct holding the return values of the called function (16-bit pin value split into 2 8-bit values)
  */
-registers functions::functions::analogRead(uint8_t argc, uint8_t *argv) {
+registers functions::analogRead(uint8_t argc, uint8_t *argv) {
 	registers result;
 
 	if (argc == 1) {

@@ -1,0 +1,161 @@
+\hypertarget{ModbusSerial_8cpp_source}{}\doxysection{Modbus\+Serial.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00002}00002 \textcolor{comment}{    ModbusSerial.cpp -\/ Source for Modbus Serial Library}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00003}00003 \textcolor{comment}{    Copyright (C) 2014 André Sarmento Barbosa}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00004}00004 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}ModbusSerial.h"{}}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00007}00007 ModbusSerial::ModbusSerial() \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00009}00009 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00011}00011 \textcolor{keywordtype}{bool} ModbusSerial::setSlaveId(\textcolor{keywordtype}{byte} slaveId)\{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00012}00012     \_slaveId = slaveId;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00013}00013     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00014}00014 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00016}00016 \textcolor{keywordtype}{byte} ModbusSerial::getSlaveId() \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00017}00017     \textcolor{keywordflow}{return} \_slaveId;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00018}00018 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00020}00020 \textcolor{keywordtype}{bool} ModbusSerial::config(Serial\_* port, \textcolor{keywordtype}{long} baud, u\_int format, \textcolor{keywordtype}{int} txPin) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00021}00021     this-\/>\_port = port;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00022}00022     this-\/>\_txPin = txPin;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00023}00023     (*port).begin(baud, format);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00024}00024     \textcolor{keywordflow}{while} (!(*port));}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00026}00026     \textcolor{keywordflow}{if} (txPin >= 0) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00027}00027         \mbox{\hyperlink{namespacefunctions_a1a25eeddfdaad77dcd8e8e4fcfa7be51}{pinMode}}(txPin, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00028}00028         \mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{digitalWrite}}(txPin, LOW);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00029}00029     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00031}00031     \textcolor{keywordflow}{if} (baud > 19200) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00032}00032         \_t15 = 750;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00033}00033         \_t35 = 1750;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00034}00034     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00035}00035         \_t15 = 15000000/baud; \textcolor{comment}{// 1T * 1.5 = T1.5}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00036}00036         \_t35 = 35000000/baud; \textcolor{comment}{// 1T * 3.5 = T3.5}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00037}00037     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00039}00039     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00042}00042 \textcolor{keywordtype}{bool} ModbusSerial::receive(\textcolor{keywordtype}{byte}* frame) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00043}00043     \textcolor{comment}{//first byte of frame = address}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00044}00044     \textcolor{keywordtype}{byte} address = frame[0];}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00045}00045     \textcolor{comment}{//Last two bytes = crc}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00046}00046     u\_int crc = ((frame[\_len -\/ 2] << 8) | frame[\_len -\/ 1]);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00048}00048     \textcolor{comment}{//Slave Check}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00049}00049     \textcolor{keywordflow}{if} (address != 0xFF \&\& address != this-\/>getSlaveId()) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00050}00050         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00051}00051     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00053}00053     \textcolor{comment}{//CRC Check}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00054}00054     \textcolor{keywordflow}{if} (crc != this-\/>calcCrc(\_frame[0], \_frame+1, \_len-\/3)) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00055}00055         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00056}00056     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00058}00058     \textcolor{comment}{//PDU starts after first byte}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00059}00059     \textcolor{comment}{//framesize PDU = framesize -\/ address(1) -\/ crc(2)}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00060}00060     this-\/>receivePDU(frame+1);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00061}00061     \textcolor{comment}{//No reply to Broadcasts}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00062}00062     \textcolor{keywordflow}{if} (address == 0xFF) \_reply = MB\_REPLY\_OFF;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00063}00063     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00064}00064 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00066}00066 \textcolor{keywordtype}{bool} ModbusSerial::send(\textcolor{keywordtype}{byte}* frame) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00067}00067     \textcolor{keywordtype}{byte} i;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00069}00069     \textcolor{keywordflow}{if} (this-\/>\_txPin >= 0) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00070}00070         \mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{digitalWrite}}(this-\/>\_txPin, HIGH);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00071}00071         delay(1);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00072}00072     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00074}00074     \textcolor{keywordflow}{for} (i = 0 ; i < \_len ; i++) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00075}00075         (*\_port).write(frame[i]);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00076}00076     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00078}00078     (*\_port).flush();}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00079}00079     delayMicroseconds(\_t35);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00081}00081     \textcolor{keywordflow}{if} (this-\/>\_txPin >= 0) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00082}00082         \mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{digitalWrite}}(this-\/>\_txPin, LOW);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00083}00083     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00084}00084 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00086}00086 \textcolor{keywordtype}{bool} ModbusSerial::sendPDU(\textcolor{keywordtype}{byte}* pduframe) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00087}00087     \textcolor{keywordflow}{if} (this-\/>\_txPin >= 0) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00088}00088         \mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{digitalWrite}}(this-\/>\_txPin, HIGH);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00089}00089         delay(1);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00090}00090     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00092}00092     \textcolor{comment}{//Send slaveId}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00093}00093     (*\_port).write(\_slaveId);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00095}00095     \textcolor{comment}{//Send PDU}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00096}00096     \textcolor{keywordtype}{byte} i;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00097}00097     \textcolor{keywordflow}{for} (i = 0 ; i < \_len ; i++) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00098}00098         (*\_port).write(pduframe[i]);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00099}00099     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00101}00101     \textcolor{comment}{//Send CRC}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00102}00102     word crc = calcCrc(\_slaveId, \_frame, \_len);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00103}00103     (*\_port).write(crc >> 8);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00104}00104     (*\_port).write(crc \& 0xFF);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00106}00106     (*\_port).flush();}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00107}00107     delayMicroseconds(\_t35);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00109}00109     \textcolor{keywordflow}{if} (this-\/>\_txPin >= 0) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00110}00110         \mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{digitalWrite}}(this-\/>\_txPin, LOW);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00111}00111     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00112}00112 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00114}00114 word ModbusSerial::task() \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00115}00115     \_len = 0;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00117}00117     \textcolor{keywordflow}{while} ((*\_port).available() > \_len) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00118}00118         \_len = (*\_port).available();}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00119}00119         delayMicroseconds(\_t15);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00120}00120     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00122}00122     \textcolor{keywordflow}{if} (\_len == 0) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00123}00123 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00124}00124     \textcolor{keywordtype}{byte} i;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00125}00125     \_frame = (\textcolor{keywordtype}{byte}*) malloc(\_len);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00126}00126     \textcolor{keywordflow}{for} (i=0 ; i < \_len ; i++) \_frame[i] = (*\_port).read();}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00127}00127     }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00128}00128     \textcolor{keywordflow}{if} (this-\/>receive(\_frame)) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00129}00129         \textcolor{keywordflow}{if} (\_reply == MB\_REPLY\_NORMAL)}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00130}00130             this-\/>sendPDU(\_frame);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00131}00131         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00132}00132         \textcolor{keywordflow}{if} (\_reply == MB\_REPLY\_ECHO)}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00133}00133             this-\/>send(\_frame);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00134}00134     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00135}00135     }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00136}00136     free(\_frame);}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00137}00137     \_len = 0;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00138}00138     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00139}00139 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00141}00141 word ModbusSerial::calcCrc(\textcolor{keywordtype}{byte} address, \textcolor{keywordtype}{byte}* pduFrame, \textcolor{keywordtype}{byte} pduLen) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00142}00142     \textcolor{keywordtype}{byte} CRCHi = 0xFF, CRCLo = 0x0FF, Index;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00144}00144     Index = CRCHi \string^ address;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00145}00145     CRCHi = CRCLo \string^ \_auchCRCHi[Index];}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00146}00146     CRCLo = \_auchCRCLo[Index];}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00148}00148     \textcolor{keywordflow}{while} (pduLen-\/-\/) \{}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00149}00149         Index = CRCHi \string^ *pduFrame++;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00150}00150         CRCHi = CRCLo \string^ \_auchCRCHi[Index];}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00151}00151         CRCLo = \_auchCRCLo[Index];}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00152}00152     \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00153}00153 }
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00154}00154     \textcolor{keywordflow}{return} (CRCHi << 8) | CRCLo;}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00155}00155 \}}
+\DoxyCodeLine{\Hypertarget{ModbusSerial_8cpp_source_l00156}00156 }
+
+\end{DoxyCode}

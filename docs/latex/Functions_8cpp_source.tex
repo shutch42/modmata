@@ -1,0 +1,464 @@
+\hypertarget{Functions_8cpp_source}{}\doxysection{Functions.\+cpp}
+\mbox{\hyperlink{Functions_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00001}00001 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00002}00002 \textcolor{comment}{ * @file Functions.cpp}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00003}00003 \textcolor{comment}{ * @author Sam Hutcherson, Chase Wallendorf, Iris Astrid}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00004}00004 \textcolor{comment}{ * @brief Define common Arduino functions for use with Modbus}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00005}00005 \textcolor{comment}{ * @version 0.1}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00006}00006 \textcolor{comment}{ * @date 04/02/23}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00007}00007 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}Functions.h"{}}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <Servo.h>}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00014}00014 \textcolor{keywordtype}{int} servo\_count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00015}00015 Servo servos[14];   \textcolor{comment}{// FIXME: Change to pointers so that pins 9/10 can be used as analog when Servos aren't used}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00017}00017 \mbox{\hyperlink{structspi__settings}{spi\_settings}} settings;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00019}00019 \textcolor{comment}{// Prefix Arduino Library functions so as to specify \_exactly\_}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00020}00020 \textcolor{comment}{// which function is being called in the namespace, as if the Modmata}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00021}00021 \textcolor{comment}{// definition being in a namespace wasn't enough already... *eyerolls*}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00023}00023 void (\&apinMode)(uint8\_t, uint8\_t) =        pinMode; }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00024}00024 void (\&adigitalWrite)(uint8\_t, uint8\_t) =   digitalWrite;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00025}00025 int  (\&adigitalRead)(uint8\_t) =             digitalRead;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00026}00026 void (\&aanalogWrite)(uint8\_t, int) =        analogWrite;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00027}00027 int  (\&aanalogRead)(uint8\_t) =              analogRead;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00028}00028 void (\&aanalogReference)(uint8\_t) =         analogReference;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00030}00030 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00031}00031 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00032}00032 \textcolor{comment}{ * @brief Change the settings of the Arduino I/O pins}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00033}00033 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00034}00034 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (2)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00035}00035 \textcolor{comment}{ * @param argv The arguments to use within the function (pin \#, mode)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00036}00036 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function (empty, in this case)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00037}00037 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00038}\mbox{\hyperlink{namespacefunctions_a1a25eeddfdaad77dcd8e8e4fcfa7be51}{00038}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_a1a25eeddfdaad77dcd8e8e4fcfa7be51}{functions::pinMode}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00039}00039     \textcolor{keywordflow}{if} (argc == 2) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00040}00040         apinMode(argv[0], argv[1]);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00041}00041     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00043}00043     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00044}00044     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00045}00045     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00048}00048 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00049}00049 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00050}00050 \textcolor{comment}{ * @brief Write a digital (HIGH/LOW) value to the Arduino I/O pins}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00051}00051 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00052}00052 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (2)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00053}00053 \textcolor{comment}{ * @param argv The arguments to use within the function (pin \#, value)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00054}00054 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function (empty, in this case)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00055}00055 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00056}\mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{00056}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{functions::digitalWrite}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00057}00057     \textcolor{keywordflow}{if} (argc == 2) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00058}00058         adigitalWrite(argv[0], argv[1]);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00059}00059     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00061}00061     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00062}00062     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00063}00063     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00064}00064 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00066}00066 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00067}00067 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00068}00068 \textcolor{comment}{ * @brief Read a digital value (HIGH/LOW) from the Arduino I/O pins}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00069}00069 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00070}00070 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (1)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00071}00071 \textcolor{comment}{ * @param argv The arguments to use within the function (pin \#)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00072}00072 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function (value of pin)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00073}00073 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00074}\mbox{\hyperlink{namespacefunctions_aa5dc4800828e3cd1ec7aec29ec9cc5ee}{00074}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_aa5dc4800828e3cd1ec7aec29ec9cc5ee}{functions::digitalRead}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00075}00075     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00077}00077     \textcolor{keywordflow}{if} (argc == 1) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00078}00078         uint8\_t read\_val = adigitalRead(argv[0]);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00079}00079         result.count = 1;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00080}00080         result.value = malloc(\textcolor{keyword}{sizeof}(uint8\_t));}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00081}00081         result.value[0] = read\_val;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00082}00082     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00083}00083     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00084}00084         result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00087}00087     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00088}00088 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00090}00090 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00091}00091 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00092}00092 \textcolor{comment}{ * @brief Write an analog value (0-\/255) to the Arduino I/O pins}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00093}00093 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00094}00094 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (3)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00095}00095 \textcolor{comment}{ * @param argv The arguments to use within the function (pin \#, 16-\/bit value split into 2 8-\/bit values)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00096}00096 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function (empty, in this case)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00097}00097 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00098}\mbox{\hyperlink{namespacefunctions_adb50ef06ef1a067bd0c8ef1e8f40ec66}{00098}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_adb50ef06ef1a067bd0c8ef1e8f40ec66}{functions::analogWrite}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00099}00099     \textcolor{keywordflow}{if} (argc == 3) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00100}00100         aanalogWrite(argv[0], argv[1] << 8 | argv[2]);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00101}00101     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00103}00103     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00104}00104     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00105}00105     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00106}00106 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00108}00108 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00109}00109 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00110}00110 \textcolor{comment}{ * @brief Read an analog value (0-\/255) from the Arduino I/O pins}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00111}00111 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00112}00112 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (1)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00113}00113 \textcolor{comment}{ * @param argv The arguments to use within the function (pin \#)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00114}00114 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function (16-\/bit pin value split into 2 8-\/bit values)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00115}00115 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00116}\mbox{\hyperlink{namespacefunctions_a5267c7753830a1751eb476d6f4dce312}{00116}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_a5267c7753830a1751eb476d6f4dce312}{functions::analogRead}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00117}00117     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00119}00119     \textcolor{keywordflow}{if} (argc == 1) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00120}00120         uint16\_t read\_val = aanalogRead(argv[0]);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00121}00121         result.count = 2;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00122}00122         result.value = malloc(\textcolor{keyword}{sizeof}(uint8\_t) * 2);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00123}00123         result.value[0] = read\_val >> 8;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00124}00124         result.value[1] = read\_val \& 0x00ff;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00125}00125     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00126}00126     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00127}00127         result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00128}00128     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00130}00130     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00131}00131 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00133}00133 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00134}00134 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00135}00135 \textcolor{comment}{ * @brief Attach a connected servo to a control interface}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00136}00136 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00137}00137 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (1)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00138}00138 \textcolor{comment}{ * @param argv The arguments to use within the function (pin \#)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00139}00139 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00140}00140 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00141}\mbox{\hyperlink{namespacefunctions_a860d5d487c01682f30e94bb31e466784}{00141}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_a860d5d487c01682f30e94bb31e466784}{functions::servoAttach}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00142}00142     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00143}00143     \textcolor{keywordflow}{if} (argc == 1) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00144}00144         \textcolor{keywordtype}{int} pin = argv[0];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00145}00145         result.count = 1;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00146}00146         result.value = malloc(\textcolor{keyword}{sizeof}(uint8\_t));}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00147}00147         \textcolor{keywordflow}{if} (pin >= 0 \&\& pin <= 13 \&\& servo\_count < MAX\_SERVOS) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00148}00148             result.value[0] = servos[pin].attach(pin);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00149}00149         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00150}00150         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00151}00151             result.value[0] = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00152}00152         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00153}00153     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00154}00154     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00155}00155         result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00156}00156     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00158}00158     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00159}00159 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00161}00161 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00162}00162 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00163}00163 \textcolor{comment}{ * @brief Detach a servo from the the control interface}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00164}00164 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00165}00165 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (1)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00166}00166 \textcolor{comment}{ * @param argv The arguments to use within the function (pin \#)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00167}00167 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function (1 on success)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00168}00168 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00169}\mbox{\hyperlink{namespacefunctions_a83a6cdf0e7b76a781cd06696d52a9df6}{00169}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_a83a6cdf0e7b76a781cd06696d52a9df6}{functions::servoDetach}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00170}00170     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00171}00171     \textcolor{keywordflow}{if} (argc == 1) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00172}00172         \textcolor{keywordtype}{int} pin = argv[0];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00173}00173         result.count = 1;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00174}00174         result.value = malloc(\textcolor{keyword}{sizeof}(uint8\_t));}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00175}00175         \textcolor{keywordflow}{if} (pin >= 0 \&\& pin <= 13) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00176}00176             servos[pin].detach();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00177}00177             result.value[0] = 1;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00178}00178         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00179}00179         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00180}00180             result.value[0] = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00181}00181         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00182}00182     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00183}00183     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00184}00184         result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00185}00185     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00187}00187     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00188}00188 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00189}00189 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00190}00190 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00191}00191 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00192}00192 \textcolor{comment}{ * @brief Write a value to the connected servo}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00193}00193 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00194}00194 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (2)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00195}00195 \textcolor{comment}{ * @param argv The arguments to use within the function (pin \#, value)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00196}00196 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function (1 on success)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00197}00197 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00198}\mbox{\hyperlink{namespacefunctions_abb59b387b069e9a17af7319263f20205}{00198}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_abb59b387b069e9a17af7319263f20205}{functions::servoWrite}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00199}00199     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00200}00200     \textcolor{keywordflow}{if}(argc == 2) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00201}00201         \textcolor{keywordtype}{int} pin = argv[0];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00202}00202         \textcolor{keywordtype}{int} angle = argv[1];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00203}00203         result.count = 1;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00204}00204         result.value = malloc(\textcolor{keyword}{sizeof}(uint8\_t));}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00205}00205         \textcolor{keywordflow}{if} (pin >= 0 \&\& pin <= 13) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00206}00206             servos[pin].write(angle);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00207}00207             result.value[0] = 1;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00208}00208         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00209}00209         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00210}00210             result.value[0] = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00211}00211         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00212}00212     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00213}00213     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00214}00214         result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00215}00215     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00216}00216     }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00217}00217     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00218}00218 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00219}00219 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00220}00220 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00221}00221 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00222}00222 \textcolor{comment}{ * @brief Read a value from the connected servo}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00223}00223 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00224}00224 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00225}00225 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00226}00226 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00227}00227 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00228}\mbox{\hyperlink{namespacefunctions_a23f7b900b2cd8958f3195f1b49072a3c}{00228}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_a23f7b900b2cd8958f3195f1b49072a3c}{functions::servoRead}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00229}00229     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00230}00230     \textcolor{keywordflow}{if} (argc == 1) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00231}00231         \textcolor{keywordtype}{int} pin = argv[0];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00232}00232         \textcolor{keywordflow}{if} (pin >= 0 \&\& pin <= 13) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00233}00233             result.count = 1;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00234}00234             result.value = malloc(\textcolor{keyword}{sizeof}(uint8\_t));}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00235}00235             result.value[0] = servos[pin].read();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00236}00236         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00237}00237         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00238}00238             result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00239}00239         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00240}00240     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00241}00241     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00242}00242         result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00243}00243     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00244}00244     }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00245}00245     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00246}00246 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00247}00247 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00248}00248 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00249}00249 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00250}00250 \textcolor{comment}{ * @brief Begin an I2C connection between the Arduino and a peripheral}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00251}00251 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00252}00252 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00253}00253 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00254}00254 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00255}00255 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00256}\mbox{\hyperlink{namespacefunctions_ab8d1b826ec06517a311ec1e1e6ef1400}{00256}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_ab8d1b826ec06517a311ec1e1e6ef1400}{functions::wireBegin}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00257}00257     Wire.begin();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00258}00258     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00259}00259     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00260}00260     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00261}00261 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00262}00262 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00263}00263 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00264}00264 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00265}00265 \textcolor{comment}{ * @brief End an I2C connection between the Arduino and a peripheral}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00266}00266 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00267}00267 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00268}00268 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00269}00269 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00270}00270 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00271}\mbox{\hyperlink{namespacefunctions_ae59ea51e8f7d02c208f6503115acb547}{00271}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_ae59ea51e8f7d02c208f6503115acb547}{functions::wireEnd}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00272}00272     Wire.end();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00273}00273     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00274}00274     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00275}00275     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00276}00276 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00277}00277 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00278}00278 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00279}00279 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00280}00280 \textcolor{comment}{ * @brief Change the clock speed settings of the I2C connection}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00281}00281 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00282}00282 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00283}00283 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00284}00284 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00285}00285 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00286}\mbox{\hyperlink{namespacefunctions_aae0012c13895b2a25eeac49cb9bce07d}{00286}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_aae0012c13895b2a25eeac49cb9bce07d}{functions::wireSetClock}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00287}00287     \textcolor{keywordflow}{if} (argc == 4) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00288}00288         \textcolor{comment}{// 4 8-\/bit values combine to make a 32-\/bit int}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00289}00289         Wire.setClock((uint32\_t)argv[0] << 24 | (uint32\_t)argv[1] << 16 | (uint32\_t)argv[2] << 8 | (uint32\_t)argv[3]);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00290}00290     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00291}00291     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00292}00292     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00293}00293     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00294}00294 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00295}00295 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00296}00296 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00297}00297 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00298}00298 \textcolor{comment}{ * @brief Write data to the connected I2C peripheral}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00299}00299 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00300}00300 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00301}00301 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00302}00302 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00303}00303 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00304}\mbox{\hyperlink{namespacefunctions_ae5a018b2e18b11909cf64588834fa75f}{00304}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_ae5a018b2e18b11909cf64588834fa75f}{functions::wireWrite}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00305}00305     \textcolor{keywordflow}{if} (argc >= 2) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00306}00306         \textcolor{comment}{// Argument format: addr | reg | bytes}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00307}00307         uint8\_t addr = argv[0];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00308}00308         uint8\_t reg = argv[1];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00309}00309 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00310}00310         Wire.beginTransmission(addr);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00311}00311         Wire.write(reg);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00312}00312         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 2; i < argc; i++) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00313}00313             Wire.write(argv[i]);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00314}00314         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00315}00315         Wire.endTransmission();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00316}00316     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00317}00317     }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00318}00318     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00319}00319     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00320}00320     \textcolor{keywordflow}{return} result;  }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00321}00321 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00322}00322 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00323}00323 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00324}00324 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00325}00325 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00326}00326 \textcolor{comment}{ * @brief Read data from the connected I2C peripheral}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00327}00327 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00328}00328 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00329}00329 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00330}00330 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00331}00331 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00332}\mbox{\hyperlink{namespacefunctions_a757f7e1b965632a1ef6bbde1c2dafb52}{00332}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_a757f7e1b965632a1ef6bbde1c2dafb52}{functions::wireRead}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00333}00333     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00334}00334     \textcolor{keywordflow}{if}(argc == 3) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00335}00335         \textcolor{comment}{// Argument format: addr | reg | num\_bytes}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00336}00336         uint8\_t addr = argv[0];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00337}00337         uint8\_t reg = argv[1];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00338}00338         uint8\_t num\_bytes = argv[2];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00339}00339         result.value = malloc(\textcolor{keyword}{sizeof}(uint8\_t) * num\_bytes);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00340}00340         }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00341}00341         Wire.beginTransmission(addr);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00342}00342         Wire.write(reg);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00343}00343         Wire.endTransmission();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00344}00344 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00345}00345         Wire.requestFrom(addr, num\_bytes);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00346}00346         \textcolor{keywordflow}{if}(Wire.available() == num\_bytes) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00347}00347             result.count = num\_bytes;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00348}00348             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < num\_bytes; i++) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00349}00349                 result.value[i] = Wire.read();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00350}00350             \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00351}00351         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00352}00352         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00353}00353             result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00354}00354         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00355}00355     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00356}00356     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00357}00357         result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00358}00358     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00359}00359 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00360}00360     \textcolor{keywordflow}{return} result;  }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00361}00361 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00362}00362 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00363}00363 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00364}00364 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00365}00365 \textcolor{comment}{ * @brief Begin a SPI connection between the Arduino and a peripheral}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00366}00366 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00367}00367 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00368}00368 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00369}00369 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00370}00370 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00371}\mbox{\hyperlink{namespacefunctions_a309caceacb30a6acdbe2c39cce1a26c7}{00371}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_a309caceacb30a6acdbe2c39cce1a26c7}{functions::spiBegin}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00372}00372     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00373}00373     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00374}00374 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00375}00375     \textcolor{keywordflow}{if} (argc == 0) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00376}00376         SPI.begin();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00377}00377         settings.speed = 4000000;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00378}00378         settings.order = MSBFIRST;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00379}00379         settings.mode = SPI\_MODE0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00380}00380     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00381}00381 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00382}00382     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00383}00383 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00384}00384 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00385}00385 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00386}00386 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00387}00387 \textcolor{comment}{ * @brief Change the settings of the SPI connection}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00388}00388 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00389}00389 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00390}00390 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00391}00391 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00392}00392 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00393}\mbox{\hyperlink{namespacefunctions_abf03bd3d2abc91bc2e154a9a5d554b33}{00393}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_abf03bd3d2abc91bc2e154a9a5d554b33}{functions::spiSettings}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00394}00394     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00395}00395     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00396}00396 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00397}00397     \textcolor{keywordflow}{if} (argc == 6) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00398}00398         settings.speed = (uint32\_t)argv[0] << 24 | (uint32\_t)argv[1] << 16 | (uint32\_t)argv[2] << 8 | (uint32\_t)argv[3];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00399}00399         settings.order = argv[4];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00400}00400         settings.mode = argv[5];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00401}00401     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00402}00402 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00403}00403     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00404}00404 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00405}00405 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00406}00406 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00407}00407 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00408}00408 \textcolor{comment}{ * @brief Exchange data over the SPI connection (Read + Write)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00409}00409 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00410}00410 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00411}00411 \textcolor{comment}{ * @param argv The arguments to use within the function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00412}00412 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00413}00413 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00414}\mbox{\hyperlink{namespacefunctions_af2a00e1e1060d933acd1032208977683}{00414}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_af2a00e1e1060d933acd1032208977683}{functions::spiTransferBuf}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00415}00415     \textcolor{comment}{// Register format:}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00416}00416     \textcolor{comment}{// | CMD/ARGC | Bytes                 |}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00417}00417     \textcolor{comment}{// |<-\/1 word-\/>|<-\/31 words / 62 bytes-\/>|}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00418}00418 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00419}00419     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00420}00420     }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00421}00421     \textcolor{keywordflow}{if} (argc > 1) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00422}00422         uint8\_t CS\_pin = argv[0];}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00423}00423 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00424}00424         result.count = argc -\/ 1;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00425}00425         result.value = malloc(\textcolor{keyword}{sizeof}(uint8\_t) * (argc -\/ 1));}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00426}00426         }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00427}00427         SPI.beginTransaction(SPISettings(settings.speed, settings.order, settings.mode));}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00428}00428         adigitalWrite((uint8\_t)CS\_pin, (uint8\_t)LOW);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00429}00429         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i < argc; i++) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00430}00430             result.value[i-\/1] = SPI.transfer(argv[i]);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00431}00431         \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00432}00432         adigitalWrite((uint8\_t)CS\_pin, (uint8\_t)HIGH);}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00433}00433         SPI.endTransaction();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00434}00434     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00435}00435     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00436}00436         result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00437}00437     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00438}00438 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00439}00439     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00440}00440 \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00441}00441 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00442}00442 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00443}00443 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00444}00444 \textcolor{comment}{ * @brief End a SPI connection between the Arduino and a peripheral}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00445}00445 \textcolor{comment}{ * }}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00446}00446 \textcolor{comment}{ * @param argc The number of arguments contained within the 'argv' array (0)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00447}00447 \textcolor{comment}{ * @param argv The arguments to use within the function (None)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00448}00448 \textcolor{comment}{ * @return result: a 'registers' struct holding the return values of the called function (empty, in this case)}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00449}00449 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00450}\mbox{\hyperlink{namespacefunctions_afe93846e4fa5ff9b68fe1d59e612f0ad}{00450}} \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{namespacefunctions_afe93846e4fa5ff9b68fe1d59e612f0ad}{functions::spiEnd}}(uint8\_t argc, uint8\_t *argv) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00451}00451     \mbox{\hyperlink{structregisters}{registers}} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00452}00452     result.count = 0;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00453}00453 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00454}00454     \textcolor{keywordflow}{if} (argc == 0) \{}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00455}00455         SPI.end();}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00456}00456     \}}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00457}00457 }
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00458}00458     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{Functions_8cpp_source_l00459}00459 \}}
+
+\end{DoxyCode}
