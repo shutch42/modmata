@@ -1,31 +1,53 @@
 /**
  * @file Functions.cpp
- * @author Sam Hutcherson, Chase Wallendorf, Iris Astrid
+ * @author Sam Hutcherson, Chase Wallendorff, Iris Astrid
  * @brief Define common Arduino functions for use with Modbus
  * @version 0.1
- * @date 04/02/23
+ * @date 04/03/23
  */
 
 #include "Functions.h"
 #include <Arduino.h>
 #include <Servo.h>
 
-
+/** 
+ * @brief Current number of servos attached to this Arduino.
+ */
 int servo_count = 0;
-Servo servos[14];	// FIXME: Change to pointers so that pins 9/10 can be used as analog when Servos aren't used
 
-spi_settings settings;
+/** 
+ * @brief Array of servo objects to create/control servo connections.
+ * @todo Change to pointers so that pins 9/10 can be used as analog when Servos aren't used
+ */
+Servo servos[14];
 
-// Prefix Arduino Library functions so as to specify _exactly_
-// which function is being called in the namespace, as if the Modmata
-// definition being in a namespace wasn't enough already... *eyerolls*
+/** 
+ * @brief Singleton for 'settings' object 
+ */
+spi_settings settings; 
 
-void (&apinMode)(uint8_t, uint8_t) = 		pinMode; 
-void (&adigitalWrite)(uint8_t, uint8_t) = 	digitalWrite;
-int  (&adigitalRead)(uint8_t) = 			digitalRead;
-void (&aanalogWrite)(uint8_t, int) = 		analogWrite;
-int  (&aanalogRead)(uint8_t) = 				analogRead;
-void (&aanalogReference)(uint8_t) = 		analogReference;
+/**
+ * @brief Prefix Arduino Library functions so as to specify _exactly_
+ * which function is being called in the namespace, as if the Modmata
+ * definition being in a seperate namespace wasn't enough already... \*eyerolls\*...
+ */
+namespace arduino_function_refs {
+	/** Arduino's 'pinMode()' */
+	void (&apinMode)(uint8_t, uint8_t) = 		pinMode;
+
+	/** Arduino's 'digitalWrite()' */
+	void (&adigitalWrite)(uint8_t, uint8_t) = 	digitalWrite;
+
+	/** Arduino's 'digitalRead()' */
+	int  (&adigitalRead)(uint8_t) = 			digitalRead;
+
+	/** Arduino's 'analogWrite()' */
+	void (&aanalogWrite)(uint8_t, int) = 		analogWrite;
+
+	/** Arduino's 'analogRead()' */
+	int  (&aanalogRead)(uint8_t) = 				analogRead;
+}
+using namespace arduino_function_refs;
 
 
 /**
@@ -319,7 +341,6 @@ registers functions::wireWrite(uint8_t argc, uint8_t *argv) {
 	result.count = 0;
 	return result;	
 }
-
 
 
 /**

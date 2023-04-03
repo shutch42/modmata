@@ -1,7 +1,7 @@
 /**
  * @file Modmata.cpp
  * @author Sam Hutcherson, Chase Wallendorff, Iris Astrid
- * @date 04/02/23
+ * @date 04/03/23
  * @brief Functions to access Modmata commands from arduino .ino files.
 */
 
@@ -20,16 +20,16 @@ typedef unsigned char byte;
 
 using namespace modmata;
 
-ModmataClass Modmata; // Singleton instance
+/** Singleton instance */ 
+ModmataClass Modmata; 
 
 
 /**
- * @brief Begin listening for a Modmata connection over serial
+ * @brief Begin listening for a Modmata connection over serial/USB
+ * @remark This is configured to be used between a host computer and Arduino Leonardo using a USB connector
+ * (hardwired in the case of the LattePanda Delta 3.) The Leonardo is different from most other Arduinos 
+ * in the usage of the serial connection, so if you modify this code, please keep that in mind.
  * @param baud Set the baud rate of the listening serial connection
- * @remark This is configured to be used between a host computer and Arduino
- * Leonardo using a USB connector (hardwired in the case of the LattePanda Delta 3)
- * The Leonardo is different from most other Arduinos in the usage of the serial connection,
- * so if you modify this code, please keep that in mind.
  */
 void ModmataClass::begin(int baud) {
   // Set host serial/modbus connection settings
@@ -65,12 +65,13 @@ void ModmataClass::begin(int baud) {
   }
 }
 
+
 /**
- * Assign a function to a command number. Standard commands have default functions, 
+ * @brief Assign a function to a command number. Standard commands have default functions, 
  * but those can be overwritten here, or more commands can be added.
  * @param command The modbus command being assigned a function
  * @param fn A pointer to the function to be called when the command is recieved
-*/
+ */
 void ModmataClass::attach(uint8_t command, struct registers (*fn)(uint8_t argc, uint8_t *argv)) {
   callbackFunctions[command] = fn;
 }

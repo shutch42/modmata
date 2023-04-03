@@ -1,6 +1,6 @@
-#include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
+#include <cstdlib>
+#include <cstdint>
+#include <cstdbool>
 #include <Arduino.h>
 #include <Servo.h>
 #include <Wire.h>
@@ -41,31 +41,35 @@
  * contains the values of the arguments or return values for a command.
  */ 
 typedef struct registers {
+	/** The number of arguments contained within the array 'value'. */
 	uint8_t 	count;
+	
+	/** A pointer to an array of bytes (8-bit integral types) that contains the values of the arguments or return values for a command. */
 	uint8_t * 	value;
 };
 
 
 /**
  * @brief A data structure to describe a SPI connection's configuration settings.
- * Essentially the same as Arduino's SPIsettings object
+ * Essentially the same as Arduino's 'SPIsettings' object
  * @param speed The baud rate/clock speed of the connection.
  * @param order The order of bits sent over the wire 
  * @param mode The clock polarity and phase
  */
 struct spi_settings {
+	/** The baud rate/clock speed of the connection. */
 	uint32_t 	speed;
+	/** The order of bits sent over the wire. */
 	bool 		order;
+	/** The clock polarity and phase. */
 	uint8_t 	mode;
-} settings;
+};
+
+/** @brief Singleton instance of said structure */
+struct spi_settings settings; 
 
 
-// General Arduino functions
-
-/**
- * @brief Distinguish Modmata functions from standard Arduino functions with a namespace
- * 
- */
+/** @brief Distinguish Modmata functions from standard Arduino functions with a namespace */
 namespace functions {
 
 	// Pin I/O functions
@@ -98,4 +102,4 @@ namespace functions {
 	registers spiTransferBuf(uint8_t argc, uint8_t *argv);
 	registers spiEnd(uint8_t argc, uint8_t *argv);
 
-};
+}

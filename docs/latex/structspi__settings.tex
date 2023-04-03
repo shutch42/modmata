@@ -2,7 +2,7 @@
 \label{structspi__settings}\index{spi\_settings@{spi\_settings}}
 
 
-A data structure to describe a SPI connection\textquotesingle{}s configuration settings. Essentially the same as Arduino\textquotesingle{}s SPIsettings object.  
+A data structure to describe a SPI connection\textquotesingle{}s configuration settings. Essentially the same as Arduino\textquotesingle{}s \textquotesingle{}SPIsettings\textquotesingle{} object.  
 
 
 
@@ -21,7 +21,7 @@ uint8\+\_\+t \mbox{\hyperlink{structspi__settings_a1dcdc74076924b00ee6c36b34c1c8
 
 
 \doxysubsection{Detailed Description}
-A data structure to describe a SPI connection\textquotesingle{}s configuration settings. Essentially the same as Arduino\textquotesingle{}s SPIsettings object. 
+A data structure to describe a SPI connection\textquotesingle{}s configuration settings. Essentially the same as Arduino\textquotesingle{}s \textquotesingle{}SPIsettings\textquotesingle{} object. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -34,7 +34,7 @@ A data structure to describe a SPI connection\textquotesingle{}s configuration s
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00056}{56}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
+Definition at line \mbox{\hyperlink{Functions_8h_source_l00059}{59}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
 
 
 
@@ -45,9 +45,13 @@ Definition at line \mbox{\hyperlink{Functions_8h_source_l00056}{56}} of file \mb
 \doxysubsubsection{\texorpdfstring{mode}{mode}}
 {\footnotesize\ttfamily uint8\+\_\+t spi\+\_\+settings\+::mode}
 
+The clock polarity and phase. 
+
+Definition at line \mbox{\hyperlink{Functions_8h_source_l00065}{65}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
 
 
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00059}{59}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00392}{functions\+::spi\+Begin()}}, \mbox{\hyperlink{Functions_8cpp_source_l00414}{functions\+::spi\+Settings()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00435}{functions\+::spi\+Transfer\+Buf()}}.
 
 \mbox{\Hypertarget{structspi__settings_a49d176b4c767ff287ee97bced4ebaf10}\label{structspi__settings_a49d176b4c767ff287ee97bced4ebaf10}} 
 \index{spi\_settings@{spi\_settings}!order@{order}}
@@ -55,9 +59,13 @@ Definition at line \mbox{\hyperlink{Functions_8h_source_l00059}{59}} of file \mb
 \doxysubsubsection{\texorpdfstring{order}{order}}
 {\footnotesize\ttfamily bool spi\+\_\+settings\+::order}
 
+The order of bits sent over the wire. 
+
+Definition at line \mbox{\hyperlink{Functions_8h_source_l00063}{63}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
 
 
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00058}{58}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00392}{functions\+::spi\+Begin()}}, \mbox{\hyperlink{Functions_8cpp_source_l00414}{functions\+::spi\+Settings()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00435}{functions\+::spi\+Transfer\+Buf()}}.
 
 \mbox{\Hypertarget{structspi__settings_ab92e493cce0bb349433c803db9c4d8df}\label{structspi__settings_ab92e493cce0bb349433c803db9c4d8df}} 
 \index{spi\_settings@{spi\_settings}!speed@{speed}}
@@ -65,9 +73,13 @@ Definition at line \mbox{\hyperlink{Functions_8h_source_l00058}{58}} of file \mb
 \doxysubsubsection{\texorpdfstring{speed}{speed}}
 {\footnotesize\ttfamily uint32\+\_\+t spi\+\_\+settings\+::speed}
 
+The baud rate/clock speed of the connection. 
+
+Definition at line \mbox{\hyperlink{Functions_8h_source_l00061}{61}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
 
 
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00057}{57}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00392}{functions\+::spi\+Begin()}}, \mbox{\hyperlink{Functions_8cpp_source_l00414}{functions\+::spi\+Settings()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00435}{functions\+::spi\+Transfer\+Buf()}}.
 
 
 

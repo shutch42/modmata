@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['functions_0',['functions',['../namespacefunctions.html',1,'']]]
+  ['arduino_5ffunction_5frefs_0',['arduino_function_refs',['../namespacearduino__function__refs.html',1,'']]]
 ];

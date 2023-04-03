@@ -4,7 +4,7 @@
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00001}00001 \textcolor{comment}{/**}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00002}00002 \textcolor{comment}{ * @file Modmata.cpp}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00003}00003 \textcolor{comment}{ * @author Sam Hutcherson, Chase Wallendorff, Iris Astrid}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00004}00004 \textcolor{comment}{ * @date 04/02/23}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00004}00004 \textcolor{comment}{ * @date 04/03/23}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00005}00005 \textcolor{comment}{ * @brief Functions to access Modmata commands from arduino .ino files.}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00006}00006 \textcolor{comment}{*/}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00007}00007 }
@@ -21,110 +21,111 @@
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00018}\mbox{\hyperlink{Modmata_8cpp_a0c8186d9b9b7880309c27230bbb5e69d}{00018}} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{Modmata_8cpp_a0c8186d9b9b7880309c27230bbb5e69d}{byte}};}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00019}00019 \textcolor{preprocessor}{\#endif}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00021}00021 \textcolor{keyword}{using namespace }modmata;}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00022}00022 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00023}00023 \mbox{\hyperlink{classmodmata_1_1ModmataClass}{ModmataClass}} Modmata; \textcolor{comment}{// Singleton instance}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00024}00024 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00025}00025 \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00026}00026 \textcolor{comment}{/**}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00027}00027 \textcolor{comment}{ * @brief Begin listening for a Modmata connection over serial}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00028}00028 \textcolor{comment}{ * @param baud Set the baud rate of the listening serial connection}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00029}00029 \textcolor{comment}{ * @remark This is configured to be used between a host computer and Arduino}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00030}00030 \textcolor{comment}{ * Leonardo using a USB connector (hardwired in the case of the LattePanda Delta 3)}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00031}00031 \textcolor{comment}{ * The Leonardo is different from most other Arduinos in the usage of the serial connection,}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00032}00032 \textcolor{comment}{ * so if you modify this code, please keep that in mind.}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00021}00021 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacemodmata}{modmata}};}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00022}00022 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00023}00023 \textcolor{comment}{/** Singleton instance */} }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00024}\mbox{\hyperlink{Modmata_8cpp_a3290ad32d23187cef4a03d2029a3e6a5}{00024}} \mbox{\hyperlink{classmodmata_1_1ModmataClass}{ModmataClass}} \mbox{\hyperlink{Modmata_8cpp_a3290ad32d23187cef4a03d2029a3e6a5}{Modmata}}; }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00026}00026 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00027}00027 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00028}00028 \textcolor{comment}{ * @brief Begin listening for a Modmata connection over serial/USB}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00029}00029 \textcolor{comment}{ * @remark This is configured to be used between a host computer and Arduino Leonardo using a USB connector}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00030}00030 \textcolor{comment}{ * (hardwired in the case of the LattePanda Delta 3.) The Leonardo is different from most other Arduinos }}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00031}00031 \textcolor{comment}{ * in the usage of the serial connection, so if you modify this code, please keep that in mind.}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00032}00032 \textcolor{comment}{ * @param baud Set the baud rate of the listening serial connection}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00033}00033 \textcolor{comment}{ */}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00034}\mbox{\hyperlink{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}{00034}} \textcolor{keywordtype}{void} ModmataClass::begin(\textcolor{keywordtype}{int} baud) \{}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00035}00035   \textcolor{comment}{// Set host serial/modbus connection settings}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00036}00036   mb.config(\&Serial, baud, SERIAL\_8N1);}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00037}00037   mb.setSlaveId(1);}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00036}00036   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.config(\&Serial, baud, SERIAL\_8N1);}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00037}00037   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.setSlaveId(1);}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00038}00038   }
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00039}00039   \textcolor{comment}{// Map callback functions to associated function codes}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00040}00040   callbackFunctions[PINMODE] =      \&(\mbox{\hyperlink{namespacefunctions_a1a25eeddfdaad77dcd8e8e4fcfa7be51}{functions::pinMode}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00041}00041   callbackFunctions[DIGITALWRITE] = \&(\mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{functions::digitalWrite}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00042}00042   callbackFunctions[DIGITALREAD] =  \&(\mbox{\hyperlink{namespacefunctions_aa5dc4800828e3cd1ec7aec29ec9cc5ee}{functions::digitalRead}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00043}00043   callbackFunctions[ANALOGWRITE] =  \&(\mbox{\hyperlink{namespacefunctions_adb50ef06ef1a067bd0c8ef1e8f40ec66}{functions::analogWrite}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00044}00044   callbackFunctions[ANALOGREAD] =   \&(\mbox{\hyperlink{namespacefunctions_a5267c7753830a1751eb476d6f4dce312}{functions::analogRead}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00040}00040   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[PINMODE] =      \&(\mbox{\hyperlink{namespacefunctions_a1a25eeddfdaad77dcd8e8e4fcfa7be51}{functions::pinMode}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00041}00041   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[DIGITALWRITE] = \&(\mbox{\hyperlink{namespacefunctions_a00d016507e245e01812bb5de46dd2cdd}{functions::digitalWrite}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00042}00042   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[DIGITALREAD] =  \&(\mbox{\hyperlink{namespacefunctions_aa5dc4800828e3cd1ec7aec29ec9cc5ee}{functions::digitalRead}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00043}00043   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[ANALOGWRITE] =  \&(\mbox{\hyperlink{namespacefunctions_adb50ef06ef1a067bd0c8ef1e8f40ec66}{functions::analogWrite}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00044}00044   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[ANALOGREAD] =   \&(\mbox{\hyperlink{namespacefunctions_a5267c7753830a1751eb476d6f4dce312}{functions::analogRead}});}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00045}00045   }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00046}00046   callbackFunctions[SERVOATTACH] =  \&(\mbox{\hyperlink{namespacefunctions_a860d5d487c01682f30e94bb31e466784}{functions::servoAttach}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00047}00047   callbackFunctions[SERVODETACH] =  \&(\mbox{\hyperlink{namespacefunctions_a83a6cdf0e7b76a781cd06696d52a9df6}{functions::servoDetach}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00048}00048   callbackFunctions[SERVOWRITE] =   \&(\mbox{\hyperlink{namespacefunctions_abb59b387b069e9a17af7319263f20205}{functions::servoWrite}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00049}00049   callbackFunctions[SERVOREAD] =    \&(\mbox{\hyperlink{namespacefunctions_a23f7b900b2cd8958f3195f1b49072a3c}{functions::servoRead}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00046}00046   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[SERVOATTACH] =  \&(\mbox{\hyperlink{namespacefunctions_a860d5d487c01682f30e94bb31e466784}{functions::servoAttach}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00047}00047   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[SERVODETACH] =  \&(\mbox{\hyperlink{namespacefunctions_a83a6cdf0e7b76a781cd06696d52a9df6}{functions::servoDetach}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00048}00048   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[SERVOWRITE] =   \&(\mbox{\hyperlink{namespacefunctions_abb59b387b069e9a17af7319263f20205}{functions::servoWrite}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00049}00049   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[SERVOREAD] =    \&(\mbox{\hyperlink{namespacefunctions_a23f7b900b2cd8958f3195f1b49072a3c}{functions::servoRead}});}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00050}00050 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00051}00051   callbackFunctions[WIREBEGIN] =    \&(\mbox{\hyperlink{namespacefunctions_ab8d1b826ec06517a311ec1e1e6ef1400}{functions::wireBegin}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00052}00052   callbackFunctions[WIREEND] =      \&(\mbox{\hyperlink{namespacefunctions_ae59ea51e8f7d02c208f6503115acb547}{functions::wireEnd}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00053}00053   callbackFunctions[WIRECLOCK] =    \&(\mbox{\hyperlink{namespacefunctions_aae0012c13895b2a25eeac49cb9bce07d}{functions::wireSetClock}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00054}00054   callbackFunctions[WIREWRITE] =    \&(\mbox{\hyperlink{namespacefunctions_ae5a018b2e18b11909cf64588834fa75f}{functions::wireWrite}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00055}00055   callbackFunctions[WIREREAD] =     \&(\mbox{\hyperlink{namespacefunctions_a757f7e1b965632a1ef6bbde1c2dafb52}{functions::wireRead}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00051}00051   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[WIREBEGIN] =    \&(\mbox{\hyperlink{namespacefunctions_ab8d1b826ec06517a311ec1e1e6ef1400}{functions::wireBegin}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00052}00052   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[WIREEND] =      \&(\mbox{\hyperlink{namespacefunctions_ae59ea51e8f7d02c208f6503115acb547}{functions::wireEnd}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00053}00053   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[WIRECLOCK] =    \&(\mbox{\hyperlink{namespacefunctions_aae0012c13895b2a25eeac49cb9bce07d}{functions::wireSetClock}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00054}00054   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[WIREWRITE] =    \&(\mbox{\hyperlink{namespacefunctions_ae5a018b2e18b11909cf64588834fa75f}{functions::wireWrite}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00055}00055   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[WIREREAD] =     \&(\mbox{\hyperlink{namespacefunctions_a757f7e1b965632a1ef6bbde1c2dafb52}{functions::wireRead}});}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00056}00056 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00057}00057   callbackFunctions[SPIBEGIN] =     \&(\mbox{\hyperlink{namespacefunctions_a309caceacb30a6acdbe2c39cce1a26c7}{functions::spiBegin}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00058}00058   callbackFunctions[SPISETTINGS] =  \&(\mbox{\hyperlink{namespacefunctions_abf03bd3d2abc91bc2e154a9a5d554b33}{functions::spiSettings}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00059}00059   callbackFunctions[SPITRANSFER] =  \&(\mbox{\hyperlink{namespacefunctions_af2a00e1e1060d933acd1032208977683}{functions::spiTransferBuf}});}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00060}00060   callbackFunctions[SPIEND] =       \&(\mbox{\hyperlink{namespacefunctions_afe93846e4fa5ff9b68fe1d59e612f0ad}{functions::spiEnd}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00057}00057   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[SPIBEGIN] =     \&(\mbox{\hyperlink{namespacefunctions_a309caceacb30a6acdbe2c39cce1a26c7}{functions::spiBegin}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00058}00058   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[SPISETTINGS] =  \&(\mbox{\hyperlink{namespacefunctions_abf03bd3d2abc91bc2e154a9a5d554b33}{functions::spiSettings}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00059}00059   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[SPITRANSFER] =  \&(\mbox{\hyperlink{namespacefunctions_af2a00e1e1060d933acd1032208977683}{functions::spiTransferBuf}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00060}00060   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[SPIEND] =       \&(\mbox{\hyperlink{namespacefunctions_afe93846e4fa5ff9b68fe1d59e612f0ad}{functions::spiEnd}});}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00061}00061 }
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00062}00062   \textcolor{comment}{// Command register -\/ create sufficient (100) Holding Registers}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00063}00063   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < MAX\_REG\_COUNT; i++) \{}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00064}00064     mb.addHreg(i);}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00064}00064     \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.addHreg(i);}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00065}00065   \}}
 \DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00066}00066 \}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00067}00067 \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00068}00068 \textcolor{comment}{/**}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00069}00069 \textcolor{comment}{ * Assign a function to a command number. Standard commands have default functions, }}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00070}00070 \textcolor{comment}{ * but those can be overwritten here, or more commands can be added.}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00071}00071 \textcolor{comment}{ * @param command The modbus command being assigned a function}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00072}00072 \textcolor{comment}{ * @param fn A pointer to the function to be called when the command is recieved}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00073}00073 \textcolor{comment}{*/}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00074}\mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{00074}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{ModmataClass::attach}}(uint8\_t command, \textcolor{keyword}{struct} \mbox{\hyperlink{structregisters}{registers}} (*fn)(uint8\_t argc, uint8\_t *argv)) \{}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00075}00075   callbackFunctions[command] = fn;}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00076}00076 \}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00077}00077 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00078}00078 \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00079}00079 \textcolor{comment}{/**}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00080}00080 \textcolor{comment}{ * @brief Read the command and args sent and execute the corresponding callback function,}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00081}00081 \textcolor{comment}{ * store the results of which in holding functions to be communicated with the host.}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00082}00082 \textcolor{comment}{ */}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00083}\mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{00083}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{ModmataClass::processInput}}() \{}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00084}00084   \textcolor{comment}{// Unpack all of the modbus registers as 8-\/bit values}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00085}00085   \textcolor{keywordtype}{byte}    cmd   =  mb.Hreg(0) >> 8;     \textcolor{comment}{// 'Top' 8 bits of Hreg 0 indicate the command number}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00086}00086   \textcolor{keywordtype}{byte}    argc  =  mb.Hreg(0) \& 0x00ff; \textcolor{comment}{// 'Bottom' 8 bits of Hreg 0 indicate the number of arguments for a command}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00087}00087   }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00088}00088   \textcolor{keywordtype}{size\_t} n\_hregs = ceil(argc / 2);      \textcolor{comment}{// Number of holding registers occupied by the command args}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00089}00089   uint16\_t hreg\_array[ n\_hregs ] = \{\};  \textcolor{comment}{// Temp. array to hold argument values}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00090}00090   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i\{0\}; i < n\_hregs; i++) \{}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00091}00091     hreg\_array[i] = mb.Hreg(i+1);       \textcolor{comment}{// Copy over values from Hregs to temp array }}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00092}00092   \}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00093}00093 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00094}00094   uint8\_t * argv = (uint8\_t *)calloc(argc, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{byte})); \textcolor{comment}{// Argument array for the command}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00095}00095   memcpy(argv, \&hreg\_array, argc);                        \textcolor{comment}{// Copy over values into persisting array}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00096}00096 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00097}00097   \textcolor{keyword}{struct }\mbox{\hyperlink{structregisters}{registers}} result = (callbackFunctions[cmd])(argc, argv); \textcolor{comment}{// Execute fn, collect result}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00098}00098   n\_hregs = ceil(result.count / 2);       \textcolor{comment}{// Get number of holding registers needed to store/return the result}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00099}00099                                           \textcolor{comment}{// This is not the same as the number of arguments used in a command!}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00100}00100   }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00101}00101   uint16\_t return\_array[ n\_hregs ] = \{\};  \textcolor{comment}{// Temp. array to store the collected values}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00102}00102   memcpy(return\_array, result.value, result.count); \textcolor{comment}{// Copy over values}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00103}00103   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i\{0\}; i < n\_hregs; i++) \{}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00104}00104     mb.Hreg(i+1, return\_array[i]);        \textcolor{comment}{// Update Hregs with result}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00105}00105   \}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00106}00106   }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00107}00107   free(argv);}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00108}00108   free(result.value);}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00109}00109 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00110}00110   \textcolor{comment}{// Save the number of result values, return to idle command}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00111}00111   mb.Hreg(0, result.count);   \textcolor{comment}{// Sets the 'bottom' 8 bits of the 16-\/bit holding register (result.count is of type <uint8\_t>) }}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00112}00112                               \textcolor{comment}{// to \# return vals, \& 'top' 8 bits to 0's}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00113}00113 \}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00114}00114 }
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00115}00115 \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00116}00116 \textcolor{comment}{/**}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00117}00117 \textcolor{comment}{ * Update modbus registers and check if a command has been received}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00118}00118 \textcolor{comment}{ * @remark Will return false unless there is a Command function code besides IDLE in Hreg 0}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00119}00119 \textcolor{comment}{ * \_and\_ there was data received since the last time mb.task() was called }}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00120}00120 \textcolor{comment}{ * @return True or false}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00121}00121 \textcolor{comment}{*/}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00122}\mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{00122}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{ModmataClass::available}}() \{}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00123}00123   \textcolor{keywordflow}{return} mb.task() \&\& (mb.Hreg(0) >> 8);}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00124}00124 \}}
-\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00068}00068 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00069}00069 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00070}00070 \textcolor{comment}{ * @brief Assign a function to a command number. Standard commands have default functions, }}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00071}00071 \textcolor{comment}{ * but those can be overwritten here, or more commands can be added.}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00072}00072 \textcolor{comment}{ * @param command The modbus command being assigned a function}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00073}00073 \textcolor{comment}{ * @param fn A pointer to the function to be called when the command is recieved}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00074}00074 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00075}\mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{00075}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{ModmataClass::attach}}(uint8\_t command, \textcolor{keyword}{struct} \mbox{\hyperlink{structregisters}{registers}} (*fn)(uint8\_t argc, uint8\_t *argv)) \{}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00076}00076   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[command] = fn;}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00079}00079 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00080}00080 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00081}00081 \textcolor{comment}{ * @brief Read the command and args sent and execute the corresponding callback function,}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00082}00082 \textcolor{comment}{ * store the results of which in holding functions to be communicated with the host.}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00083}00083 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00084}\mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{00084}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{ModmataClass::processInput}}() \{}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00085}00085   \textcolor{comment}{// Unpack all of the modbus registers as 8-\/bit values}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00086}00086   \textcolor{keywordtype}{byte}    cmd   =  \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.Hreg(0) >> 8;     \textcolor{comment}{// 'Top' 8 bits of Hreg 0 indicate the command number}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00087}00087   \textcolor{keywordtype}{byte}    argc  =  \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.Hreg(0) \& 0x00ff; \textcolor{comment}{// 'Bottom' 8 bits of Hreg 0 indicate the number of arguments for a command}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00088}00088   }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00089}00089   \textcolor{keywordtype}{size\_t} n\_hregs = ceil(argc / 2);      \textcolor{comment}{// Number of holding registers occupied by the command args}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00090}00090   uint16\_t hreg\_array[ n\_hregs ] = \{\};  \textcolor{comment}{// Temp. array to hold argument values}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00091}00091   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i\{0\}; i < n\_hregs; i++) \{}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00092}00092     hreg\_array[i] = \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.Hreg(i+1);       \textcolor{comment}{// Copy over values from Hregs to temp array }}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00093}00093   \}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00095}00095   uint8\_t * argv = (uint8\_t *)calloc(argc, \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{byte})); \textcolor{comment}{// Argument array for the command}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00096}00096   memcpy(argv, \&hreg\_array, argc);                        \textcolor{comment}{// Copy over values into persisting array}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00098}00098   \textcolor{keyword}{struct }\mbox{\hyperlink{structregisters}{registers}} result = (\mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[cmd])(argc, argv); \textcolor{comment}{// Execute fn, collect result}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00099}00099   n\_hregs = ceil(result.\mbox{\hyperlink{structregisters_aaafbc68f5a29179ad3991af77cd17791}{count}} / 2);       \textcolor{comment}{// Get number of holding registers needed to store/return the result}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00100}00100                                           \textcolor{comment}{// This is not the same as the number of arguments used in a command!}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00101}00101   }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00102}00102   uint16\_t return\_array[ n\_hregs ] = \{\};  \textcolor{comment}{// Temp. array to store the collected values}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00103}00103   memcpy(return\_array, result.\mbox{\hyperlink{structregisters_a23538b5601de4141c0c164149345feba}{value}}, result.\mbox{\hyperlink{structregisters_aaafbc68f5a29179ad3991af77cd17791}{count}}); \textcolor{comment}{// Copy over values}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00104}00104   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i\{0\}; i < n\_hregs; i++) \{}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00105}00105     \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.Hreg(i+1, return\_array[i]);        \textcolor{comment}{// Update Hregs with result}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00106}00106   \}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00107}00107   }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00108}00108   free(argv);}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00109}00109   free(result.\mbox{\hyperlink{structregisters_a23538b5601de4141c0c164149345feba}{value}});}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00111}00111   \textcolor{comment}{// Save the number of result values, return to idle command}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00112}00112   \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.Hreg(0, result.\mbox{\hyperlink{structregisters_aaafbc68f5a29179ad3991af77cd17791}{count}});   \textcolor{comment}{// Sets the 'bottom' 8 bits of the 16-\/bit holding register (result.count is of type <uint8\_t>) }}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00113}00113                               \textcolor{comment}{// to \# return vals, \& 'top' 8 bits to 0's}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00114}00114 \}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00116}00116 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00117}00117 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00118}00118 \textcolor{comment}{ * Update modbus registers and check if a command has been received}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00119}00119 \textcolor{comment}{ * @remark Will return false unless there is a Command function code besides IDLE in Hreg 0}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00120}00120 \textcolor{comment}{ * \_and\_ there was data received since the last time mb.task() was called }}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00121}00121 \textcolor{comment}{ * @return True or false}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00122}00122 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00123}\mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{00123}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{ModmataClass::available}}() \{}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00124}00124   \textcolor{keywordflow}{return} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.task() \&\& (\mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}.Hreg(0) >> 8);}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00125}00125 \}}
+\DoxyCodeLine{\Hypertarget{Modmata_8cpp_source_l00126}00126 }
 
 \end{DoxyCode}

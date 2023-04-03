@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['functions_0',['functions',['../namespacefunctions.html',1,'']]],
-  ['functions_2ecpp_1',['Functions.cpp',['../Functions_8cpp.html',1,'']]]
+  ['digitalread_0',['digitalRead',['../namespacefunctions.html#aa5dc4800828e3cd1ec7aec29ec9cc5ee',1,'functions']]],
+  ['digitalwrite_1',['digitalWrite',['../namespacefunctions.html#a00d016507e245e01812bb5de46dd2cdd',1,'functions']]]
 ];

@@ -4,32 +4,31 @@
 \DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00001}00001 \textcolor{preprocessor}{\#include "{}Functions.h"{}}}
 \DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ModbusSerial.h"{}}}
 \DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00003}00003 }
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00004}00004 \textcolor{preprocessor}{\#define MAX\_REG\_COUNT 100}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00005}00005 }
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00006}00006 \textcolor{keyword}{namespace }modmata \{}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00007}00007 \textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00008}00008 \textcolor{comment}{  /**}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00009}00009 \textcolor{comment}{   * @brief Base class for a host computer to control this (LattePanda's Arduino Leonardo) device}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00010}00010 \textcolor{comment}{   */}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00011}\mbox{\hyperlink{classmodmata_1_1ModmataClass}{00011}}   \textcolor{keyword}{class }\mbox{\hyperlink{classmodmata_1_1ModmataClass}{ModmataClass}} \{}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00012}00012 }
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00013}00013     \textcolor{keyword}{private}:\textcolor{comment}{}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00014}00014 \textcolor{comment}{      /**}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00015}00015 \textcolor{comment}{       * @brief An array of references to callback functions indexed by their function code number. }}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00016}00016 \textcolor{comment}{       * @n Use 'Modmata.attach( function\_code, \&function )' to add your own callback functions}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00017}00017 \textcolor{comment}{       */}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00018}00018       \mbox{\hyperlink{structregisters}{registers}} (*callbackFunctions[20])(uint8\_t argc, uint8\_t *argv);}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00019}00019       \mbox{\hyperlink{classModbusSerial}{ModbusSerial}} mb;    }
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00020}00020 }
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00021}00021     \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00022}00022       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}{begin}}(\textcolor{keywordtype}{int} baud);}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00023}00023       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{attach}}(uint8\_t command, \textcolor{keyword}{struct} \mbox{\hyperlink{structregisters}{registers}} (*fn)(uint8\_t argc, uint8\_t *argv));}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00024}00024       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{processInput}}();}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00025}00025       \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{available}}();}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00026}00026 }
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00027}00027   \};}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00028}00028 \}}
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00029}00029 }
-\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00030}00030 \textcolor{keyword}{extern} \mbox{\hyperlink{classmodmata_1_1ModmataClass}{modmata::ModmataClass}} Modmata;}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00004}00004 \textcolor{preprocessor}{\#define MAX\_REG\_COUNT 100 }\textcolor{comment}{/** Maximum of 100 registers in use */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00005}00005 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00006}00006 \textcolor{comment}{/** @brief Namespace to hold Modmata class */}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00007}\mbox{\hyperlink{namespacemodmata}{00007}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacemodmata}{modmata}} \{}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00008}00008 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00009}00009 \textcolor{comment}{  /** @brief Base class for a host computer to control this (LattePanda's Arduino Leonardo) device */}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00010}\mbox{\hyperlink{classmodmata_1_1ModmataClass}{00010}}   \textcolor{keyword}{class }\mbox{\hyperlink{classmodmata_1_1ModmataClass}{ModmataClass}} \{}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00012}00012     \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00013}00013 \textcolor{comment}{      /** @brief An array of references to callback functions indexed by their function code number. }}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00014}00014 \textcolor{comment}{       * Use 'Modmata.attach( function\_code, \&function )' to add your own callback functions */}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00015}\mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{00015}}       \mbox{\hyperlink{structregisters}{registers}} (*\mbox{\hyperlink{classmodmata_1_1ModmataClass_a9c58b6ef9f548d793717ec8cfe021b5b}{callbackFunctions}}[20])(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00016}00016 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00017}00017 \textcolor{comment}{      /** @brief Object representing an interactive Modbus connection over Serial */}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00018}\mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{00018}}       ModbusSerial \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}};}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00020}00020     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00021}00021       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}{begin}}(\textcolor{keywordtype}{int} baud);}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00022}00022       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{attach}}(uint8\_t command, \textcolor{keyword}{struct} \mbox{\hyperlink{structregisters}{registers}} (*fn)(uint8\_t argc, uint8\_t *argv));}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00023}00023       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{processInput}}();}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00024}00024       \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{available}}();}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00026}00026   \};}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00027}00027 \}}
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{Modmata_8h_source_l00029}00029 \textcolor{keyword}{extern} \mbox{\hyperlink{classmodmata_1_1ModmataClass}{modmata::ModmataClass}} \mbox{\hyperlink{Modmata_8cpp_a3290ad32d23187cef4a03d2029a3e6a5}{Modmata}};}
 
 \end{DoxyCode}
