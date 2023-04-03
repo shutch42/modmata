@@ -1,0 +1,90 @@
+\hypertarget{Functions_8h_source}{}\doxysection{Functions.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <stdbool.h>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <Servo.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <SPI.h>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{comment}{// Command number associated with each function}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define IDLE 0}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#define PINMODE 1}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#define DIGITALWRITE 2}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define DIGITALREAD 3}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define ANALOGREFERENCE 4}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#define ANALOGWRITE 5}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define ANALOGREAD 6}}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define SERVOATTACH 7}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define SERVODETACH 8}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define SERVOWRITE 9}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define SERVOREAD 10}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define WIREBEGIN 11}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define WIREEND 12}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define WIRECLOCK 13}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define WIREWRITE 14}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define WIREREAD 15}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define SPIBEGIN 16}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#define SPISETTINGS 17}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define SPITRANSFER 18}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define SPIEND 19}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 }
+\DoxyCodeLine{43 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structregisters}{registers}} \{}
+\DoxyCodeLine{44     uint8\_t     count;}
+\DoxyCodeLine{45     uint8\_t *   value;}
+\DoxyCodeLine{46 \};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48 }
+\DoxyCodeLine{56 \textcolor{keyword}{struct }\mbox{\hyperlink{structspi__settings}{spi\_settings}} \{}
+\DoxyCodeLine{57     uint32\_t    speed;}
+\DoxyCodeLine{58     \textcolor{keywordtype}{bool}        order;}
+\DoxyCodeLine{59     uint8\_t     mode;}
+\DoxyCodeLine{60 \} settings;}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63 \textcolor{comment}{// General Arduino functions}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 \textcolor{comment}{// Distinguish Modmata functions from builtin Arduino functions}}
+\DoxyCodeLine{66 \textcolor{keyword}{namespace }functions \{}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     \textcolor{comment}{// Pin I/O functions}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70     \mbox{\hyperlink{structregisters}{registers}} pinMode(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{71     \mbox{\hyperlink{structregisters}{registers}} digitalWrite(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{72     \mbox{\hyperlink{structregisters}{registers}} digitalRead(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{73     \mbox{\hyperlink{structregisters}{registers}} analogWrite(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{74     \mbox{\hyperlink{structregisters}{registers}} analogRead(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76     \textcolor{comment}{// Servo functions}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \mbox{\hyperlink{structregisters}{registers}} servoAttach(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{79     \mbox{\hyperlink{structregisters}{registers}} servoDetach(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{80     \mbox{\hyperlink{structregisters}{registers}} servoWrite(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{81     \mbox{\hyperlink{structregisters}{registers}} servoRead(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     \textcolor{comment}{// Wire/I2C functions}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \mbox{\hyperlink{structregisters}{registers}} wireBegin(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{86     \mbox{\hyperlink{structregisters}{registers}} wireEnd(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{87     \mbox{\hyperlink{structregisters}{registers}} wireSetClock(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{88     \mbox{\hyperlink{structregisters}{registers}} wireWrite(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{89     \mbox{\hyperlink{structregisters}{registers}} wireRead(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{comment}{// SPI functions}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \mbox{\hyperlink{structregisters}{registers}} spiBegin(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{94     \mbox{\hyperlink{structregisters}{registers}} spiSettings(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{95     \mbox{\hyperlink{structregisters}{registers}} spiTransferBuf(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{96     \mbox{\hyperlink{structregisters}{registers}} spiEnd(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98 \};}
+
+\end{DoxyCode}

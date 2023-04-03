@@ -1,0 +1,105 @@
+\hypertarget{Modbus_8h_source}{}\doxysection{Modbus.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    Modbus.h -\/ Header for Modbus Base Library}}
+\DoxyCodeLine{3 \textcolor{comment}{    Copyright (C) 2014 André Sarmento Barbosa}}
+\DoxyCodeLine{4 \textcolor{comment}{*/}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef MODBUS\_H}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define MODBUS\_H}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#define MAX\_REGS     32}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#define MAX\_FRAME   128}}
+\DoxyCodeLine{12 \textcolor{comment}{//\#define USE\_HOLDING\_REGISTERS\_ONLY}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} u\_int;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{//Function Codes}}
+\DoxyCodeLine{17 \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{18     MB\_FC\_READ\_COILS       = 0x01, \textcolor{comment}{// Read Coils (Output) Status 0xxxx}}
+\DoxyCodeLine{19     MB\_FC\_READ\_INPUT\_STAT  = 0x02, \textcolor{comment}{// Read Input Status (Discrete Inputs) 1xxxx}}
+\DoxyCodeLine{20     MB\_FC\_READ\_REGS        = 0x03, \textcolor{comment}{// Read Holding Registers 4xxxx}}
+\DoxyCodeLine{21     MB\_FC\_READ\_INPUT\_REGS  = 0x04, \textcolor{comment}{// Read Input Registers 3xxxx}}
+\DoxyCodeLine{22     MB\_FC\_WRITE\_COIL       = 0x05, \textcolor{comment}{// Write Single Coil (Output) 0xxxx}}
+\DoxyCodeLine{23     MB\_FC\_WRITE\_REG        = 0x06, \textcolor{comment}{// Preset Single Register 4xxxx}}
+\DoxyCodeLine{24     MB\_FC\_WRITE\_COILS      = 0x0F, \textcolor{comment}{// Write Multiple Coils (Outputs) 0xxxx}}
+\DoxyCodeLine{25     MB\_FC\_WRITE\_REGS       = 0x10, \textcolor{comment}{// Write block of contiguous registers 4xxxx}}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{comment}{//Exception Codes}}
+\DoxyCodeLine{29 \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{30     MB\_EX\_ILLEGAL\_FUNCTION = 0x01, \textcolor{comment}{// Function Code not Supported}}
+\DoxyCodeLine{31     MB\_EX\_ILLEGAL\_ADDRESS  = 0x02, \textcolor{comment}{// Output Address not exists}}
+\DoxyCodeLine{32     MB\_EX\_ILLEGAL\_VALUE    = 0x03, \textcolor{comment}{// Output Value not in Range}}
+\DoxyCodeLine{33     MB\_EX\_SLAVE\_FAILURE    = 0x04, \textcolor{comment}{// Slave Deive Fails to process request}}
+\DoxyCodeLine{34 \};}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36 \textcolor{comment}{//Reply Types}}
+\DoxyCodeLine{37 \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{38     MB\_REPLY\_OFF    = 0x01,}
+\DoxyCodeLine{39     MB\_REPLY\_ECHO   = 0x02,}
+\DoxyCodeLine{40     MB\_REPLY\_NORMAL = 0x03,}
+\DoxyCodeLine{41 \};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structTRegister}{TRegister}} \{}
+\DoxyCodeLine{44     word address;}
+\DoxyCodeLine{45     word value;}
+\DoxyCodeLine{46     \textcolor{keyword}{struct }\mbox{\hyperlink{structTRegister}{TRegister}}* next;}
+\DoxyCodeLine{47 \} \mbox{\hyperlink{structTRegister}{TRegister}};}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{keyword}{class }\mbox{\hyperlink{classModbus}{Modbus}} \{}
+\DoxyCodeLine{50     \textcolor{keyword}{private}:}
+\DoxyCodeLine{51         \mbox{\hyperlink{structTRegister}{TRegister}} *\_regs\_head;}
+\DoxyCodeLine{52         \mbox{\hyperlink{structTRegister}{TRegister}} *\_regs\_last;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54         \textcolor{keywordtype}{void} readRegisters(word startreg, word numregs);}
+\DoxyCodeLine{55         \textcolor{keywordtype}{void} writeSingleRegister(word reg, word value);}
+\DoxyCodeLine{56         \textcolor{keywordtype}{void} writeMultipleRegisters(\textcolor{keywordtype}{byte}* frame,word startreg, word numoutputs, \textcolor{keywordtype}{byte} bytecount);}
+\DoxyCodeLine{57         \textcolor{keywordtype}{void} exceptionResponse(\textcolor{keywordtype}{byte} fcode, \textcolor{keywordtype}{byte} excode);}
+\DoxyCodeLine{58 \textcolor{preprocessor}{        \#ifndef USE\_HOLDING\_REGISTERS\_ONLY}}
+\DoxyCodeLine{59             \textcolor{keywordtype}{void} readCoils(word startreg, word numregs);}
+\DoxyCodeLine{60             \textcolor{keywordtype}{void} readInputStatus(word startreg, word numregs);}
+\DoxyCodeLine{61             \textcolor{keywordtype}{void} readInputRegisters(word startreg, word numregs);}
+\DoxyCodeLine{62             \textcolor{keywordtype}{void} writeSingleCoil(word reg, word status);}
+\DoxyCodeLine{63             \textcolor{keywordtype}{void} writeMultipleCoils(\textcolor{keywordtype}{byte}* frame,word startreg, word numoutputs, \textcolor{keywordtype}{byte} bytecount);}
+\DoxyCodeLine{64 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66         \mbox{\hyperlink{structTRegister}{TRegister}}* searchRegister(word addr);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68         \textcolor{keywordtype}{void} addReg(word address, word value = 0);}
+\DoxyCodeLine{69         \textcolor{keywordtype}{bool} Reg(word address, word value);}
+\DoxyCodeLine{70         word Reg(word address);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{73         \textcolor{keywordtype}{byte} *\_frame;}
+\DoxyCodeLine{74         \textcolor{keywordtype}{byte}  \_len;}
+\DoxyCodeLine{75         \textcolor{keywordtype}{byte}  \_reply;}
+\DoxyCodeLine{76         \textcolor{keywordtype}{void} receivePDU(\textcolor{keywordtype}{byte}* frame);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{keyword}{public}:}
+\DoxyCodeLine{79         \mbox{\hyperlink{classModbus}{Modbus}}();}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81         \textcolor{keywordtype}{void} addHreg(word offset, word value = 0);}
+\DoxyCodeLine{82         \textcolor{keywordtype}{bool} Hreg(word offset, word value);}
+\DoxyCodeLine{83         word Hreg(word offset);}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{preprocessor}{        \#ifndef USE\_HOLDING\_REGISTERS\_ONLY}}
+\DoxyCodeLine{86             \textcolor{keywordtype}{void} addCoil(word offset, \textcolor{keywordtype}{bool} value = \textcolor{keyword}{false});}
+\DoxyCodeLine{87             \textcolor{keywordtype}{void} addIsts(word offset, \textcolor{keywordtype}{bool} value = \textcolor{keyword}{false});}
+\DoxyCodeLine{88             \textcolor{keywordtype}{void} addIreg(word offset, word value = 0);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90             \textcolor{keywordtype}{bool} Coil(word offset, \textcolor{keywordtype}{bool} value);}
+\DoxyCodeLine{91             \textcolor{keywordtype}{bool} Ists(word offset, \textcolor{keywordtype}{bool} value);}
+\DoxyCodeLine{92             \textcolor{keywordtype}{bool} Ireg(word offset, word value);}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94             \textcolor{keywordtype}{bool} Coil(word offset);}
+\DoxyCodeLine{95             \textcolor{keywordtype}{bool} Ists(word offset);}
+\DoxyCodeLine{96             word Ireg(word offset);}
+\DoxyCodeLine{97 \textcolor{preprocessor}{        \#endif}}
+\DoxyCodeLine{98 \};}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//MODBUS\_H}}
+
+\end{DoxyCode}

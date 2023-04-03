@@ -1,0 +1,28 @@
+\hypertarget{Modmata_8h_source}{}\doxysection{Modmata.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#include "{}Functions.h"{}}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}ModbusSerial.h"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAX\_REG\_COUNT 100}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{namespace }modmata \{}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{11   \textcolor{keyword}{class }\mbox{\hyperlink{classmodmata_1_1ModmataClass}{ModmataClass}} \{}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13     \textcolor{keyword}{private}:}
+\DoxyCodeLine{18       \mbox{\hyperlink{structregisters}{registers}} (*callbackFunctions[20])(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{19       \mbox{\hyperlink{classModbusSerial}{ModbusSerial}} mb;    }
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keyword}{public}:}
+\DoxyCodeLine{22       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}{begin}}(\textcolor{keywordtype}{int} baud);}
+\DoxyCodeLine{23       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{attach}}(uint8\_t command, \textcolor{keyword}{struct} \mbox{\hyperlink{structregisters}{registers}} (*fn)(uint8\_t argc, uint8\_t *argv));}
+\DoxyCodeLine{24       \textcolor{keywordtype}{void} \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{processInput}}();}
+\DoxyCodeLine{25       \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{available}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27   \};}
+\DoxyCodeLine{28 \}}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30 \textcolor{keyword}{extern} \mbox{\hyperlink{classmodmata_1_1ModmataClass}{modmata::ModmataClass}} Modmata;}
+
+\end{DoxyCode}

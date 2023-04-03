@@ -1,24 +1,37 @@
 \hypertarget{classmodmata_1_1ModmataClass}{}\doxysection{modmata\+::Modmata\+Class Class Reference}
 \label{classmodmata_1_1ModmataClass}\index{modmata::ModmataClass@{modmata::ModmataClass}}
+
+
+Base class for a host computer to control this (Latte\+Panda\textquotesingle{}s Arduino Leonardo) device.  
+
+
+
+
+{\ttfamily \#include $<$Modmata.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}{begin}} ()
+void \mbox{\hyperlink{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}{begin}} (int baud)
+\begin{DoxyCompactList}\small\item\em Begin listening for a Modmata connection over serial. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{attach}} (uint8\+\_\+t command, struct \mbox{\hyperlink{structregisters}{registers}}($\ast$fn)(uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv))
 \item 
-void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}{attach}} (uint16\+\_\+t command, int($\ast$fn)(uint8\+\_\+t $\ast$arg1, uint8\+\_\+t $\ast$arg2))
-\item 
-void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{process\+Input}} ()
-\item 
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}\label{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}} 
+void {\bfseries process\+Input} ()
+\begin{DoxyCompactList}\small\item\em Read the command and args sent and execute the corresponding callback function, store the results of which in holding functions to be communicated with the host. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{available}} ()
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Base class for a host computer to control this (Latte\+Panda\textquotesingle{}s Arduino Leonardo) device. 
+
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}\label{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}} 
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}\label{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!attach@{attach}}
 \index{attach@{attach}!modmata::ModmataClass@{modmata::ModmataClass}}
 \doxysubsubsection{\texorpdfstring{attach()}{attach()}}
-{\footnotesize\ttfamily void Modmata\+Class\+::attach (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{command,  }\item[{int($\ast$)(uint8\+\_\+t $\ast$arg1, uint8\+\_\+t $\ast$arg2)}]{fn }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Modmata\+Class\+::attach (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command,  }\item[{struct \mbox{\hyperlink{structregisters}{registers}}($\ast$)(uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)}]{fn }\end{DoxyParamCaption})}
 
 Assign a function to a command number. Standard commands have default functions, but those can be overwritten here, or more commands can be added. 
 \begin{DoxyParams}{Parameters}
@@ -27,36 +40,36 @@ Assign a function to a command number. Standard commands have default functions,
 {\em fn} & A pointer to the function to be called when the command is recieved \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
 \mbox{\Hypertarget{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}\label{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!available@{available}}
 \index{available@{available}!modmata::ModmataClass@{modmata::ModmataClass}}
 \doxysubsubsection{\texorpdfstring{available()}{available()}}
 {\footnotesize\ttfamily bool Modmata\+Class\+::available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Update modbus registers and check if a command has been recieved \begin{DoxyReturn}{Returns}
+Update modbus registers and check if a command has been received \begin{DoxyRemark}{Remarks}
+Will return false unless there is a Command function code besides IDLE in Hreg 0 {\itshape and} there was data received since the last time mb.\+task() was called 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
 True or false 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}\label{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}} 
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}\label{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!begin@{begin}}
 \index{begin@{begin}!modmata::ModmataClass@{modmata::ModmataClass}}
 \doxysubsubsection{\texorpdfstring{begin()}{begin()}}
-{\footnotesize\ttfamily void Modmata\+Class\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Modmata\+Class\+::begin (\begin{DoxyParamCaption}\item[{int}]{baud }\end{DoxyParamCaption})}
 
-Start the \mbox{\hyperlink{classModbus}{Modbus}} serial connection with a baud rate of 9600 and slave id of 1. \begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}\label{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}} 
-\index{modmata::ModmataClass@{modmata::ModmataClass}!processInput@{processInput}}
-\index{processInput@{processInput}!modmata::ModmataClass@{modmata::ModmataClass}}
-\doxysubsubsection{\texorpdfstring{processInput()}{processInput()}}
-{\footnotesize\ttfamily void Modmata\+Class\+::process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Execute a command when the input is recieved. \begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
+
+Begin listening for a Modmata connection over serial. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baud} & Set the baud rate of the listening serial connection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+This is configured to be used between a host computer and Arduino Leonardo using a USB connector (hardwired in the case of the Latte\+Panda Delta 3) The Leonardo is different from most other Arduinos in the usage of the serial connection, so if you modify this code, please keep that in mind. 
+\end{DoxyRemark}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

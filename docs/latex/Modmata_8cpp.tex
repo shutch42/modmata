@@ -6,14 +6,22 @@ Functions to access Modmata commands from arduino .ino files.
 
 
 {\ttfamily \#include \char`\"{}Modmata.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Hardware\+Serial.\+h\char`\"{}}\newline
-Include dependency graph for Modmata.\+cpp\+:\nopagebreak
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+Include dependency graph for Modmata.\+cpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=332pt]{Modmata_8cpp__incl}
+\includegraphics[width=350pt]{Modmata_8cpp__incl}
 \end{center}
 \end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned char \mbox{\hyperlink{Modmata_8cpp_a0c8186d9b9b7880309c27230bbb5e69d}{byte}}
+\begin{DoxyCompactList}\small\item\em unsigned 8-\/bit integral data type \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -26,8 +34,24 @@ Include dependency graph for Modmata.\+cpp\+:\nopagebreak
 Functions to access Modmata commands from arduino .ino files. 
 
 \begin{DoxyAuthor}{Author}
-Sam Hutcherson 
+Sam Hutcherson, Chase Wallendorff, Iris Astrid 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
-01/20/23 
+04/02/23 
 \end{DoxyDate}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{Modmata_8cpp_a0c8186d9b9b7880309c27230bbb5e69d}\label{Modmata_8cpp_a0c8186d9b9b7880309c27230bbb5e69d}} 
+\index{Modmata.cpp@{Modmata.cpp}!byte@{byte}}
+\index{byte@{byte}!Modmata.cpp@{Modmata.cpp}}
+\doxysubsubsection{\texorpdfstring{byte}{byte}}
+{\footnotesize\ttfamily typedef unsigned char \mbox{\hyperlink{Modmata_8cpp_a0c8186d9b9b7880309c27230bbb5e69d}{byte}}}
+
+
+
+unsigned 8-\/bit integral data type 
+
+\begin{DoxyRemark}{Remarks}
+has a type definition within Arduino, but not within \textquotesingle{}standard\textquotesingle{} C++ 
+\end{DoxyRemark}
