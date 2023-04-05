@@ -7,7 +7,7 @@
 #define LCD_CLEAR 22
 
 // Initialize LCD
-const int rs = 8, en = 9, d4 = 4, d5 = 5, d6 = 6, d7 = 7;
+const int rs = A4, en = A5, d4 = 7, d5 = 6, d6 = 5, d7 = 4;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
 // Modmata function to move the cursor on the LCD
@@ -51,7 +51,7 @@ void setup() {
   lcd.begin(16, 2);
 
   // Start modmata at 9600 baud
-  Modmata.begin(9600);
+  Modmata.begin(115200);
 
   // Include custom functions in modmata communication
   Modmata.attach(LCD_CLEAR, lcdClear);
