@@ -1,3 +1,9 @@
+/*
+Modmata
+Copyright © 2023 char* teamName <shutche@siue.edu>
+Licensed under LGPL-2.1
+*/
+
 /**
  * @file Modmata.h
  * @author Sam Hutcherson, Chase Wallendorff, Iris Astrid
