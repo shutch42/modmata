@@ -1,0 +1,27 @@
+# Syntax Coloring Map For Modmata within Arduino IDE (I guess it works,,)
+# Datatypes (KEYWORD1)
+Modbus          KEYWORD1
+ModbusSerial	KEYWORD1
+
+ModmataClass	KEYWORD1
+registers	    KEYWORD1
+spi_settings    KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+calcCrc         KEYWORD2
+setSlaveId      KEYWORD2
+getSlaveId      KEYWORD2
+config          KEYWORD2
+task            KEYWORD2
+receive         KEYWORD2
+sendPDU         KEYWORD2
+send            KEYWORD2
+
+begin           KEYWORD2
+attach          KEYWORD2
+processInput    KEYWORD2
+available       KEYWORD2
+
+# Constants (LITERAL1)
+_auchCRCHi      LITERAL1
+_auchCRCLo      LITERAL1

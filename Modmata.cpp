@@ -1,9 +1,9 @@
-/** 
-@file Modmata.cpp
-@author Sam Hutcherson, Chase Wallendorff, Iris Astrid
-@date 02/16/23
-@brief Functions to access Modmata commands from arduino .ino files.
-*/
+/**
+ * @file Modmata.cpp
+ * @author Sam Hutcherson, Chase Wallendorff, Iris Astrid
+ * @brief Functions to access Modmata commands from arduino .ino files.
+ * @date 2023-04-06
+ */
 
 #include "Modmata.h"
 using namespace modmata;
@@ -11,11 +11,13 @@ using namespace modmata;
 ModmataClass Modmata;
 
 /**
-Start the Modbus serial connection with a baud rate of 9600 and slave id of 1.
-@return void
-*/
-void ModmataClass::begin(int baud)
-{
+ * @brief Begin listening for a Modmata connection over serial/USB
+ * @remark This is configured to be used between a host computer and Arduino Leonardo using a USB connector
+ * (hardwired in the case of the LattePanda Delta 3.) The Leonardo is different from most other Arduinos 
+ * in the usage of the serial connection, so if you modify this code, please keep that in mind.
+ * @param baud Set the baud rate of the listening serial connection
+ */
+void ModmataClass::begin(int baud) {
   mb.config(&Serial, baud, SERIAL_8N1);
   mb.setSlaveId(1);
   
@@ -48,63 +50,64 @@ void ModmataClass::begin(int baud)
 }
 
 /**
-Assign a function to a command number. Standard commands have default functions, but those can be overwritten here, or more commands can be added.
-@param command The modbus command being assigned a function
-@param fn A pointer to the function to be called when the command is recieved
-@return void
-*/
-void ModmataClass::attach(uint8_t command, struct registers (*fn)(uint8_t argc, uint8_t *argv))
-{
+ * @brief Assign a function to a command number. Standard commands have default functions, 
+ * but those can be overwritten here, or more commands can be added.
+ * @param command The modbus command being assigned a function
+ * @param fn A pointer to the function to be called when the command is recieved
+ */
+void ModmataClass::attach(uint8_t command, struct registers (*fn)(uint8_t argc, uint8_t *argv)) {
   callbackFunctions[command] = fn;
 }
 
-/** 
-Execute a command when the input is recieved.
-@return output A struct containing the command, arguments, and return value for debugging 
-*/
-void ModmataClass::processInput()
-{
-  // Unpack all of the modbus registers as 8-bit values
-  int cmd = mb.Hreg(0) >> 8;
-  int argc = mb.Hreg(0) & 0x00ff;
+/**
+ * @brief Read the command and args sent and execute the corresponding callback function,
+ * store the results of which in holding functions to be communicated with the host.
+ */
+void ModmataClass::processInput() {
+  // UNPACK COMMAND/FUNCTION CODE & NUMBER OF ARGS (ARGC)
+  uint16_t CMD_ARGC = mb.Hreg(0);
+  int cmd = highByte(CMD_ARGC);
+  int argc = lowByte(CMD_ARGC);
 
-  uint8_t *argv = malloc(sizeof(uint8_t) * argc);
+  // Allocate space for argv to be transferred
+  uint8_t *argv = (uint8_t *)malloc(sizeof(uint8_t) * argc);
 
+  // Read Hregs into argv
   for(int i = 0; i < argc; i++) {
-  	if (i % 2 == 0) {
-		argv[i] = mb.Hreg(i/2 + 1) >> 8;
-	}
-	else {
-		argv[i] = mb.Hreg(i/2 + 1) & 0x00ff;
-	}
+    uint16_t thisWord = mb.Hreg(i/2 + 1); // read Hreg()
+
+    // set argv[i] to the low or high byte of the current holding register depending the parity of the current index
+    argv[i] = (i % 2 == 0 ? highByte(thisWord) : lowByte(thisWord));
   }
 
+  // EXECUTE CALLBACK FUNCTION
   struct registers result = (callbackFunctions[cmd])(argc, argv);
   
-  // Set all of the result values
+  // RESPOND WITH RESULT
   for(int i = 0; i < result.count; i++) {
-	if (i % 2 == 0) {
-		mb.Hreg(i/2 + 1, (uint16_t)result.value[i] << 8); 
-	}
-	else {
-		// uint16_t curr_reg = mb.Hreg(i/2 + 1);
-		mb.Hreg(i/2 + 1, mb.Hreg(i/2 + 1) | result.value[i]); 
-	}
+    uint16_t thisWord = mb.Hreg(i/2 + 1); // Get the value of the current holding register
+    uint8_t curResult = result.value[i];  // Get the value of the current result
+
+    // Write half the holding register at a time, depending on whether 
+    // it will be the high or low byte (determined by the parity of i)
+    mb.Hreg(i/2 + 1, (i % 2 == 0 ? makeWord(curResult, 0) : thisWord | curResult));
   }
   
+  // Deallocate memory
   free(argv);
-  free(result.value);
+  if (result.value != nullptr) free(result.value);
 
   // Save the number of result values, return to idle command
   mb.Hreg(0, result.count);
 }
 
 /**
-Update modbus registers and check if a command has been recieved
-@return True or false
-*/
-bool ModmataClass::available()
-{
-  return mb.task() && (mb.Hreg(0) >> 8);
+ * Update modbus registers and check if a command has been received
+ * @remark Will return false unless there is a Command function code besides IDLE in Hreg 0
+ * _and_ there was data received since the last time mb.task() was called 
+ * @return True or false
+ */
+bool ModmataClass::available() {
+  return mb.task() && (highByte(mb.Hreg(0)));
 }
 

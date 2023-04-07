@@ -1,0 +1,683 @@
+\hypertarget{Functions_8cpp}{}\doxysection{Functions.\+cpp File Reference}
+\label{Functions_8cpp}\index{Functions.cpp@{Functions.cpp}}
+
+
+Define standard callback functions to control Arduino I/O.  
+
+
+{\ttfamily \#include \char`\"{}Functions.\+h\char`\"{}}\newline
+Include dependency graph for Functions.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Functions_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a0ae1920d1bd081a6c9ec4f87183cca69}{pin\+Mode}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Change the settings of the Arduino I/O pins. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_aedd9c82f24df20fa8eafbf8783b75e2d}{digital\+Write}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Write a digital (HIGH/\+LOW) value to the Arduino I/O pins. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_ac6c805aa4d676347c2a955a27962fd8d}{digital\+Read}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Read a digital value (HIGH/\+LOW) from the Arduino I/O pins. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a596c032aa84f92cebac9cc82e4952491}{analog\+Write}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Write an analog value (0-\/255) to the Arduino I/O pins. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_aa8a550f78edb39c4608e446b5f9f64b9}{analog\+Read}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Read an analog value (0-\/1023) from the Arduino I/O pins. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_aa33576043068bb56fa3f02e2c257133b}{servo\+Attach}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Attach a connected servo to a control interface. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a6ee7296a183fa1a4fe4a8f56a435bf88}{servo\+Detach}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Detach a servo from the the control interface. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a653012bf94e22f2a819f74ed6f775548}{servo\+Write}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Write a value to the connected servo. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a42d43787da071000bb9d5777b36f38ee}{servo\+Read}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Read a value from the connected servo. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_af90928622e18a871749a5a2c0badf3e1}{wire\+Begin}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Begin an I2C connection between the Arduino and a peripheral. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a484f0c45c5846e6ff9e4f0748c3bbc65}{wire\+End}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em End an I2C connection between the Arduino and a peripheral. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a2f2608133966c86040c1176ae8627c17}{wire\+Set\+Clock}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Change the clock speed settings of the I2C connection. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a44d2d21199866f96d5ec1d3cf06f62ee}{wire\+Write}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Write data to the connected I2C peripheral. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a33d9c46a2d569acac4fc74242e23f5a1}{wire\+Read}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Read data from the connected I2C peripheral. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a567731fa7c15c87a2d52d4ed687a073d}{spi\+Begin}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Begin a SPI connection between the Arduino and a peripheral. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_a23352dc74b4b9ae5394158d8989f9c66}{spi\+Settings}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Change the settings of the SPI connection. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_aeb2ecd89a4839da45e944a71d3a35192}{spi\+Transfer\+Buf}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em Exchange data over the SPI connection (Read + Write) \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_af74ccd3b4a286fe84a71d77bf169fa18}{spi\+End}} (uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em End a SPI connection between the Arduino and a peripheral. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{Functions_8cpp_ad9870a433cbb1c4b20694b4c3f29f69b}{servo\+\_\+count}} = 0
+\begin{DoxyCompactList}\small\item\em Current number of attached servos. \end{DoxyCompactList}\item 
+Servo \mbox{\hyperlink{Functions_8cpp_aff09337585aa6e2bea50fcaddc065c50}{servos}} \mbox{[}14\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array to control attached servos. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{Functions_8h_structspi__settings}{spi\+\_\+settings}} \mbox{\hyperlink{Functions_8cpp_a598d7f448e0c37c5c0a69a01c90ca220}{settings}}
+\begin{DoxyCompactList}\small\item\em Singleton to represent the current SPI connection settings. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8cpp_ac9bf34b279c1d7883ab493343b7057d1}{VOID\+\_\+\+STRUCT}} \{0, nullptr\}
+\begin{DoxyCompactList}\small\item\em Helper struct that is returned directly when a callback function has no return values, and that is copy-\/constructed from when a clean struct is needed to populate with values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Define standard callback functions to control Arduino I/O. 
+
+\begin{DoxyAuthor}{Author}
+Sam Hutcherson, Chase Wallendorff, Iris Astrid 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/04-\/06 
+\end{DoxyDate}
+
+
+Definition in file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Functions_8cpp_aa8a550f78edb39c4608e446b5f9f64b9}\label{Functions_8cpp_aa8a550f78edb39c4608e446b5f9f64b9}} 
+\index{Functions.cpp@{Functions.cpp}!analogRead@{analogRead}}
+\index{analogRead@{analogRead}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{analogRead()}{analogRead()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} analog\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Read an analog value (0-\/1023) from the Arduino I/O pins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (1) \\
+\hline
+{\em argv} & The arguments to use within the function (pin \#) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct containing the value of pin (10-\/bit unsigned int contained within a uint16\+\_\+t) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00097}{analog\+Read()}}, \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00097}{analog\+Read()}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a596c032aa84f92cebac9cc82e4952491}\label{Functions_8cpp_a596c032aa84f92cebac9cc82e4952491}} 
+\index{Functions.cpp@{Functions.cpp}!analogWrite@{analogWrite}}
+\index{analogWrite@{analogWrite}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{analogWrite()}{analogWrite()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} analog\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Write an analog value (0-\/255) to the Arduino I/O pins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (3) \\
+\hline
+{\em argv} & The arguments to use within the function (pin \#, 16-\/bit value split into 2 8-\/bit values) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00082}{analog\+Write()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00082}{analog\+Write()}}.
+
+\mbox{\Hypertarget{Functions_8cpp_ac6c805aa4d676347c2a955a27962fd8d}\label{Functions_8cpp_ac6c805aa4d676347c2a955a27962fd8d}} 
+\index{Functions.cpp@{Functions.cpp}!digitalRead@{digitalRead}}
+\index{digitalRead@{digitalRead}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{digitalRead()}{digitalRead()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} digital\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Read a digital value (HIGH/\+LOW) from the Arduino I/O pins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (1) \\
+\hline
+{\em argv} & The arguments to use within the function (pin \#) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct containing the value of pin (1 uint8\+\_\+t) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00062}{digital\+Read()}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00062}{digital\+Read()}}.
+
+\mbox{\Hypertarget{Functions_8cpp_aedd9c82f24df20fa8eafbf8783b75e2d}\label{Functions_8cpp_aedd9c82f24df20fa8eafbf8783b75e2d}} 
+\index{Functions.cpp@{Functions.cpp}!digitalWrite@{digitalWrite}}
+\index{digitalWrite@{digitalWrite}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{digitalWrite()}{digitalWrite()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} digital\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Write a digital (HIGH/\+LOW) value to the Arduino I/O pins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (2) \\
+\hline
+{\em argv} & The arguments to use within the function (pin \#, value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00047}{digital\+Write()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00047}{digital\+Write()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00343}{spi\+Transfer\+Buf()}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a0ae1920d1bd081a6c9ec4f87183cca69}\label{Functions_8cpp_a0ae1920d1bd081a6c9ec4f87183cca69}} 
+\index{Functions.cpp@{Functions.cpp}!pinMode@{pinMode}}
+\index{pinMode@{pinMode}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{pinMode()}{pinMode()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} pin\+Mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Change the settings of the Arduino I/O pins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (2) \\
+\hline
+{\em argv} & The arguments to use within the function (pin \#, mode) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00032}{pin\+Mode()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00032}{pin\+Mode()}}.
+
+\mbox{\Hypertarget{Functions_8cpp_aa33576043068bb56fa3f02e2c257133b}\label{Functions_8cpp_aa33576043068bb56fa3f02e2c257133b}} 
+\index{Functions.cpp@{Functions.cpp}!servoAttach@{servoAttach}}
+\index{servoAttach@{servoAttach}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{servoAttach()}{servoAttach()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} servo\+Attach (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Attach a connected servo to a control interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (1) \\
+\hline
+{\em argv} & The arguments to use within the function (pin \#) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct containing the Servo\+Index (uint8\+\_\+t), I have no idea what it actually means though (undocumented on Arduino???) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00011}{servo\+\_\+count}}, \mbox{\hyperlink{Functions_8cpp_source_l00014}{servos}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a6ee7296a183fa1a4fe4a8f56a435bf88}\label{Functions_8cpp_a6ee7296a183fa1a4fe4a8f56a435bf88}} 
+\index{Functions.cpp@{Functions.cpp}!servoDetach@{servoDetach}}
+\index{servoDetach@{servoDetach}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{servoDetach()}{servoDetach()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} servo\+Detach (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Detach a servo from the the control interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (1) \\
+\hline
+{\em argv} & The arguments to use within the function (pin \#) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct containing the boolean value of the operation\textquotesingle{}s success (uint8\+\_\+t) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00014}{servos}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a42d43787da071000bb9d5777b36f38ee}\label{Functions_8cpp_a42d43787da071000bb9d5777b36f38ee}} 
+\index{Functions.cpp@{Functions.cpp}!servoRead@{servoRead}}
+\index{servoRead@{servoRead}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{servoRead()}{servoRead()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} servo\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Read a value from the connected servo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct containing the last value written to the servo (uint8\+\_\+t) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00188}{188}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00014}{servos}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a653012bf94e22f2a819f74ed6f775548}\label{Functions_8cpp_a653012bf94e22f2a819f74ed6f775548}} 
+\index{Functions.cpp@{Functions.cpp}!servoWrite@{servoWrite}}
+\index{servoWrite@{servoWrite}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{servoWrite()}{servoWrite()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} servo\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Write a value to the connected servo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (2) \\
+\hline
+{\em argv} & The arguments to use within the function (pin \#, value) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct containing the boolean value of the operation\textquotesingle{}s success (uint8\+\_\+t) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00014}{servos}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a567731fa7c15c87a2d52d4ed687a073d}\label{Functions_8cpp_a567731fa7c15c87a2d52d4ed687a073d}} 
+\index{Functions.cpp@{Functions.cpp}!spiBegin@{spiBegin}}
+\index{spiBegin@{spiBegin}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{spiBegin()}{spiBegin()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} spi\+Begin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Begin a SPI connection between the Arduino and a peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00307}{307}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00076}{spi\+\_\+settings\+::mode}}, \mbox{\hyperlink{Functions_8h_source_l00073}{spi\+\_\+settings\+::order}}, \mbox{\hyperlink{Functions_8cpp_source_l00017}{settings}}, \mbox{\hyperlink{Functions_8h_source_l00070}{spi\+\_\+settings\+::speed}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_af74ccd3b4a286fe84a71d77bf169fa18}\label{Functions_8cpp_af74ccd3b4a286fe84a71d77bf169fa18}} 
+\index{Functions.cpp@{Functions.cpp}!spiEnd@{spiEnd}}
+\index{spiEnd@{spiEnd}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{spiEnd()}{spiEnd()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} spi\+End (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+End a SPI connection between the Arduino and a peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array (0) \\
+\hline
+{\em argv} & The arguments to use within the function (None) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00375}{375}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a23352dc74b4b9ae5394158d8989f9c66}\label{Functions_8cpp_a23352dc74b4b9ae5394158d8989f9c66}} 
+\index{Functions.cpp@{Functions.cpp}!spiSettings@{spiSettings}}
+\index{spiSettings@{spiSettings}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{spiSettings()}{spiSettings()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} spi\+Settings (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Change the settings of the SPI connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00325}{325}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00022}{make\+DWord}}, \mbox{\hyperlink{Functions_8h_source_l00076}{spi\+\_\+settings\+::mode}}, \mbox{\hyperlink{Functions_8h_source_l00073}{spi\+\_\+settings\+::order}}, \mbox{\hyperlink{Functions_8cpp_source_l00017}{settings}}, \mbox{\hyperlink{Functions_8h_source_l00070}{spi\+\_\+settings\+::speed}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_aeb2ecd89a4839da45e944a71d3a35192}\label{Functions_8cpp_aeb2ecd89a4839da45e944a71d3a35192}} 
+\index{Functions.cpp@{Functions.cpp}!spiTransferBuf@{spiTransferBuf}}
+\index{spiTransferBuf@{spiTransferBuf}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{spiTransferBuf()}{spiTransferBuf()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} spi\+Transfer\+Buf (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Exchange data over the SPI connection (Read + Write) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct containing the response to the command written (argc -\/ 1 $\ast$ uint8\+\_\+t) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00343}{343}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00047}{digital\+Write()}}, \mbox{\hyperlink{Functions_8h_source_l00076}{spi\+\_\+settings\+::mode}}, \mbox{\hyperlink{Functions_8h_source_l00073}{spi\+\_\+settings\+::order}}, \mbox{\hyperlink{Functions_8cpp_source_l00017}{settings}}, \mbox{\hyperlink{Functions_8h_source_l00070}{spi\+\_\+settings\+::speed}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_af90928622e18a871749a5a2c0badf3e1}\label{Functions_8cpp_af90928622e18a871749a5a2c0badf3e1}} 
+\index{Functions.cpp@{Functions.cpp}!wireBegin@{wireBegin}}
+\index{wireBegin@{wireBegin}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{wireBegin()}{wireBegin()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} wire\+Begin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Begin an I2C connection between the Arduino and a peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00209}{209}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a484f0c45c5846e6ff9e4f0748c3bbc65}\label{Functions_8cpp_a484f0c45c5846e6ff9e4f0748c3bbc65}} 
+\index{Functions.cpp@{Functions.cpp}!wireEnd@{wireEnd}}
+\index{wireEnd@{wireEnd}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{wireEnd()}{wireEnd()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} wire\+End (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+End an I2C connection between the Arduino and a peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00221}{221}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a33d9c46a2d569acac4fc74242e23f5a1}\label{Functions_8cpp_a33d9c46a2d569acac4fc74242e23f5a1}} 
+\index{Functions.cpp@{Functions.cpp}!wireRead@{wireRead}}
+\index{wireRead@{wireRead}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{wireRead()}{wireRead()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} wire\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Read data from the connected I2C peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+struct containing the bytes read (num\+\_\+bytes $\ast$ uint8\+\_\+t) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00274}{274}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a2f2608133966c86040c1176ae8627c17}\label{Functions_8cpp_a2f2608133966c86040c1176ae8627c17}} 
+\index{Functions.cpp@{Functions.cpp}!wireSetClock@{wireSetClock}}
+\index{wireSetClock@{wireSetClock}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{wireSetClock()}{wireSetClock()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} wire\+Set\+Clock (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Change the clock speed settings of the I2C connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00233}{233}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8h_source_l00022}{make\+DWord}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a44d2d21199866f96d5ec1d3cf06f62ee}\label{Functions_8cpp_a44d2d21199866f96d5ec1d3cf06f62ee}} 
+\index{Functions.cpp@{Functions.cpp}!wireWrite@{wireWrite}}
+\index{wireWrite@{wireWrite}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{wireWrite()}{wireWrite()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}} wire\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argc,  }\item[{uint8\+\_\+t $\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Write data to the connected I2C peripheral. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments contained within the \textquotesingle{}argv\textquotesingle{} array \\
+\hline
+{\em argv} & The arguments to use within the function \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void (empty struct) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00250}{250}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{Functions_8cpp_ad9870a433cbb1c4b20694b4c3f29f69b}\label{Functions_8cpp_ad9870a433cbb1c4b20694b4c3f29f69b}} 
+\index{Functions.cpp@{Functions.cpp}!servo\_count@{servo\_count}}
+\index{servo\_count@{servo\_count}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{servo\_count}{servo\_count}}
+{\footnotesize\ttfamily int servo\+\_\+count = 0}
+
+
+
+Current number of attached servos. 
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00118}{servo\+Attach()}}.
+
+\mbox{\Hypertarget{Functions_8cpp_aff09337585aa6e2bea50fcaddc065c50}\label{Functions_8cpp_aff09337585aa6e2bea50fcaddc065c50}} 
+\index{Functions.cpp@{Functions.cpp}!servos@{servos}}
+\index{servos@{servos}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{servos}{servos}}
+{\footnotesize\ttfamily Servo servos\mbox{[}14\mbox{]}}
+
+
+
+Array to control attached servos. 
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00118}{servo\+Attach()}}, \mbox{\hyperlink{Functions_8cpp_source_l00141}{servo\+Detach()}}, \mbox{\hyperlink{Functions_8cpp_source_l00188}{servo\+Read()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00164}{servo\+Write()}}.
+
+\mbox{\Hypertarget{Functions_8cpp_a598d7f448e0c37c5c0a69a01c90ca220}\label{Functions_8cpp_a598d7f448e0c37c5c0a69a01c90ca220}} 
+\index{Functions.cpp@{Functions.cpp}!settings@{settings}}
+\index{settings@{settings}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{settings}{settings}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structspi__settings}{spi\+\_\+settings}} settings}
+
+
+
+Singleton to represent the current SPI connection settings. 
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00307}{spi\+Begin()}}, \mbox{\hyperlink{Functions_8cpp_source_l00325}{spi\+Settings()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00343}{spi\+Transfer\+Buf()}}.
+
+\mbox{\Hypertarget{Functions_8cpp_ac9bf34b279c1d7883ab493343b7057d1}\label{Functions_8cpp_ac9bf34b279c1d7883ab493343b7057d1}} 
+\index{Functions.cpp@{Functions.cpp}!VOID\_STRUCT@{VOID\_STRUCT}}
+\index{VOID\_STRUCT@{VOID\_STRUCT}!Functions.cpp@{Functions.cpp}}
+\doxysubsubsection{\texorpdfstring{VOID\_STRUCT}{VOID\_STRUCT}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{Functions_8h_structregisters}{registers}} VOID\+\_\+\+STRUCT \{0, nullptr\}}
+
+
+
+Helper struct that is returned directly when a callback function has no return values, and that is copy-\/constructed from when a clean struct is needed to populate with values. 
+
+
+
+Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
+
+
+
+Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00097}{analog\+Read()}}, \mbox{\hyperlink{Functions_8cpp_source_l00082}{analog\+Write()}}, \mbox{\hyperlink{Functions_8cpp_source_l00062}{digital\+Read()}}, \mbox{\hyperlink{Functions_8cpp_source_l00047}{digital\+Write()}}, \mbox{\hyperlink{Functions_8cpp_source_l00032}{pin\+Mode()}}, \mbox{\hyperlink{Functions_8cpp_source_l00118}{servo\+Attach()}}, \mbox{\hyperlink{Functions_8cpp_source_l00141}{servo\+Detach()}}, \mbox{\hyperlink{Functions_8cpp_source_l00188}{servo\+Read()}}, \mbox{\hyperlink{Functions_8cpp_source_l00164}{servo\+Write()}}, \mbox{\hyperlink{Functions_8cpp_source_l00307}{spi\+Begin()}}, \mbox{\hyperlink{Functions_8cpp_source_l00375}{spi\+End()}}, \mbox{\hyperlink{Functions_8cpp_source_l00325}{spi\+Settings()}}, \mbox{\hyperlink{Functions_8cpp_source_l00343}{spi\+Transfer\+Buf()}}, \mbox{\hyperlink{Functions_8cpp_source_l00209}{wire\+Begin()}}, \mbox{\hyperlink{Functions_8cpp_source_l00221}{wire\+End()}}, \mbox{\hyperlink{Functions_8cpp_source_l00274}{wire\+Read()}}, \mbox{\hyperlink{Functions_8cpp_source_l00233}{wire\+Set\+Clock()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00250}{wire\+Write()}}.
+

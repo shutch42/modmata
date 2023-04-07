@@ -1,0 +1,118 @@
+\hypertarget{Functions_8h_source}{}\doxysection{Functions.\+h}
+\mbox{\hyperlink{Functions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00001}00001 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00002}00002 \textcolor{comment}{ * @file Functions.h}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00003}00003 \textcolor{comment}{ * @author Sam Hutcherson, Chase Wallendorff, Iris Astrid}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00004}00004 \textcolor{comment}{ * @brief Header file for 'Functions.cpp'}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00005}00005 \textcolor{comment}{ * @date 2023-\/04-\/06}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00006}00006 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00009}00009 \textcolor{preprocessor}{\#include <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00010}00010 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <Servo.h>}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <SPI.h>}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00015}00015 \textcolor{preprocessor}{\#ifndef FUNCTIONS\_H}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00016}00016 \textcolor{preprocessor}{\#define FUNCTIONS\_H}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00017}00017 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00018}00018 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00019}00019 \textcolor{comment}{ * @brief Combine four 8-\/bit integral types into one 32-\/bit integral type,}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00020}00020 \textcolor{comment}{ * or in simpler terms, reassemble a uint32\_t from four uint8\_t's}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00021}00021 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00022}\mbox{\hyperlink{Functions_8h_a2861520b2d783a911a53933827911b8d}{00022}} \textcolor{preprocessor}{\#define makeDWord(i0, i1, i2, i3) ((uint32\_t) (i0 << 24 | i1 << 16 | i2 << 8 | i3))}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00024}00024 \textcolor{comment}{// Command number associated with each function}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00026}00026 \textcolor{preprocessor}{\#define IDLE 0}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00027}00027 \textcolor{preprocessor}{\#define PINMODE 1}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00028}00028 \textcolor{preprocessor}{\#define DIGITALWRITE 2}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00029}00029 \textcolor{preprocessor}{\#define DIGITALREAD 3}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00030}00030 \textcolor{preprocessor}{\#define ANALOGREFERENCE 4}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00031}00031 \textcolor{preprocessor}{\#define ANALOGWRITE 5}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00032}00032 \textcolor{preprocessor}{\#define ANALOGREAD 6}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00033}00033 \textcolor{preprocessor}{\#define SERVOATTACH 7}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00034}00034 \textcolor{preprocessor}{\#define SERVODETACH 8}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00035}00035 \textcolor{preprocessor}{\#define SERVOWRITE 9}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00036}00036 \textcolor{preprocessor}{\#define SERVOREAD 10}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00037}00037 \textcolor{preprocessor}{\#define WIREBEGIN 11}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00038}00038 \textcolor{preprocessor}{\#define WIREEND 12}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00039}00039 \textcolor{preprocessor}{\#define WIRECLOCK 13}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00040}00040 \textcolor{preprocessor}{\#define WIREWRITE 14}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00041}00041 \textcolor{preprocessor}{\#define WIREREAD 15}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00042}00042 \textcolor{preprocessor}{\#define SPIBEGIN 16}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00043}00043 \textcolor{preprocessor}{\#define SPISETTINGS 17}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00044}00044 \textcolor{preprocessor}{\#define SPITRANSFER 18}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00045}00045 \textcolor{preprocessor}{\#define SPIEND 19}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00046}00046 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00047}00047 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00048}00048 \textcolor{comment}{ * @brief A data structure to describe function arguments and return values.}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00049}00049 \textcolor{comment}{ * @param count The number of arguments contained within the array 'value'.}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00050}00050 \textcolor{comment}{ * @param value A pointer to an array of bytes (8-\/bit integral types) that }}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00051}00051 \textcolor{comment}{ * contains the values of the arguments or return values for a command.}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00052}00052 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00053}\mbox{\hyperlink{Functions_8h}{00053}} \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \{\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00054}00054 \textcolor{comment}{    /** The number of arguments contained within the array 'value'. */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00055}\mbox{\hyperlink{Functions_8h_aaafbc68f5a29179ad3991af77cd17791}{00055}}     uint8\_t     \mbox{\hyperlink{Functions_8h_aaafbc68f5a29179ad3991af77cd17791}{count}};}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00056}00056     \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00057}00057 \textcolor{comment}{    /** A pointer to an array of bytes (8-\/bit integral types) that contains the values of the arguments or return values for a command. */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00058}\mbox{\hyperlink{Functions_8h_a23538b5601de4141c0c164149345feba}{00058}}     uint8\_t *   \mbox{\hyperlink{Functions_8h_a23538b5601de4141c0c164149345feba}{value}};}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00059}00059 \};}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00060}00060 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00061}00061 \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00062}00062 \textcolor{comment}{ * @brief A data structure to describe a SPI connection's configuration settings.}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00063}00063 \textcolor{comment}{ * Essentially the same as Arduino's 'SPIsettings' object}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00064}00064 \textcolor{comment}{ * @param speed The baud rate/clock speed of the connection.}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00065}00065 \textcolor{comment}{ * @param order The order of bits sent over the wire }}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00066}00066 \textcolor{comment}{ * @param mode The clock polarity and phase}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00067}00067 \textcolor{comment}{ */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00068}\mbox{\hyperlink{Functions_8h}{00068}} \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structspi__settings}{spi\_settings}} \{\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00069}00069 \textcolor{comment}{    /** The baud rate/clock speed of the connection. */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00070}\mbox{\hyperlink{Functions_8h_ab92e493cce0bb349433c803db9c4d8df}{00070}}     uint32\_t    \mbox{\hyperlink{Functions_8h_ab92e493cce0bb349433c803db9c4d8df}{speed}};}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00071}00071 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00072}00072 \textcolor{comment}{    /** The order of bits sent over the wire. */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00073}\mbox{\hyperlink{Functions_8h_a49d176b4c767ff287ee97bced4ebaf10}{00073}}     \textcolor{keywordtype}{bool}        \mbox{\hyperlink{Functions_8h_a49d176b4c767ff287ee97bced4ebaf10}{order}};}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00074}00074     \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00075}00075 \textcolor{comment}{    /** The clock polarity and phase. */}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00076}\mbox{\hyperlink{Functions_8h_a1dcdc74076924b00ee6c36b34c1c87db}{00076}}     uint8\_t     \mbox{\hyperlink{Functions_8h_a1dcdc74076924b00ee6c36b34c1c87db}{mode}};}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00077}00077 \};}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00080}00080 \textcolor{comment}{// General Arduino functions}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00082}00082 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a0ae1920d1bd081a6c9ec4f87183cca69}{pinMode}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00083}00083 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_aedd9c82f24df20fa8eafbf8783b75e2d}{digitalWrite}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00084}00084 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_ac6c805aa4d676347c2a955a27962fd8d}{digitalRead}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00085}00085 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a596c032aa84f92cebac9cc82e4952491}{analogWrite}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00086}00086 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_aa8a550f78edb39c4608e446b5f9f64b9}{analogRead}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00087}00087 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00089}00089 \textcolor{comment}{// Servo functions}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00091}00091 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_aa33576043068bb56fa3f02e2c257133b}{servoAttach}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00092}00092 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a6ee7296a183fa1a4fe4a8f56a435bf88}{servoDetach}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00093}00093 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a653012bf94e22f2a819f74ed6f775548}{servoWrite}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00094}00094 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a42d43787da071000bb9d5777b36f38ee}{servoRead}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00095}00095 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00097}00097 \textcolor{comment}{// I2C functions}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00099}00099 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_af90928622e18a871749a5a2c0badf3e1}{wireBegin}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00100}00100 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a484f0c45c5846e6ff9e4f0748c3bbc65}{wireEnd}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00101}00101 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a2f2608133966c86040c1176ae8627c17}{wireSetClock}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00102}00102 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a44d2d21199866f96d5ec1d3cf06f62ee}{wireWrite}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00103}00103 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a33d9c46a2d569acac4fc74242e23f5a1}{wireRead}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00105}00105 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00106}00106 \textcolor{comment}{// SPI functions}}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00108}00108 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a567731fa7c15c87a2d52d4ed687a073d}{spiBegin}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00109}00109 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_a23352dc74b4b9ae5394158d8989f9c66}{spiSettings}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00110}00110 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_aeb2ecd89a4839da45e944a71d3a35192}{spiTransferBuf}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00111}00111 \textcolor{keyword}{struct }\mbox{\hyperlink{Functions_8h_structregisters}{registers}} \mbox{\hyperlink{Functions_8h_af74ccd3b4a286fe84a71d77bf169fa18}{spiEnd}}(uint8\_t argc, uint8\_t *argv);}
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{Functions_8h_source_l00113}00113 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

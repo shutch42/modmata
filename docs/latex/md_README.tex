@@ -1,1 +1,16 @@
-This library is a mashup of the modbus-\/arduino and firmata libraries. The goal is to be able to write applications to communicate between a computer and arduino as you would with firmata, but use modbus communication instead of MIDI/\+Sysex messages. 
+This library is based on the \href{https://github.com/andresarmento/modbus-arduino}{\texttt{ modbus-\/arduino library}}, and is formatted to work in a way that is similar to the \href{https://github.com/firmata/arduino}{\texttt{ firmata arduino library}}. ~\newline
+
+
+The goal is to be able to write applications to communicate between a computer and arduino as you would with firmata, but using modbus communication instead of MIDI/\+Sysex messages. ~\newline
+
+
+This has the advantage of better error checking, faster communication, and more readable code. ~\newline
+
+
+The library is specificially designed for use on an \href{https://docs.arduino.cc/hardware/leonardo}{\texttt{ Arduino Leonardo}}, or any Arduino IDE compatible microcontroller that uses an Atmega 32u4 chip. Specifically, this library was made to simplify the programming on the \href{https://www.lattepanda.com/lattepanda-3-delta}{\texttt{ Lattepanda 3 Delta}}, but it can be used on any computer with an Arduino Leonardo plugged in via USB.\hypertarget{md_README_autotoc_md1}{}\doxysubsection{Functionality}\label{md_README_autotoc_md1}
+By default, the library has functions to work with digital and analog I/O, servos, I2C, and SPI. These functions are listed in \href{https://github.com/shutch42/modmata/blob/main/Functions.h}{\texttt{ Functions.\+h}}. ~\newline
+
+
+If you wish to add a function that is not supported by default, you can do so using the attach() function. Take a look at the \href{https://github.com/shutch42/modmata/blob/main/examples/ModmataLCD/ModmataLCD.ino}{\texttt{ Modmata\+LCD}} program to see how to do this. Keep in mind that in order to use functions that are not supported by default in Modmata, you will need to write client-\/side functions as well. Take a look at the corresponding \href{https://github.com/shutch42/ModmataC/tree/sam/Examples/lcd}{\texttt{ ModmataC LCD example program}} for an example of this.\hypertarget{md_README_autotoc_md2}{}\doxysubsection{Usage}\label{md_README_autotoc_md2}
+To use the library, clone this repo to your Arduino IDE libraries folder. Once it is saved there, open up the Example program, \href{https://github.com/shutch42/modmata/blob/main/examples/StandardModmata/StandardModmata.ino}{\texttt{ Standard\+Modmata.\+ino}}. This simple sketch is all that is needed to use Modmata on your Arduino Leonardo. Upload the sketch, and from there, you can program your arduino to do whatever you wish from our \href{https://github.com/shutch42/ModmataC}{\texttt{ ModmataC library}}.\hypertarget{md_README_autotoc_md3}{}\doxysubsection{Documentation}\label{md_README_autotoc_md3}
+Take a look at our Doxygen pages \href{https://shutch42.github.io/modmata/html/index.html}{\texttt{ here}}. 

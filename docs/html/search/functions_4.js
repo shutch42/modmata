@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['servoattach_0',['servoAttach',['../Functions_8cpp.html#aa33576043068bb56fa3f02e2c257133b',1,'servoAttach(uint8_t argc, uint8_t *argv):&#160;Functions.cpp'],['../Functions_8h.html#aa33576043068bb56fa3f02e2c257133b',1,'servoAttach(uint8_t argc, uint8_t *argv):&#160;Functions.cpp']]],
+  ['servodetach_1',['servoDetach',['../Functions_8cpp.html#a6ee7296a183fa1a4fe4a8f56a435bf88',1,'servoDetach(uint8_t argc, uint8_t *argv):&#160;Functions.cpp'],['../Functions_8h.html#a6ee7296a183fa1a4fe4a8f56a435bf88',1,'servoDetach(uint8_t argc, uint8_t *argv):&#160;Functions.cpp']]],
+  ['servoread_2',['servoRead',['../Functions_8cpp.html#a42d43787da071000bb9d5777b36f38ee',1,'servoRead(uint8_t argc, uint8_t *argv):&#160;Functions.cpp'],['../Functions_8h.html#a42d43787da071000bb9d5777b36f38ee',1,'servoRead(uint8_t argc, uint8_t *argv):&#160;Functions.cpp']]],
+  ['servowrite_3',['servoWrite',['../Functions_8cpp.html#a653012bf94e22f2a819f74ed6f775548',1,'servoWrite(uint8_t argc, uint8_t *argv):&#160;Functions.cpp'],['../Functions_8h.html#a653012bf94e22f2a819f74ed6f775548',1,'servoWrite(uint8_t argc, uint8_t *argv):&#160;Functions.cpp']]],
+  ['spibegin_4',['spiBegin',['../Functions_8cpp.html#a567731fa7c15c87a2d52d4ed687a073d',1,'spiBegin(uint8_t argc, uint8_t *argv):&#160;Functions.cpp'],['../Functions_8h.html#a567731fa7c15c87a2d52d4ed687a073d',1,'spiBegin(uint8_t argc, uint8_t *argv):&#160;Functions.cpp']]],
+  ['spiend_5',['spiEnd',['../Functions_8cpp.html#af74ccd3b4a286fe84a71d77bf169fa18',1,'spiEnd(uint8_t argc, uint8_t *argv):&#160;Functions.cpp'],['../Functions_8h.html#af74ccd3b4a286fe84a71d77bf169fa18',1,'spiEnd(uint8_t argc, uint8_t *argv):&#160;Functions.cpp']]],
+  ['spisettings_6',['spiSettings',['../Functions_8cpp.html#a23352dc74b4b9ae5394158d8989f9c66',1,'spiSettings(uint8_t argc, uint8_t *argv):&#160;Functions.cpp'],['../Functions_8h.html#a23352dc74b4b9ae5394158d8989f9c66',1,'spiSettings(uint8_t argc, uint8_t *argv):&#160;Functions.cpp']]],
+  ['spitransferbuf_7',['spiTransferBuf',['../Functions_8cpp.html#aeb2ecd89a4839da45e944a71d3a35192',1,'spiTransferBuf(uint8_t argc, uint8_t *argv):&#160;Functions.cpp'],['../Functions_8h.html#aeb2ecd89a4839da45e944a71d3a35192',1,'spiTransferBuf(uint8_t argc, uint8_t *argv):&#160;Functions.cpp']]]
+];

@@ -1,65 +1,183 @@
 \hypertarget{classmodmata_1_1ModmataClass}{}\doxysection{modmata\+::Modmata\+Class Class Reference}
 \label{classmodmata_1_1ModmataClass}\index{modmata::ModmataClass@{modmata::ModmataClass}}
+
+
+Base class for a host computer to control this (Latte\+Panda\textquotesingle{}s Arduino Leonardo) device.  
+
+
+
+
+{\ttfamily \#include $<$Modmata.\+h$>$}
+
+
+
+Collaboration diagram for modmata\+::Modmata\+Class\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classmodmata_1_1ModmataClass__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}{begin}} ()
-\item 
-void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}{attach}} (uint16\+\_\+t command, int($\ast$fn)(uint8\+\_\+t $\ast$arg1, uint8\+\_\+t $\ast$arg2))
-\item 
+void \mbox{\hyperlink{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}{begin}} (int baud)
+\begin{DoxyCompactList}\small\item\em Begin listening for a Modmata connection over serial/\+USB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}{attach}} (uint8\+\_\+t command, struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}}($\ast$fn)(uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv))
+\begin{DoxyCompactList}\small\item\em Assign a function to a command number. Standard commands have default functions, but those can be overwritten here, or more commands can be added. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}{process\+Input}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Read the command and args sent and execute the corresponding callback function, store the results of which in holding functions to be communicated with the host. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}{available}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}}($\ast$ \mbox{\hyperlink{classmodmata_1_1ModmataClass_a54edd23f654e5ce209462d45c38f208e}{callback\+Functions}} \mbox{[}100\mbox{]})(uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)
+\begin{DoxyCompactList}\small\item\em An array of references to callback functions indexed by their function code number. Use \textquotesingle{}Modmata.\+attach( function\+\_\+code, \&function )\textquotesingle{} to add your own callback functions. \end{DoxyCompactList}\item 
+Modbus\+Serial \mbox{\hyperlink{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}{mb}}
+\begin{DoxyCompactList}\small\item\em Object representing an interactive Modbus connection over Serial. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for a host computer to control this (Latte\+Panda\textquotesingle{}s Arduino Leonardo) device. 
+
+Definition at line \mbox{\hyperlink{Modmata_8h_source_l00020}{20}} of file \mbox{\hyperlink{Modmata_8h_source}{Modmata.\+h}}.
+
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}\label{classmodmata_1_1ModmataClass_a24dab3a4e2acf20a17e75454ca6d2a39}} 
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}\label{classmodmata_1_1ModmataClass_a08b393d664df8ca30b75e08cbbb58e88}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!attach@{attach}}
 \index{attach@{attach}!modmata::ModmataClass@{modmata::ModmataClass}}
 \doxysubsubsection{\texorpdfstring{attach()}{attach()}}
-{\footnotesize\ttfamily void Modmata\+Class\+::attach (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{command,  }\item[{int($\ast$)(uint8\+\_\+t $\ast$arg1, uint8\+\_\+t $\ast$arg2)}]{fn }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Modmata\+Class\+::attach (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command,  }\item[{struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}}($\ast$)(uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)}]{fn }\end{DoxyParamCaption})}
+
+
 
 Assign a function to a command number. Standard commands have default functions, but those can be overwritten here, or more commands can be added. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em command} & The modbus command being assigned a function \\
 \hline
 {\em fn} & A pointer to the function to be called when the command is recieved \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Modmata_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{Modmata_8cpp_source}{Modmata.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Modmata_8h_source_l00031}{callback\+Functions}}.
+
 \mbox{\Hypertarget{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}\label{classmodmata_1_1ModmataClass_ab61913c30c725f6eec033db2e53a577c}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!available@{available}}
 \index{available@{available}!modmata::ModmataClass@{modmata::ModmataClass}}
 \doxysubsubsection{\texorpdfstring{available()}{available()}}
 {\footnotesize\ttfamily bool Modmata\+Class\+::available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Update modbus registers and check if a command has been recieved \begin{DoxyReturn}{Returns}
+Update modbus registers and check if a command has been received \begin{DoxyRemark}{Remarks}
+Will return false unless there is a Command function code besides IDLE in Hreg 0 {\itshape and} there was data received since the last time mb.\+task() was called 
+\end{DoxyRemark}
+\begin{DoxyReturn}{Returns}
 True or false 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}\label{classmodmata_1_1ModmataClass_ace3cc2920e32131eb50c9f6e80f5e686}} 
+
+
+Definition at line \mbox{\hyperlink{Modmata_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{Modmata_8cpp_source}{Modmata.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Modmata_8h_source_l00034}{mb}}.
+
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}\label{classmodmata_1_1ModmataClass_acb1b2dc4d7c67d60c9609083097274f9}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!begin@{begin}}
 \index{begin@{begin}!modmata::ModmataClass@{modmata::ModmataClass}}
 \doxysubsubsection{\texorpdfstring{begin()}{begin()}}
-{\footnotesize\ttfamily void Modmata\+Class\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Modmata\+Class\+::begin (\begin{DoxyParamCaption}\item[{int}]{baud }\end{DoxyParamCaption})}
 
-Start the \mbox{\hyperlink{classModbus}{Modbus}} serial connection with a baud rate of 9600 and slave id of 1. \begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
+
+
+Begin listening for a Modmata connection over serial/\+USB. 
+
+\begin{DoxyRemark}{Remarks}
+This is configured to be used between a host computer and Arduino Leonardo using a USB connector (hardwired in the case of the Latte\+Panda Delta 3.) The Leonardo is different from most other Arduinos in the usage of the serial connection, so if you modify this code, please keep that in mind. 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em baud} & Set the baud rate of the listening serial connection \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Modmata_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{Modmata_8cpp_source}{Modmata.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Modmata_8h_source_l00031}{callback\+Functions}}, and \mbox{\hyperlink{Modmata_8h_source_l00034}{mb}}.
+
 \mbox{\Hypertarget{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}\label{classmodmata_1_1ModmataClass_a9a0a6b61b07be95ece2bc1f83cd7607d}} 
 \index{modmata::ModmataClass@{modmata::ModmataClass}!processInput@{processInput}}
 \index{processInput@{processInput}!modmata::ModmataClass@{modmata::ModmataClass}}
 \doxysubsubsection{\texorpdfstring{processInput()}{processInput()}}
 {\footnotesize\ttfamily void Modmata\+Class\+::process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Execute a command when the input is recieved. \begin{DoxyReturn}{Returns}
-void 
-\end{DoxyReturn}
+
+
+Read the command and args sent and execute the corresponding callback function, store the results of which in holding functions to be communicated with the host. 
+
+
+
+Definition at line \mbox{\hyperlink{Modmata_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{Modmata_8cpp_source}{Modmata.\+cpp}}.
+
+
+
+References \mbox{\hyperlink{Modmata_8h_source_l00031}{callback\+Functions}}, \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Modmata_8h_source_l00034}{mb}}, and \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a54edd23f654e5ce209462d45c38f208e}\label{classmodmata_1_1ModmataClass_a54edd23f654e5ce209462d45c38f208e}} 
+\index{modmata::ModmataClass@{modmata::ModmataClass}!callbackFunctions@{callbackFunctions}}
+\index{callbackFunctions@{callbackFunctions}!modmata::ModmataClass@{modmata::ModmataClass}}
+\doxysubsubsection{\texorpdfstring{callbackFunctions}{callbackFunctions}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{Functions_8h_structregisters}{registers}}($\ast$ modmata\+::\+Modmata\+Class\+::callback\+Functions\mbox{[}100\mbox{]})(uint8\+\_\+t argc, uint8\+\_\+t $\ast$argv)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+An array of references to callback functions indexed by their function code number. Use \textquotesingle{}Modmata.\+attach( function\+\_\+code, \&function )\textquotesingle{} to add your own callback functions. 
+
+
+
+Definition at line \mbox{\hyperlink{Modmata_8h_source_l00025}{25}} of file \mbox{\hyperlink{Modmata_8h_source}{Modmata.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Modmata_8cpp_source_l00058}{attach()}}, \mbox{\hyperlink{Modmata_8cpp_source_l00020}{begin()}}, and \mbox{\hyperlink{Modmata_8cpp_source_l00066}{process\+Input()}}.
+
+\mbox{\Hypertarget{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}\label{classmodmata_1_1ModmataClass_a68a900eb605ada992f85abb93684a642}} 
+\index{modmata::ModmataClass@{modmata::ModmataClass}!mb@{mb}}
+\index{mb@{mb}!modmata::ModmataClass@{modmata::ModmataClass}}
+\doxysubsubsection{\texorpdfstring{mb}{mb}}
+{\footnotesize\ttfamily Modbus\+Serial modmata\+::\+Modmata\+Class\+::mb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Object representing an interactive Modbus connection over Serial. 
+
+
+
+Definition at line \mbox{\hyperlink{Modmata_8h_source_l00034}{34}} of file \mbox{\hyperlink{Modmata_8h_source}{Modmata.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{Modmata_8cpp_source_l00110}{available()}}, \mbox{\hyperlink{Modmata_8cpp_source_l00020}{begin()}}, and \mbox{\hyperlink{Modmata_8cpp_source_l00066}{process\+Input()}}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-Modmata.\+h\item 
+\mbox{\hyperlink{Modmata_8h}{Modmata.\+h}}\item 
 \mbox{\hyperlink{Modmata_8cpp}{Modmata.\+cpp}}\end{DoxyCompactItemize}
