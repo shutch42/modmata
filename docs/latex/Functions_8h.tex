@@ -11,16 +11,14 @@ Header file for \textquotesingle{}\mbox{\hyperlink{Functions_8cpp}{Functions.\+c
 {\ttfamily \#include $<$Servo.\+h$>$}\newline
 {\ttfamily \#include $<$Wire.\+h$>$}\newline
 {\ttfamily \#include $<$SPI.\+h$>$}\newline
-Include dependency graph for Functions.\+h\+:
-\nopagebreak
+Include dependency graph for Functions.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{Functions_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,47 +35,68 @@ struct \mbox{\hyperlink{Functions_8h_structspi__settings}{spi\+\_\+settings}}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\Hypertarget{Functions_8h_a2861520b2d783a911a53933827911b8d}\label{Functions_8h_a2861520b2d783a911a53933827911b8d}} 
 \#define \mbox{\hyperlink{Functions_8h_a2861520b2d783a911a53933827911b8d}{make\+DWord}}(i0,  i1,  i2,  i3)~((uint32\+\_\+t) (i0 $<$$<$ 24 $\vert$ i1 $<$$<$ 16 $\vert$ i2 $<$$<$ 8 $\vert$ i3))
 \begin{DoxyCompactList}\small\item\em Combine four 8-\/bit integral types into one 32-\/bit integral type, or in simpler terms, reassemble a uint32\+\_\+t from four uint8\+\_\+t\textquotesingle{}s. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{Functions_8h_a9c21a7caee326d7803b94ae1952b27ca}{IDLE}}~0
+\mbox{\Hypertarget{Functions_8h_a9c21a7caee326d7803b94ae1952b27ca}\label{Functions_8h_a9c21a7caee326d7803b94ae1952b27ca}} 
+\#define {\bfseries IDLE}~0
 \item 
-\#define \mbox{\hyperlink{Functions_8h_ad18373cdc1a4bcdc5fc9f2828287742d}{PINMODE}}~1
+\mbox{\Hypertarget{Functions_8h_ad18373cdc1a4bcdc5fc9f2828287742d}\label{Functions_8h_ad18373cdc1a4bcdc5fc9f2828287742d}} 
+\#define {\bfseries PINMODE}~1
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a7bcd3df6a353d862839cb1be3ca9e072}{DIGITALWRITE}}~2
+\mbox{\Hypertarget{Functions_8h_a7bcd3df6a353d862839cb1be3ca9e072}\label{Functions_8h_a7bcd3df6a353d862839cb1be3ca9e072}} 
+\#define {\bfseries DIGITALWRITE}~2
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a56a912adc333b198a6eed88643c93f0f}{DIGITALREAD}}~3
+\mbox{\Hypertarget{Functions_8h_a56a912adc333b198a6eed88643c93f0f}\label{Functions_8h_a56a912adc333b198a6eed88643c93f0f}} 
+\#define {\bfseries DIGITALREAD}~3
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a129145158417ca4dafc432f5d26a262b}{ANALOGREFERENCE}}~4
+\mbox{\Hypertarget{Functions_8h_a129145158417ca4dafc432f5d26a262b}\label{Functions_8h_a129145158417ca4dafc432f5d26a262b}} 
+\#define {\bfseries ANALOGREFERENCE}~4
 \item 
-\#define \mbox{\hyperlink{Functions_8h_acfe52491d8204c6405ad8db3bb2c261b}{ANALOGWRITE}}~5
+\mbox{\Hypertarget{Functions_8h_acfe52491d8204c6405ad8db3bb2c261b}\label{Functions_8h_acfe52491d8204c6405ad8db3bb2c261b}} 
+\#define {\bfseries ANALOGWRITE}~5
 \item 
-\#define \mbox{\hyperlink{Functions_8h_aa7a4046fea051ae64ab9b8e2b55631ba}{ANALOGREAD}}~6
+\mbox{\Hypertarget{Functions_8h_aa7a4046fea051ae64ab9b8e2b55631ba}\label{Functions_8h_aa7a4046fea051ae64ab9b8e2b55631ba}} 
+\#define {\bfseries ANALOGREAD}~6
 \item 
-\#define \mbox{\hyperlink{Functions_8h_abc5c4f16d4d1b0c56c7ea23674878c2c}{SERVOATTACH}}~7
+\mbox{\Hypertarget{Functions_8h_abc5c4f16d4d1b0c56c7ea23674878c2c}\label{Functions_8h_abc5c4f16d4d1b0c56c7ea23674878c2c}} 
+\#define {\bfseries SERVOATTACH}~7
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a69330040cf4a5ae9be84c9adc2b3ef4f}{SERVODETACH}}~8
+\mbox{\Hypertarget{Functions_8h_a69330040cf4a5ae9be84c9adc2b3ef4f}\label{Functions_8h_a69330040cf4a5ae9be84c9adc2b3ef4f}} 
+\#define {\bfseries SERVODETACH}~8
 \item 
-\#define \mbox{\hyperlink{Functions_8h_af9487a88c0f6e1aaa5831935ac6eb903}{SERVOWRITE}}~9
+\mbox{\Hypertarget{Functions_8h_af9487a88c0f6e1aaa5831935ac6eb903}\label{Functions_8h_af9487a88c0f6e1aaa5831935ac6eb903}} 
+\#define {\bfseries SERVOWRITE}~9
 \item 
-\#define \mbox{\hyperlink{Functions_8h_af290d8fd94bcbcf88a9ddf7e082ba08f}{SERVOREAD}}~10
+\mbox{\Hypertarget{Functions_8h_af290d8fd94bcbcf88a9ddf7e082ba08f}\label{Functions_8h_af290d8fd94bcbcf88a9ddf7e082ba08f}} 
+\#define {\bfseries SERVOREAD}~10
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a59385d8a8274f096a8e2b171bb79f61d}{WIREBEGIN}}~11
+\mbox{\Hypertarget{Functions_8h_a59385d8a8274f096a8e2b171bb79f61d}\label{Functions_8h_a59385d8a8274f096a8e2b171bb79f61d}} 
+\#define {\bfseries WIREBEGIN}~11
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a2545091ac4192041366fd6a32426863e}{WIREEND}}~12
+\mbox{\Hypertarget{Functions_8h_a2545091ac4192041366fd6a32426863e}\label{Functions_8h_a2545091ac4192041366fd6a32426863e}} 
+\#define {\bfseries WIREEND}~12
 \item 
-\#define \mbox{\hyperlink{Functions_8h_ae70f2398959f1bf1db05d08a0d9ceedd}{WIRECLOCK}}~13
+\mbox{\Hypertarget{Functions_8h_ae70f2398959f1bf1db05d08a0d9ceedd}\label{Functions_8h_ae70f2398959f1bf1db05d08a0d9ceedd}} 
+\#define {\bfseries WIRECLOCK}~13
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a86fd7c8af9ca22742465cc618db8e5e7}{WIREWRITE}}~14
+\mbox{\Hypertarget{Functions_8h_a86fd7c8af9ca22742465cc618db8e5e7}\label{Functions_8h_a86fd7c8af9ca22742465cc618db8e5e7}} 
+\#define {\bfseries WIREWRITE}~14
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a52b6389ea5b72ad72724070a8f59f7f3}{WIREREAD}}~15
+\mbox{\Hypertarget{Functions_8h_a52b6389ea5b72ad72724070a8f59f7f3}\label{Functions_8h_a52b6389ea5b72ad72724070a8f59f7f3}} 
+\#define {\bfseries WIREREAD}~15
 \item 
-\#define \mbox{\hyperlink{Functions_8h_aa9b94a45a65059dac2c8ab2773d46edd}{SPIBEGIN}}~16
+\mbox{\Hypertarget{Functions_8h_aa9b94a45a65059dac2c8ab2773d46edd}\label{Functions_8h_aa9b94a45a65059dac2c8ab2773d46edd}} 
+\#define {\bfseries SPIBEGIN}~16
 \item 
-\#define \mbox{\hyperlink{Functions_8h_a0c45e4e78555004705a44e3cde3fb2ad}{SPISETTINGS}}~17
+\mbox{\Hypertarget{Functions_8h_a0c45e4e78555004705a44e3cde3fb2ad}\label{Functions_8h_a0c45e4e78555004705a44e3cde3fb2ad}} 
+\#define {\bfseries SPISETTINGS}~17
 \item 
-\#define \mbox{\hyperlink{Functions_8h_aba3fdb9d4224317f9a055b7548fe8278}{SPITRANSFER}}~18
+\mbox{\Hypertarget{Functions_8h_aba3fdb9d4224317f9a055b7548fe8278}\label{Functions_8h_aba3fdb9d4224317f9a055b7548fe8278}} 
+\#define {\bfseries SPITRANSFER}~18
 \item 
-\#define \mbox{\hyperlink{Functions_8h_aa28ef7063c67b70bc4e7689cf5bc5b54}{SPIEND}}~19
+\mbox{\Hypertarget{Functions_8h_aa28ef7063c67b70bc4e7689cf5bc5b54}\label{Functions_8h_aa28ef7063c67b70bc4e7689cf5bc5b54}} 
+\#define {\bfseries SPIEND}~19
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -131,10 +150,6 @@ Sam Hutcherson, Chase Wallendorff, Iris Astrid
 \end{DoxyDate}
 
 
-Definition in file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-
-
 \doxysubsection{Class Documentation}
 \index{registers@{registers}}\label{structregisters}
 \Hypertarget{Functions_8h_structregisters}
@@ -150,7 +165,7 @@ A data structure to describe function arguments and return values.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00053}{53}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
+Definition at line 59 of file Functions.\+h.
 
 \begin{DoxyFields}{Class Members}
 \mbox{\Hypertarget{Functions_8h_aaafbc68f5a29179ad3991af77cd17791}\label{Functions_8h_aaafbc68f5a29179ad3991af77cd17791}} 
@@ -182,7 +197,7 @@ A data structure to describe a SPI connection\textquotesingle{}s configuration s
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00068}{68}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
+Definition at line 74 of file Functions.\+h.
 
 \begin{DoxyFields}{Class Members}
 \mbox{\Hypertarget{Functions_8h_a1dcdc74076924b00ee6c36b34c1c87db}\label{Functions_8h_a1dcdc74076924b00ee6c36b34c1c87db}} 
@@ -204,223 +219,6 @@ The baud rate/clock speed of the connection. \\
 \hline
 
 \end{DoxyFields}
-
-
-\doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{Functions_8h_aa7a4046fea051ae64ab9b8e2b55631ba}\label{Functions_8h_aa7a4046fea051ae64ab9b8e2b55631ba}} 
-\index{Functions.h@{Functions.h}!ANALOGREAD@{ANALOGREAD}}
-\index{ANALOGREAD@{ANALOGREAD}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{ANALOGREAD}{ANALOGREAD}}
-{\footnotesize\ttfamily \#define ANALOGREAD~6}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00032}{32}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a129145158417ca4dafc432f5d26a262b}\label{Functions_8h_a129145158417ca4dafc432f5d26a262b}} 
-\index{Functions.h@{Functions.h}!ANALOGREFERENCE@{ANALOGREFERENCE}}
-\index{ANALOGREFERENCE@{ANALOGREFERENCE}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{ANALOGREFERENCE}{ANALOGREFERENCE}}
-{\footnotesize\ttfamily \#define ANALOGREFERENCE~4}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00030}{30}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_acfe52491d8204c6405ad8db3bb2c261b}\label{Functions_8h_acfe52491d8204c6405ad8db3bb2c261b}} 
-\index{Functions.h@{Functions.h}!ANALOGWRITE@{ANALOGWRITE}}
-\index{ANALOGWRITE@{ANALOGWRITE}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{ANALOGWRITE}{ANALOGWRITE}}
-{\footnotesize\ttfamily \#define ANALOGWRITE~5}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00031}{31}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a56a912adc333b198a6eed88643c93f0f}\label{Functions_8h_a56a912adc333b198a6eed88643c93f0f}} 
-\index{Functions.h@{Functions.h}!DIGITALREAD@{DIGITALREAD}}
-\index{DIGITALREAD@{DIGITALREAD}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{DIGITALREAD}{DIGITALREAD}}
-{\footnotesize\ttfamily \#define DIGITALREAD~3}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00029}{29}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a7bcd3df6a353d862839cb1be3ca9e072}\label{Functions_8h_a7bcd3df6a353d862839cb1be3ca9e072}} 
-\index{Functions.h@{Functions.h}!DIGITALWRITE@{DIGITALWRITE}}
-\index{DIGITALWRITE@{DIGITALWRITE}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{DIGITALWRITE}{DIGITALWRITE}}
-{\footnotesize\ttfamily \#define DIGITALWRITE~2}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00028}{28}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a9c21a7caee326d7803b94ae1952b27ca}\label{Functions_8h_a9c21a7caee326d7803b94ae1952b27ca}} 
-\index{Functions.h@{Functions.h}!IDLE@{IDLE}}
-\index{IDLE@{IDLE}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{IDLE}{IDLE}}
-{\footnotesize\ttfamily \#define IDLE~0}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00026}{26}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a2861520b2d783a911a53933827911b8d}\label{Functions_8h_a2861520b2d783a911a53933827911b8d}} 
-\index{Functions.h@{Functions.h}!makeDWord@{makeDWord}}
-\index{makeDWord@{makeDWord}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{makeDWord}{makeDWord}}
-{\footnotesize\ttfamily \#define make\+DWord(\begin{DoxyParamCaption}\item[{}]{i0,  }\item[{}]{i1,  }\item[{}]{i2,  }\item[{}]{i3 }\end{DoxyParamCaption})~((uint32\+\_\+t) (i0 $<$$<$ 24 $\vert$ i1 $<$$<$ 16 $\vert$ i2 $<$$<$ 8 $\vert$ i3))}
-
-
-
-Combine four 8-\/bit integral types into one 32-\/bit integral type, or in simpler terms, reassemble a uint32\+\_\+t from four uint8\+\_\+t\textquotesingle{}s. 
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00022}{22}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_ad18373cdc1a4bcdc5fc9f2828287742d}\label{Functions_8h_ad18373cdc1a4bcdc5fc9f2828287742d}} 
-\index{Functions.h@{Functions.h}!PINMODE@{PINMODE}}
-\index{PINMODE@{PINMODE}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{PINMODE}{PINMODE}}
-{\footnotesize\ttfamily \#define PINMODE~1}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00027}{27}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_abc5c4f16d4d1b0c56c7ea23674878c2c}\label{Functions_8h_abc5c4f16d4d1b0c56c7ea23674878c2c}} 
-\index{Functions.h@{Functions.h}!SERVOATTACH@{SERVOATTACH}}
-\index{SERVOATTACH@{SERVOATTACH}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{SERVOATTACH}{SERVOATTACH}}
-{\footnotesize\ttfamily \#define SERVOATTACH~7}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00033}{33}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a69330040cf4a5ae9be84c9adc2b3ef4f}\label{Functions_8h_a69330040cf4a5ae9be84c9adc2b3ef4f}} 
-\index{Functions.h@{Functions.h}!SERVODETACH@{SERVODETACH}}
-\index{SERVODETACH@{SERVODETACH}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{SERVODETACH}{SERVODETACH}}
-{\footnotesize\ttfamily \#define SERVODETACH~8}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00034}{34}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_af290d8fd94bcbcf88a9ddf7e082ba08f}\label{Functions_8h_af290d8fd94bcbcf88a9ddf7e082ba08f}} 
-\index{Functions.h@{Functions.h}!SERVOREAD@{SERVOREAD}}
-\index{SERVOREAD@{SERVOREAD}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{SERVOREAD}{SERVOREAD}}
-{\footnotesize\ttfamily \#define SERVOREAD~10}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00036}{36}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_af9487a88c0f6e1aaa5831935ac6eb903}\label{Functions_8h_af9487a88c0f6e1aaa5831935ac6eb903}} 
-\index{Functions.h@{Functions.h}!SERVOWRITE@{SERVOWRITE}}
-\index{SERVOWRITE@{SERVOWRITE}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{SERVOWRITE}{SERVOWRITE}}
-{\footnotesize\ttfamily \#define SERVOWRITE~9}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00035}{35}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_aa9b94a45a65059dac2c8ab2773d46edd}\label{Functions_8h_aa9b94a45a65059dac2c8ab2773d46edd}} 
-\index{Functions.h@{Functions.h}!SPIBEGIN@{SPIBEGIN}}
-\index{SPIBEGIN@{SPIBEGIN}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{SPIBEGIN}{SPIBEGIN}}
-{\footnotesize\ttfamily \#define SPIBEGIN~16}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00042}{42}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_aa28ef7063c67b70bc4e7689cf5bc5b54}\label{Functions_8h_aa28ef7063c67b70bc4e7689cf5bc5b54}} 
-\index{Functions.h@{Functions.h}!SPIEND@{SPIEND}}
-\index{SPIEND@{SPIEND}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{SPIEND}{SPIEND}}
-{\footnotesize\ttfamily \#define SPIEND~19}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00045}{45}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a0c45e4e78555004705a44e3cde3fb2ad}\label{Functions_8h_a0c45e4e78555004705a44e3cde3fb2ad}} 
-\index{Functions.h@{Functions.h}!SPISETTINGS@{SPISETTINGS}}
-\index{SPISETTINGS@{SPISETTINGS}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{SPISETTINGS}{SPISETTINGS}}
-{\footnotesize\ttfamily \#define SPISETTINGS~17}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00043}{43}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_aba3fdb9d4224317f9a055b7548fe8278}\label{Functions_8h_aba3fdb9d4224317f9a055b7548fe8278}} 
-\index{Functions.h@{Functions.h}!SPITRANSFER@{SPITRANSFER}}
-\index{SPITRANSFER@{SPITRANSFER}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{SPITRANSFER}{SPITRANSFER}}
-{\footnotesize\ttfamily \#define SPITRANSFER~18}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00044}{44}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a59385d8a8274f096a8e2b171bb79f61d}\label{Functions_8h_a59385d8a8274f096a8e2b171bb79f61d}} 
-\index{Functions.h@{Functions.h}!WIREBEGIN@{WIREBEGIN}}
-\index{WIREBEGIN@{WIREBEGIN}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{WIREBEGIN}{WIREBEGIN}}
-{\footnotesize\ttfamily \#define WIREBEGIN~11}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00037}{37}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_ae70f2398959f1bf1db05d08a0d9ceedd}\label{Functions_8h_ae70f2398959f1bf1db05d08a0d9ceedd}} 
-\index{Functions.h@{Functions.h}!WIRECLOCK@{WIRECLOCK}}
-\index{WIRECLOCK@{WIRECLOCK}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{WIRECLOCK}{WIRECLOCK}}
-{\footnotesize\ttfamily \#define WIRECLOCK~13}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00039}{39}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a2545091ac4192041366fd6a32426863e}\label{Functions_8h_a2545091ac4192041366fd6a32426863e}} 
-\index{Functions.h@{Functions.h}!WIREEND@{WIREEND}}
-\index{WIREEND@{WIREEND}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{WIREEND}{WIREEND}}
-{\footnotesize\ttfamily \#define WIREEND~12}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00038}{38}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a52b6389ea5b72ad72724070a8f59f7f3}\label{Functions_8h_a52b6389ea5b72ad72724070a8f59f7f3}} 
-\index{Functions.h@{Functions.h}!WIREREAD@{WIREREAD}}
-\index{WIREREAD@{WIREREAD}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{WIREREAD}{WIREREAD}}
-{\footnotesize\ttfamily \#define WIREREAD~15}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00041}{41}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
-\mbox{\Hypertarget{Functions_8h_a86fd7c8af9ca22742465cc618db8e5e7}\label{Functions_8h_a86fd7c8af9ca22742465cc618db8e5e7}} 
-\index{Functions.h@{Functions.h}!WIREWRITE@{WIREWRITE}}
-\index{WIREWRITE@{WIREWRITE}!Functions.h@{Functions.h}}
-\doxysubsubsection{\texorpdfstring{WIREWRITE}{WIREWRITE}}
-{\footnotesize\ttfamily \#define WIREWRITE~14}
-
-
-
-Definition at line \mbox{\hyperlink{Functions_8h_source_l00040}{40}} of file \mbox{\hyperlink{Functions_8h_source}{Functions.\+h}}.
-
 
 
 \doxysubsection{Function Documentation}
@@ -446,15 +244,7 @@ struct containing the value of pin (10-\/bit unsigned int contained within a uin
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00097}{97}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8cpp_source_l00097}{analog\+Read()}}, \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
-
-
-
-Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00097}{analog\+Read()}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a596c032aa84f92cebac9cc82e4952491}\label{Functions_8h_a596c032aa84f92cebac9cc82e4952491}} 
 \index{Functions.h@{Functions.h}!analogWrite@{analogWrite}}
@@ -478,15 +268,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8cpp_source_l00082}{analog\+Write()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
-
-
-
-Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00082}{analog\+Write()}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_ac6c805aa4d676347c2a955a27962fd8d}\label{Functions_8h_ac6c805aa4d676347c2a955a27962fd8d}} 
 \index{Functions.h@{Functions.h}!digitalRead@{digitalRead}}
@@ -510,15 +292,7 @@ struct containing the value of pin (1 uint8\+\_\+t)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00062}{digital\+Read()}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
-
-
-
-Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00062}{digital\+Read()}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_aedd9c82f24df20fa8eafbf8783b75e2d}\label{Functions_8h_aedd9c82f24df20fa8eafbf8783b75e2d}} 
 \index{Functions.h@{Functions.h}!digitalWrite@{digitalWrite}}
@@ -542,15 +316,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8cpp_source_l00047}{digital\+Write()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
-
-
-
-Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00047}{digital\+Write()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00343}{spi\+Transfer\+Buf()}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a0ae1920d1bd081a6c9ec4f87183cca69}\label{Functions_8h_a0ae1920d1bd081a6c9ec4f87183cca69}} 
 \index{Functions.h@{Functions.h}!pinMode@{pinMode}}
@@ -574,15 +340,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8cpp_source_l00032}{pin\+Mode()}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
-
-
-
-Referenced by \mbox{\hyperlink{Functions_8cpp_source_l00032}{pin\+Mode()}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_aa33576043068bb56fa3f02e2c257133b}\label{Functions_8h_aa33576043068bb56fa3f02e2c257133b}} 
 \index{Functions.h@{Functions.h}!servoAttach@{servoAttach}}
@@ -606,11 +364,7 @@ struct containing the Servo\+Index (uint8\+\_\+t), I have no idea what it actual
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00011}{servo\+\_\+count}}, \mbox{\hyperlink{Functions_8cpp_source_l00014}{servos}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a6ee7296a183fa1a4fe4a8f56a435bf88}\label{Functions_8h_a6ee7296a183fa1a4fe4a8f56a435bf88}} 
 \index{Functions.h@{Functions.h}!servoDetach@{servoDetach}}
@@ -634,11 +388,7 @@ struct containing the boolean value of the operation\textquotesingle{}s success 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00014}{servos}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a42d43787da071000bb9d5777b36f38ee}\label{Functions_8h_a42d43787da071000bb9d5777b36f38ee}} 
 \index{Functions.h@{Functions.h}!servoRead@{servoRead}}
@@ -662,11 +412,7 @@ struct containing the last value written to the servo (uint8\+\_\+t)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00188}{188}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00014}{servos}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a653012bf94e22f2a819f74ed6f775548}\label{Functions_8h_a653012bf94e22f2a819f74ed6f775548}} 
 \index{Functions.h@{Functions.h}!servoWrite@{servoWrite}}
@@ -690,11 +436,7 @@ struct containing the boolean value of the operation\textquotesingle{}s success 
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00014}{servos}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a567731fa7c15c87a2d52d4ed687a073d}\label{Functions_8h_a567731fa7c15c87a2d52d4ed687a073d}} 
 \index{Functions.h@{Functions.h}!spiBegin@{spiBegin}}
@@ -718,11 +460,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00307}{307}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00076}{spi\+\_\+settings\+::mode}}, \mbox{\hyperlink{Functions_8h_source_l00073}{spi\+\_\+settings\+::order}}, \mbox{\hyperlink{Functions_8cpp_source_l00017}{settings}}, \mbox{\hyperlink{Functions_8h_source_l00070}{spi\+\_\+settings\+::speed}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_af74ccd3b4a286fe84a71d77bf169fa18}\label{Functions_8h_af74ccd3b4a286fe84a71d77bf169fa18}} 
 \index{Functions.h@{Functions.h}!spiEnd@{spiEnd}}
@@ -746,11 +484,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00375}{375}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a23352dc74b4b9ae5394158d8989f9c66}\label{Functions_8h_a23352dc74b4b9ae5394158d8989f9c66}} 
 \index{Functions.h@{Functions.h}!spiSettings@{spiSettings}}
@@ -774,11 +508,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00325}{325}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00022}{make\+DWord}}, \mbox{\hyperlink{Functions_8h_source_l00076}{spi\+\_\+settings\+::mode}}, \mbox{\hyperlink{Functions_8h_source_l00073}{spi\+\_\+settings\+::order}}, \mbox{\hyperlink{Functions_8cpp_source_l00017}{settings}}, \mbox{\hyperlink{Functions_8h_source_l00070}{spi\+\_\+settings\+::speed}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_aeb2ecd89a4839da45e944a71d3a35192}\label{Functions_8h_aeb2ecd89a4839da45e944a71d3a35192}} 
 \index{Functions.h@{Functions.h}!spiTransferBuf@{spiTransferBuf}}
@@ -802,11 +532,7 @@ struct containing the response to the command written (argc -\/ 1 $\ast$ uint8\+
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00343}{343}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8cpp_source_l00047}{digital\+Write()}}, \mbox{\hyperlink{Functions_8h_source_l00076}{spi\+\_\+settings\+::mode}}, \mbox{\hyperlink{Functions_8h_source_l00073}{spi\+\_\+settings\+::order}}, \mbox{\hyperlink{Functions_8cpp_source_l00017}{settings}}, \mbox{\hyperlink{Functions_8h_source_l00070}{spi\+\_\+settings\+::speed}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_af90928622e18a871749a5a2c0badf3e1}\label{Functions_8h_af90928622e18a871749a5a2c0badf3e1}} 
 \index{Functions.h@{Functions.h}!wireBegin@{wireBegin}}
@@ -830,11 +556,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00209}{209}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a484f0c45c5846e6ff9e4f0748c3bbc65}\label{Functions_8h_a484f0c45c5846e6ff9e4f0748c3bbc65}} 
 \index{Functions.h@{Functions.h}!wireEnd@{wireEnd}}
@@ -858,11 +580,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00221}{221}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a33d9c46a2d569acac4fc74242e23f5a1}\label{Functions_8h_a33d9c46a2d569acac4fc74242e23f5a1}} 
 \index{Functions.h@{Functions.h}!wireRead@{wireRead}}
@@ -886,11 +604,7 @@ struct containing the bytes read (num\+\_\+bytes $\ast$ uint8\+\_\+t)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00274}{274}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00055}{registers\+::count}}, \mbox{\hyperlink{Functions_8h_source_l00058}{registers\+::value}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a2f2608133966c86040c1176ae8627c17}\label{Functions_8h_a2f2608133966c86040c1176ae8627c17}} 
 \index{Functions.h@{Functions.h}!wireSetClock@{wireSetClock}}
@@ -914,11 +628,7 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00233}{233}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8h_source_l00022}{make\+DWord}}, and \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 
 \mbox{\Hypertarget{Functions_8h_a44d2d21199866f96d5ec1d3cf06f62ee}\label{Functions_8h_a44d2d21199866f96d5ec1d3cf06f62ee}} 
 \index{Functions.h@{Functions.h}!wireWrite@{wireWrite}}
@@ -942,9 +652,5 @@ void (empty struct)
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{Functions_8cpp_source_l00250}{250}} of file \mbox{\hyperlink{Functions_8cpp_source}{Functions.\+cpp}}.
-
-
-
-References \mbox{\hyperlink{Functions_8cpp_source_l00023}{VOID\+\_\+\+STRUCT}}.
+Definition at line 29 of file Functions.\+cpp.
 

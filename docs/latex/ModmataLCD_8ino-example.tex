@@ -1,0 +1,76 @@
+\hypertarget{ModmataLCD_8ino-example}{}\doxysection{Modmata\+LCD.\+ino}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\#include <Modmata.h>}
+\DoxyCodeLine{\#include <LiquidCrystal.h>}
+\DoxyCodeLine{}
+\DoxyCodeLine{// Define codes to associate with each function (20-\/100)}
+\DoxyCodeLine{\#define LCD\_SETCURSOR 20}
+\DoxyCodeLine{\#define LCD\_PRINT 21}
+\DoxyCodeLine{\#define LCD\_CLEAR 22}
+\DoxyCodeLine{}
+\DoxyCodeLine{// Initialize LCD}
+\DoxyCodeLine{const int rs = 8, en = 9, d4 = 4, d5 = 5, d6 = 6, d7 = 7;}
+\DoxyCodeLine{LiquidCrystal lcd(rs, en, d4, d5, d6, d7);}
+\DoxyCodeLine{}
+\DoxyCodeLine{// Modmata function to move the cursor on the LCD}
+\DoxyCodeLine{// Accepts row and column for argv[0] and argv[1]}
+\DoxyCodeLine{// Returns no registers}
+\DoxyCodeLine{struct registers lcdSetCursor(uint8\_t argc, uint8\_t* argv) \{}
+\DoxyCodeLine{  lcd.setCursor(argv[0], argv[1]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  struct registers result;}
+\DoxyCodeLine{  result.count = 0;}
+\DoxyCodeLine{  return result;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{// Modmata function to print text to the LCD}
+\DoxyCodeLine{// Accepts an array of characters as argv}
+\DoxyCodeLine{// Returns no registers}
+\DoxyCodeLine{struct registers lcdPrint(uint8\_t argc, uint8\_t* argv) \{}
+\DoxyCodeLine{  for(int i = 0; i < argc; i++) \{}
+\DoxyCodeLine{      lcd.print((char)argv[i]);    }
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  struct registers result;}
+\DoxyCodeLine{  result.count = 0;}
+\DoxyCodeLine{  return result;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{// Modmata function to clear the lcd}
+\DoxyCodeLine{// Accepts nothing in argv}
+\DoxyCodeLine{// Returns no registers}
+\DoxyCodeLine{struct registers lcdClear(uint8\_t argc, uint8\_t* argv) \{}
+\DoxyCodeLine{  lcd.clear();}
+\DoxyCodeLine{}
+\DoxyCodeLine{  struct registers result;}
+\DoxyCodeLine{  result.count = 0;}
+\DoxyCodeLine{  return result;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{void setup() \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{  // Set LCD size}
+\DoxyCodeLine{  lcd.begin(16, 2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  // Start modmata at 9600 baud}
+\DoxyCodeLine{  Modmata.begin(9600);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  // Include custom functions in modmata communication}
+\DoxyCodeLine{  Modmata.attach(LCD\_CLEAR, lcdClear);}
+\DoxyCodeLine{  Modmata.attach(LCD\_SETCURSOR, lcdSetCursor);}
+\DoxyCodeLine{  Modmata.attach(LCD\_PRINT, lcdPrint);}
+\DoxyCodeLine{  }
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{void loop() \{}
+\DoxyCodeLine{  // Check if a command was received}
+\DoxyCodeLine{  // If one is available, process it}
+\DoxyCodeLine{  if(Modmata.available()) \{}
+\DoxyCodeLine{    Modmata.processInput();}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

@@ -11,6 +11,11 @@ Licensed under LGPL-2.1
  * @date 2023-04-06
  */
 
+/**
+ * @example ModmataLCD.ino
+ * @example StandardModmata.ino
+ */
+
 #include "Modmata.h"
 using namespace modmata;
 

@@ -1,0 +1,19 @@
+\hypertarget{StandardModmata_8ino-example}{}\doxysection{Standard\+Modmata.\+ino}
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\#include <Modmata.h>}
+\DoxyCodeLine{}
+\DoxyCodeLine{void setup() \{}
+\DoxyCodeLine{  // put your setup code here, to run once:}
+\DoxyCodeLine{  Modmata.begin(115200);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{void loop() \{}
+\DoxyCodeLine{  // put your main code here, to run repeatedly:}
+\DoxyCodeLine{  if(Modmata.available()) \{}
+\DoxyCodeLine{    Modmata.processInput();}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 
